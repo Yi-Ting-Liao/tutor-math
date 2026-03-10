@@ -1,0 +1,19 @@
+# pdf files
+*.pdf
+
+# markdown files
+*.md
+
+# MacOS files
+.DS_Store
+
+# latex temp files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+

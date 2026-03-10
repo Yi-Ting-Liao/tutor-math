@@ -1,0 +1,73 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{xeCJK}
+
+\setlength{\mathindent}{1.5em}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+
+\newcommand{\examdate}{2026/03/11}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{77.}\ }
+\newcommand{\problem}[2]{%
+  \par\noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#1.}}#2\par
+  \vspace{1.4em}%
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\problem{49}{Determine whether the series is convergent or divergent. If it is convergent, find its sum:
+\[
+\sum_{n=1}^{\infty}\left(\frac{1}{e^n}+\frac{1}{n(n+1)}\right)
+\]}
+
+\problem{50}{Determine whether the series is convergent or divergent. If it is convergent, find its sum:
+\[
+\sum_{n=1}^{\infty}\frac{e^n}{n^2}
+\]}
+
+\problem{77}{Find the value of \(c\) if
+\[
+\sum_{n=2}^{\infty}(1+c)^{-n}=2
+\]}
+
+\problem{8}{Use the Integral Test to determine whether the series is convergent or divergent:
+\[
+\sum_{n=1}^{\infty} n^2 e^{-n^3}
+\]}
+
+\problem{10}{Use the Integral Test to determine whether the series is convergent or divergent:
+\[
+\sum_{n=1}^{\infty}\frac{\tan^{-1} n}{1+n^2}
+\]}
+
+\end{document}

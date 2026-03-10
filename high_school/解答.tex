@@ -1,0 +1,220 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[top=1cm, bottom=1.8cm, left=1cm, right=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\setlength{\mathindent}{2em}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{needspace}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\usepackage{xeCJK}
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\newcommand{\examdate}{2026/03/06}
+\newenvironment{solutionbox}{\begin{framed}}{\end{framed}}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries 數學試題解答}
+\end{center}
+
+\begin{flushright}
+\examdate
+\end{flushright}
+
+\vspace{1em}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=2em, itemsep=1.2em]
+
+\Needspace{14\baselineskip}
+\item 解方程式：$2x^2 - 5x - 3 = 0$
+
+\begin{solutionbox}
+用公式
+\[
+x=\frac{-b\pm\sqrt{b^2-4ac}}{2a},
+\]
+其中 $a=2$，$b=-5$，$c=-3$。
+\[
+\Delta=b^2-4ac=(-5)^2-4(2)(-3)=25+24=49
+\]
+\[
+x=\frac{-(-5)\pm\sqrt{49}}{2\cdot 2}
+=\frac{5\pm 7}{4}
+\]
+\[
+x=\frac{12}{4}=3
+\quad \text{或} \quad
+x=\frac{-2}{4}=-\frac{1}{2}
+\]
+\textbf{答案：$x=3$ 或 $x=-\dfrac{1}{2}$。}
+\end{solutionbox}
+
+\Needspace{12\baselineskip}
+\item 解方程式：$x^2 - 6x + 5 = 0$
+
+\begin{solutionbox}
+因式分解：
+\[
+x^2-6x+5=(x-1)(x-5)=0
+\]
+所以
+\[
+x-1=0 \Rightarrow x=1,
+\qquad
+x-5=0 \Rightarrow x=5
+\]
+\textbf{答案：$x=1$ 或 $x=5$。}
+\end{solutionbox}
+
+\Needspace{10\baselineskip}
+\item 將下式配方成「完全平方 $+$ 常數」：$x^2 - 8x + 3$
+
+\begin{solutionbox}
+\[
+x^2-8x+3=(x^2-8x+16)-16+3
+\]
+\[
+=(x-4)^2-13
+\]
+\textbf{答案：$(x-4)^2-13$。}
+\end{solutionbox}
+
+\Needspace{14\baselineskip}
+\item 將下式配方成「完全平方 $+$ 常數」：$3x^2 + 12x - 7$
+
+\begin{solutionbox}
+先提出 $3$：
+\[
+3x^2+12x-7=3(x^2+4x)-7
+\]
+括號內配方：
+\[
+x^2+4x=(x^2+4x+4)-4=(x+2)^2-4
+\]
+代回得
+\[
+3[(x+2)^2-4]-7=3(x+2)^2-12-7=3(x+2)^2-19
+\]
+\textbf{答案：$3(x+2)^2-19$。}
+\end{solutionbox}
+
+\Needspace{10\baselineskip}
+\item 已知點 $P(2,-1)$ 經平移向量 $(-3,5)$ 後得到點 $P'$。求 $P'$ 的座標。
+
+\begin{solutionbox}
+平移就是座標分別相加：
+\[
+P'=(2+(-3),-1+5)=(-1,4)
+\]
+\textbf{答案：$P'(-1,4)$。}
+\end{solutionbox}
+
+\Needspace{18\baselineskip}
+\item 將曲線 $(x-4)^2 + (y+1)^2 = 9$ 視為某個以原點為圓心的圓經平移得到。寫出：
+
+\begin{enumerate}[label=(\arabic*)]
+\item 原本圓的方程式
+\item 平移向量 $(h,k)$
+\end{enumerate}
+
+\begin{solutionbox}
+由標準式
+\[
+(x-h)^2+(y-k)^2=r^2
+\]
+可知此題圓心為 $(4,-1)$，半徑平方為 $9$。
+
+\begin{enumerate}[label=(\arabic*)]
+\item 原本以原點為圓心、半徑相同的圓方程式是
+\[
+x^2+y^2=9
+\]
+\item 從 $(0,0)$ 平移到 $(4,-1)$，所以平移向量是
+\[
+(h,k)=(4,-1)
+\]
+\end{enumerate}
+
+\textbf{答案：}
+\[
+x^2+y^2=9, \qquad (h,k)=(4,-1)
+\]
+\end{solutionbox}
+
+\Needspace{16\baselineskip}
+\item 解聯立方程式：
+\[
+\begin{cases}
+2x + 3y = 7 \\
+x - y = 1
+\end{cases}
+\]
+
+\begin{solutionbox}
+由第二式得
+\[
+x=y+1
+\]
+代入第一式：
+\[
+2(y+1)+3y=7
+\Rightarrow 2y+2+3y=7
+\Rightarrow 5y=5
+\Rightarrow y=1
+\]
+\[
+x=y+1=2
+\]
+\textbf{答案：$(x,y)=(2,1)$。}
+\end{solutionbox}
+
+\Needspace{17\baselineskip}
+\item 解聯立方程式：
+\[
+\begin{cases}
+3x - 2y = 4 \\
+5x + y = 13
+\end{cases}
+\]
+
+\begin{solutionbox}
+由第二式得
+\[
+y=13-5x
+\]
+代入第一式：
+\[
+3x-2(13-5x)=4
+\Rightarrow 3x-26+10x=4
+\Rightarrow 13x=30
+\Rightarrow x=\frac{30}{13}
+\]
+再求 $y$：
+\[
+y=13-5\cdot\frac{30}{13}
+=\frac{169}{13}-\frac{150}{13}
+=\frac{19}{13}
+\]
+\textbf{答案：}
+\[
+(x,y)=\left(\frac{30}{13},\frac{19}{13}\right)
+\]
+\end{solutionbox}
+
+\end{enumerate}
+
+\end{document}

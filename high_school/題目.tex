@@ -1,0 +1,89 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[top=1cm, bottom=1.8cm, left=1cm, right=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\setlength{\mathindent}{2em}
+\usepackage{fontspec}
+\usepackage{enumitem}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\usepackage{xeCJK}
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+
+% Vertical space for student work
+\newcommand{\workspace}{\vfill}
+\newcommand{\examdate}{2026/03/06}
+
+\begin{document}
+
+\begin{center}
+{\Large\bfseries 數學試題}
+\end{center}
+
+\begin{flushright}
+\examdate
+\end{flushright}
+
+\vspace{1em}
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=2em, itemsep=0pt]
+
+\item 解方程式：$2x^2 - 5x - 3 = 0$
+\workspace
+
+\item 解方程式：$x^2 - 6x + 5 = 0$
+\workspace
+
+\item 將下式配方成「完全平方 $+$ 常數」：$x^2 - 8x + 3$
+\workspace
+
+\newpage
+
+\item 將下式配方成「完全平方 $+$ 常數」：$3x^2 + 12x - 7$
+\workspace
+
+\item 已知點 $P(2,-1)$ 經平移向量 $(-3,5)$ 後得到點 $P'$。求 $P'$ 的座標。
+\workspace
+
+\item 將曲線 $(x-4)^2 + (y+1)^2 = 9$ 視為某個以原點為圓心的圓經平移得到。寫出：
+
+\begin{enumerate}[label=(\arabic*)]
+\item 原本圓的方程式
+\item 平移向量 $(h,k)$
+\end{enumerate}
+\workspace
+
+\newpage
+
+\item 解聯立方程式：
+\[
+\begin{cases}
+2x + 3y = 7 \\
+x - y = 1
+\end{cases}
+\]
+\workspace
+
+\item 解聯立方程式：
+\[
+\begin{cases}
+3x - 2y = 4 \\
+5x + y = 13
+\end{cases}
+\]
+\workspace
+
+\end{enumerate}
+
+\end{document}

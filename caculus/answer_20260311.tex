@@ -1,0 +1,308 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\setlength{\mathindent}{1.5em}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{needspace}
+\usepackage{xeCJK}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+\newcommand{\examdate}{2026/03/11}
+\newenvironment{solutionbox}{\begin{framed}}{\end{framed}}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems Solutions\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\begin{enumerate}[label=\textbf{\arabic*.}, leftmargin=2em, itemsep=1.2em]
+\setcounter{enumi}{49}
+
+\Needspace{20\baselineskip}
+\item Determine whether the series is convergent or divergent. If it is convergent, find its sum:
+\[
+\sum_{n=1}^{\infty}\frac{e^n}{n^2}
+\]
+
+\begin{solutionbox}
+\textbf{Method 1: nth-term test with L'Hôpital's Rule}
+
+Let
+\[
+a_n=\frac{e^n}{n^2}.
+\]
+A necessary condition for the convergence of \(\sum a_n\) is
+\[
+\lim_{n\to\infty} a_n = 0.
+\]
+So we examine the limit of \(a_n\).
+
+Consider the reciprocal:
+\[
+\lim_{n\to\infty}\frac{n^2}{e^n}
+=
+\lim_{x\to\infty}\frac{x^2}{e^x}.
+\]
+This is an \(\infty/\infty\) form, so apply L'Hôpital's Rule twice:
+\[
+\lim_{x\to\infty}\frac{x^2}{e^x}
+=
+\lim_{x\to\infty}\frac{2x}{e^x}
+=
+\lim_{x\to\infty}\frac{2}{e^x}
+=0.
+\]
+Therefore,
+\[
+\lim_{n\to\infty}\frac{n^2}{e^n}=0
+\quad\Longrightarrow\quad
+\lim_{n\to\infty}\frac{e^n}{n^2}=\infty.
+\]
+Hence \(a_n \not\to 0\). Since the terms of the series do not approach \(0\), the series diverges.
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Exponential growth dominates polynomial growth}
+
+Let
+\[
+a_n=\frac{e^n}{n^2}.
+\]
+The numerator \(e^n\) has exponential growth, while the denominator \(n^2\) has polynomial growth. Exponential growth is much faster than polynomial growth, so
+\[
+\frac{e^n}{n^2}\to\infty
+\qquad (n\to\infty).
+\]
+In particular,
+\[
+\lim_{n\to\infty}\frac{e^n}{n^2}\neq 0.
+\]
+Therefore the necessary condition for convergence fails, so the series diverges.
+
+\end{solutionbox}
+
+\setcounter{enumi}{76}
+\Needspace{24\baselineskip}
+\item Find the value of \(c\) if
+\[
+\sum_{n=2}^{\infty}(1+c)^{-n}=2
+\]
+
+\begin{solutionbox}
+\textbf{Method 1: Treat it as a geometric series directly}
+
+Let
+\[
+x=1+c.
+\]
+Then
+\[
+\sum_{n=2}^{\infty}(1+c)^{-n}
+=
+\sum_{n=2}^{\infty}x^{-n}
+\]
+is a geometric series with first term \(a=x^{-2}\) and common ratio \(r=x^{-1}\). Hence
+\[
+\frac{x^{-2}}{1-x^{-1}}=2.
+\]
+Simplify:
+\[
+\frac{1/x^2}{1-1/x}
+=
+\frac{1}{x(x-1)}
+=2.
+\]
+So
+\[
+1=2x(x-1)
+\quad\Longrightarrow\quad
+2x^2-2x-1=0.
+\]
+Using the quadratic formula,
+\[
+x=\frac{2\pm\sqrt{(-2)^2-4(2)(-1)}}{4}
+=
+\frac{1\pm\sqrt{3}}{2}.
+\]
+For the infinite geometric series to converge, we need
+\[
+|r|<1
+\quad\Longleftrightarrow\quad
+\left|\frac{1}{x}\right|<1
+\quad\Longleftrightarrow\quad
+|x|>1.
+\]
+Thus the valid value is
+\[
+x=\frac{1+\sqrt{3}}{2}.
+\]
+Therefore,
+\[
+c=x-1=\frac{1+\sqrt{3}}{2}-1=\frac{\sqrt{3}-1}{2}.
+\]
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Substitute \(r=(1+c)^{-1}\)}
+
+Let
+\[
+r=(1+c)^{-1}.
+\]
+Then
+\[
+\sum_{n=2}^{\infty}(1+c)^{-n}
+=
+\sum_{n=2}^{\infty}r^n
+=
+\frac{r^2}{1-r}=2,
+\]
+with convergence condition \(|r|<1\).
+
+So
+\[
+r^2=2(1-r)
+\quad\Longrightarrow\quad
+r^2+2r-2=0.
+\]
+Hence
+\[
+r=\frac{-2\pm\sqrt{4+8}}{2}
+=
+-1\pm\sqrt{3}.
+\]
+Since \(|r|<1\), the valid value is
+\[
+r=\sqrt{3}-1.
+\]
+Now
+\[
+1+c=\frac{1}{r}=\frac{1}{\sqrt{3}-1}
+=
+\frac{\sqrt{3}+1}{2},
+\]
+so
+\[
+c=\frac{\sqrt{3}+1}{2}-1=\frac{\sqrt{3}-1}{2}.
+\]
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{c=\frac{\sqrt{3}-1}{2}}
+\]
+\end{solutionbox}
+
+\setcounter{enumi}{7}
+\Needspace{28\baselineskip}
+\item Use the Integral Test to determine whether the series is convergent or divergent:
+\[
+\sum_{n=1}^{\infty} n^2 e^{-n^3}
+\]
+
+\begin{solutionbox}
+\textbf{Method 1: Integral Test}
+
+Let
+\[
+f(x)=x^2e^{-x^3}, \qquad x\ge 1.
+\]
+For \(x\ge 1\), \(f(x)>0\) and \(f(x)\) is continuous. To use the Integral Test, we also check that \(f(x)\) is decreasing.
+
+Differentiate:
+\[
+f'(x)=\frac{d}{dx}\left(x^2e^{-x^3}\right)
+=2xe^{-x^3}+x^2e^{-x^3}(-3x^2).
+\]
+So
+\[
+f'(x)=e^{-x^3}(2x-3x^4)=xe^{-x^3}(2-3x^3).
+\]
+For \(x\ge 1\), we have \(2-3x^3<0\), while \(x>0\) and \(e^{-x^3}>0\). Hence
+\[
+f'(x)<0 \qquad \text{for } x\ge 1,
+\]
+so \(f(x)\) is decreasing.
+
+Now evaluate the improper integral:
+\[
+\int_1^\infty x^2e^{-x^3}\,dx.
+\]
+Use the substitution \(u=x^3\), so \(du=3x^2\,dx\) and \(x^2\,dx=\frac13\,du\). Then
+\[
+\int_1^\infty x^2e^{-x^3}\,dx
+=
+\frac13\int_1^\infty e^{-u}\,du
+=
+\frac13\left[-e^{-u}\right]_1^\infty
+=
+\frac{1}{3e}.
+\]
+Since this improper integral is finite, the Integral Test shows that
+\[
+\sum_{n=1}^{\infty} n^2 e^{-n^3}
+\]
+converges.
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Comparison with a convergent geometric series}
+
+For sufficiently large \(n\), we have
+\[
+n^2\le e^n.
+\]
+Therefore,
+\[
+n^2e^{-n^3}\le e^n e^{-n^3}=e^{\,n-n^3}.
+\]
+Since \(n^3-n\ge n\) for all sufficiently large \(n\),
+\[
+e^{\,n-n^3}\le e^{-n}.
+\]
+Hence, for all sufficiently large \(n\),
+\[
+0\le n^2e^{-n^3}\le e^{-n}.
+\]
+But
+\[
+\sum_{n=1}^{\infty} e^{-n}
+\]
+is a geometric series with ratio \(1/e<1\), so it converges. By the Comparison Test,
+\[
+\sum_{n=1}^{\infty} n^2 e^{-n^3}
+\]
+also converges.
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{\sum_{n=1}^{\infty} n^2 e^{-n^3}\text{ converges}.}
+\]
+\end{solutionbox}
+
+\end{enumerate}
+
+\end{document}
