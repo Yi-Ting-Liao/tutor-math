@@ -25,7 +25,7 @@
 
 \newcommand{\examdate}{2026/03/11}
 \newlength{\problemnumberwidth}
-\settowidth{\problemnumberwidth}{\textbf{77.}\ }
+\settowidth{\problemnumberwidth}{\textbf{7.1.56.}\ }
 \newcommand{\problem}[2]{%
   \par\noindent
   \hangindent=\problemnumberwidth
@@ -69,5 +69,95 @@
 \[
 \sum_{n=1}^{\infty}\frac{\tan^{-1} n}{1+n^2}
 \]}
+
+\problem{32}{Find the values of \(p\) for which the series is convergent:
+\[
+\sum_{n=3}^{\infty} \frac{1}{n \ln n \,[\ln(\ln n)]^p}
+\]}
+
+\problem{34}{Find the values of \(p\) for which the series is convergent:
+\[
+\sum_{n=1}^{\infty} \frac{\ln n}{n^p}
+\]}
+
+\problem{46}{For what values of \(p\) does the series
+\[
+\sum_{n=2}^{\infty} \frac{1}{n^p \ln n}
+\]}
+
+\problem{41}{Approximate the sum of the series correct to four decimal places:
+\[
+\sum_{n=1}^{\infty} \frac{(-1)^n}{(2n)!}
+\]}
+
+\problem{43}{Approximate the sum of the series correct to four decimal places:
+\[
+\sum_{n=1}^{\infty} (-1)^n n e^{-2n}
+\]}
+
+\problem{40}{The Bessel function of order 1 is defined by
+\[
+J_1(x)=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n+1}}{n!(n+1)!2^{2n+1}}
+\]
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item Find the domain of \(J_1\).
+\item Show that \(J_1\) satisfies the differential equation
+\[
+x^2 J_1''(x)+x J_1'(x)+(x^2-1)J_1(x)=0
+\]
+\item Show that \(J_0'(x)=-J_1(x)\).
+\end{enumerate}}
+
+\problem{49}{Use the power series for \(\tan^{-1}x\) to prove the following expression for \(\pi\) as the sum of an infinite series:
+\[
+\pi = 2\sqrt{3}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}
+\]}
+
+\problem{38}{The period of a pendulum with length \(L\) that makes a maximum angle \(\theta_0\) with the vertical is
+\[
+T = 4\sqrt{\frac{L}{g}} \int_0^{\pi/2} \frac{dx}{\sqrt{1-k^2\sin^2 x}}
+\]
+where \(k=\sin\left(\frac{1}{2}\theta_0\right)\) and \(g\) is the acceleration due to gravity.
+(In Exercise 7.7.42 we approximated this integral using Simpson's Rule.)
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item Expand the integrand as a binomial series and use the result of Exercise 7.1.56 to show that
+\[
+T = 2\pi\sqrt{\frac{L}{g}}
+\left[
+1+\frac{1^2}{2^2}k^2+\frac{1^2 3^2}{2^2 4^2}k^4+\frac{1^2 3^2 5^2}{2^2 4^2 6^2}k^6+\cdots
+\right]
+\]
+If \(\theta_0\) is not too large, the approximation
+\[
+T \approx 2\pi\sqrt{\frac{L}{g}}
+\]
+obtained by using only the first term in the series, is often used. A better approximation is obtained by using two terms:
+\[
+T \approx 2\pi\sqrt{\frac{L}{g}}\left(1+\frac{1}{4}k^2\right)
+\]
+\item Notice that all the terms in the series after the first one have coefficients that are at most \(\frac{1}{4}\). Use this fact to compare this series with a geometric series and show that
+\[
+2\pi\sqrt{\frac{L}{g}}\left(1+\frac{1}{4}k^2\right)
+\leq
+T
+\leq
+2\pi\sqrt{\frac{L}{g}}\frac{4-3k^2}{4-4k^2}
+\]
+\item Use the inequalities in part (b) to estimate the period of a pendulum with \(L=1\) meter and \(\theta_0=10^\circ\). How does it compare with the estimate
+\[
+T \approx 2\pi\sqrt{\frac{L}{g}} \, ?
+\]
+What if \(\theta_0=42^\circ\)?
+\end{enumerate}}
+
+\problem{7.1.56}{Prove that, for even powers of sine,
+\[
+\int_0^{\pi/2}\sin^{2n}x\,dx
+=
+\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots 2n}\cdot\frac{\pi}{2}
+\]}
+
+\problem{3}{Find an equation of sphere with center \((-3,2,5)\) and radius \(4\). What is the intersection of this sphere with the \(yz\)-plane?
+\((6\text{ point})\)}
 
 \end{document}

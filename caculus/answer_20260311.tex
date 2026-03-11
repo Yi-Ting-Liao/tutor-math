@@ -528,6 +528,1188 @@ also converges.
 \]
 \end{solutionbox}
 
+\setcounter{enumi}{31}
+\Needspace{34\baselineskip}
+\item Find the values of \(p\) for which the series is convergent:
+\[
+\sum_{n=3}^{\infty} \frac{1}{n \ln n \,[\ln(\ln n)]^p}
+\]
+
+\begin{solutionbox}
+\textbf{Method 1: Integral Test}
+
+Let
+\[
+f(x)=\frac{1}{x\ln x\,[\ln(\ln x)]^p}, \qquad x\ge 3.
+\]
+For \(x\ge 3\), we have \(\ln x>0\) and \(\ln(\ln x)>0\), so \(f(x)>0\), and \(f(x)\) is continuous. It is also eventually decreasing, so the Integral Test applies.
+
+Consider
+\[
+\int_3^\infty \frac{dx}{x\ln x\,[\ln(\ln x)]^p}.
+\]
+Use the substitution
+\[
+u=\ln(\ln x), \qquad du=\frac{dx}{x\ln x}.
+\]
+Then the integral becomes
+\[
+\int u^{-p}\,du.
+\]
+
+If \(p\neq 1\), then
+\[
+\int u^{-p}\,du=\frac{u^{1-p}}{1-p},
+\]
+which converges at \(\infty\) exactly when \(1-p<0\), that is, when \(p>1\).
+
+If \(p=1\), then
+\[
+\int u^{-1}\,du=\ln u,
+\]
+which diverges.
+
+Therefore the improper integral converges exactly when \(p>1\). By the Integral Test, the series converges exactly when
+\[
+p>1.
+\]
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Cauchy Condensation Test}
+
+Let
+\[
+a_n=\frac{1}{n\ln n\,[\ln(\ln n)]^p}.
+\]
+Since \(a_n>0\) and is eventually decreasing, Cauchy Condensation gives
+\[
+\sum a_n \text{ converges }
+\Longleftrightarrow
+\sum 2^k a_{2^k} \text{ converges.}
+\]
+Now
+\[
+2^k a_{2^k}
+=
+2^k\cdot \frac{1}{2^k\ln(2^k)\,[\ln(\ln(2^k))]^p}
+=
+\frac{1}{k\ln 2\,[\ln(k\ln 2)]^p}.
+\]
+This has the same convergence behavior as
+\[
+\sum_{k=2}^{\infty}\frac{1}{k(\ln k)^p},
+\]
+because
+\[
+\lim_{k\to\infty}\left(\frac{\ln k}{\ln(k\ln 2)}\right)^p=1.
+\]
+
+Apply Cauchy Condensation again to
+\[
+b_k=\frac{1}{k(\ln k)^p}.
+\]
+Then
+\[
+2^m b_{2^m}
+=
+2^m\cdot \frac{1}{2^m(\ln(2^m))^p}
+=
+\frac{1}{(m\ln 2)^p}.
+\]
+So \(\sum b_k\) has the same convergence behavior as
+\[
+\sum_{m=1}^{\infty}\frac{1}{m^p},
+\]
+which is a \(p\)-series and converges exactly when \(p>1\).
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{\text{The series converges exactly for } p>1.}
+\]
+\end{solutionbox}
+
+\setcounter{enumi}{33}
+\Needspace{34\baselineskip}
+\item Find the values of \(p\) for which the series is convergent:
+\[
+\sum_{n=1}^{\infty}\frac{\ln n}{n^p}
+\]
+
+\begin{solutionbox}
+\textbf{Method 1: Integral Test}
+
+Let
+\[
+f(x)=\frac{\ln x}{x^p}, \qquad x\ge 1.
+\]
+If \(p\le 0\), then
+\[
+a_n=\frac{\ln n}{n^p}
+\]
+does not tend to \(0\), so the series diverges immediately.
+
+Now assume \(p>0\). Then \(f(x)\) is positive and continuous for \(x\ge 1\). Also,
+\[
+f'(x)=x^{-p-1}(1-p\ln x),
+\]
+so \(f'(x)<0\) for sufficiently large \(x\). Hence \(f(x)\) is eventually decreasing, and the Integral Test applies.
+
+Consider
+\[
+\int_1^\infty \frac{\ln x}{x^p}\,dx.
+\]
+
+If \(p\neq 1\), use integration by parts with
+\[
+u=\ln x, \qquad dv=x^{-p}\,dx.
+\]
+Then
+\[
+\int \frac{\ln x}{x^p}\,dx
+=
+\frac{x^{1-p}\ln x}{1-p}-\frac{x^{1-p}}{(1-p)^2}+C.
+\]
+If \(p>1\), then \(x^{1-p}\to 0\) and \(x^{1-p}\ln x\to 0\), so the improper integral converges.
+If \(0<p<1\), then \(x^{1-p}\to\infty\), so the improper integral diverges.
+
+If \(p=1\), then
+\[
+\int_1^\infty \frac{\ln x}{x}\,dx
+=
+\left[\frac{(\ln x)^2}{2}\right]_1^\infty
+=\infty,
+\]
+so it diverges.
+
+Therefore, by the Integral Test, the series converges exactly when
+\[
+p>1.
+\]
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Comparison with a \(p\)-series}
+
+First consider \(p\le 1\). For \(n\ge 3\), we have \(\ln n\ge 1\), so
+\[
+\frac{\ln n}{n^p}\ge \frac{1}{n^p}.
+\]
+But
+\[
+\sum_{n=3}^{\infty}\frac{1}{n^p}
+\]
+diverges for \(p\le 1\). Hence
+\[
+\sum_{n=1}^{\infty}\frac{\ln n}{n^p}
+\]
+also diverges for \(p\le 1\).
+
+Now assume \(p>1\). Choose
+\[
+\varepsilon=\frac{p-1}{2}>0.
+\]
+Since \(\ln n<n^\varepsilon\) for all sufficiently large \(n\), we get
+\[
+\frac{\ln n}{n^p}
+\le
+\frac{n^\varepsilon}{n^p}
+=
+\frac{1}{n^{p-\varepsilon}}
+=
+\frac{1}{n^{(p+1)/2}}
+\]
+for all sufficiently large \(n\).
+
+Because
+\[
+\frac{p+1}{2}>1,
+\]
+the series
+\[
+\sum_{n=1}^{\infty}\frac{1}{n^{(p+1)/2}}
+\]
+converges. By the Comparison Test,
+\[
+\sum_{n=1}^{\infty}\frac{\ln n}{n^p}
+\]
+also converges for \(p>1\).
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{\text{The series converges exactly when } p>1.}
+\]
+\end{solutionbox}
+
+\setcounter{enumi}{45}
+\Needspace{34\baselineskip}
+\item For what values of \(p\) does the series
+\[
+\sum_{n=2}^{\infty}\frac{1}{n^p\ln n}
+\]
+converge?
+
+\begin{solutionbox}
+\textbf{Method 1: Integral Test}
+
+Let
+\[
+f(x)=\frac{1}{x^p\ln x}, \qquad x\ge 2.
+\]
+If \(p<0\), then
+\[
+\frac{1}{n^p\ln n}=\frac{n^{-p}}{\ln n},
+\]
+which does not tend to \(0\), so the series diverges immediately.
+
+Now assume \(p\ge 0\). Then \(f(x)\) is positive and decreasing on \([2,\infty)\), so the Integral Test applies. Consider
+\[
+\int_2^\infty \frac{dx}{x^p\ln x}.
+\]
+Use the substitution
+\[
+t=\ln x, \qquad x=e^t,\qquad dx=e^t\,dt,\qquad x^p=e^{pt}.
+\]
+Then
+\[
+\int_2^\infty \frac{dx}{x^p\ln x}
+=
+\int_{\ln 2}^{\infty}\frac{e^{(1-p)t}}{t}\,dt.
+\]
+
+If \(p>1\), then \(1-p<0\), so \(e^{(1-p)t}\) decays exponentially. Hence the integral converges.
+
+If \(p=1\), then the integral becomes
+\[
+\int_{\ln 2}^{\infty}\frac{dt}{t},
+\]
+which diverges.
+
+If \(0\le p<1\), then \(1-p>0\), so \(e^{(1-p)t}\) grows exponentially, and for sufficiently large \(t\),
+\[
+\frac{e^{(1-p)t}}{t}\ge \frac{1}{t}.
+\]
+Since \(\int_{\ln 2}^{\infty}\frac{dt}{t}\) diverges, the integral also diverges.
+
+Therefore, by the Integral Test, the series converges exactly when
+\[
+p>1.
+\]
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Cauchy Condensation Test}
+
+For \(p\ge 0\), let
+\[
+a_n=\frac{1}{n^p\ln n}.
+\]
+Then \(a_n\) is positive and decreasing, so Cauchy Condensation applies:
+\[
+\sum_{n=2}^{\infty} a_n \text{ converges }
+\Longleftrightarrow
+\sum_{k=1}^{\infty}2^k a_{2^k}\text{ converges.}
+\]
+Now
+\[
+2^k a_{2^k}
+=
+2^k\cdot \frac{1}{(2^k)^p\ln(2^k)}
+=
+\frac{2^{k(1-p)}}{k\ln 2}.
+\]
+So we only need to study
+\[
+\sum_{k=1}^{\infty}\frac{2^{k(1-p)}}{k}.
+\]
+
+If \(p>1\), then \(1-p<0\), so \(2^{k(1-p)}\) decays geometrically and
+\[
+\frac{2^{k(1-p)}}{k}\le 2^{k(1-p)}.
+\]
+Hence the condensed series converges.
+
+If \(p=1\), then the condensed series becomes a constant multiple of
+\[
+\sum_{k=1}^{\infty}\frac{1}{k},
+\]
+so it diverges.
+
+If \(0\le p<1\), then \(1-p>0\), so
+\[
+\frac{2^{k(1-p)}}{k}
+\]
+does not tend to \(0\), and the condensed series diverges.
+
+If \(p<0\), the original terms do not tend to \(0\), so the original series diverges immediately.
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{\text{The series converges exactly when } p>1.}
+\]
+\end{solutionbox}
+
+\setcounter{enumi}{40}
+\Needspace{32\baselineskip}
+\item Approximate the sum of the series correct to four decimal places:
+\[
+\sum_{n=1}^{\infty}\frac{(-1)^n}{(2n)!}
+\]
+
+\begin{solutionbox}
+\textbf{Method 1: Recognize the cosine series}
+
+Recall the Maclaurin series
+\[
+\cos x=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n}}{(2n)!}.
+\]
+Setting \(x=1\), we get
+\[
+\cos 1=\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n)!}.
+\]
+Our series starts at \(n=1\), so we subtract the \(n=0\) term:
+\[
+\sum_{n=1}^{\infty}\frac{(-1)^n}{(2n)!}
+=
+\cos 1-1.
+\]
+Since
+\[
+\cos 1\approx 0.5403023059,
+\]
+we obtain
+\[
+\cos 1-1\approx -0.4596976941.
+\]
+Therefore, correct to four decimal places,
+\[
+\boxed{-0.4597}.
+\]
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Alternating Series Estimation Theorem}
+
+Let
+\[
+a_n=\frac{1}{(2n)!}.
+\]
+Then the series is
+\[
+\sum_{n=1}^{\infty}(-1)^n a_n.
+\]
+The terms \(a_n\) are positive, decreasing, and tend to \(0\), so the Alternating Series Estimation Theorem applies.
+
+Compute the first few partial sums:
+\[
+S_1=-\frac{1}{2!}=-0.5,
+\]
+\[
+S_2=-\frac{1}{2!}+\frac{1}{4!}
+=-0.5+\frac{1}{24}
+=-0.4583333333,
+\]
+\[
+S_3=-\frac{1}{2!}+\frac{1}{4!}-\frac{1}{6!}
+=-0.4597222222.
+\]
+The next term has size
+\[
+\frac{1}{8!}=\frac{1}{40320}\approx 0.0000248016.
+\]
+Since
+\[
+0.0000248016<0.00005,
+\]
+the error in using \(S_3\) is less than \(0.00005\), which is enough for four-decimal accuracy. Thus
+\[
+\sum_{n=1}^{\infty}\frac{(-1)^n}{(2n)!}\approx -0.4597222222,
+\]
+so to four decimal places,
+\[
+\boxed{-0.4597}.
+\]
+\end{solutionbox}
+
+\setcounter{enumi}{42}
+\Needspace{32\baselineskip}
+\item Approximate the sum of the series correct to four decimal places:
+\[
+\sum_{n=1}^{\infty} (-1)^n n e^{-2n}
+\]
+
+\begin{solutionbox}
+\textbf{Method 1: Use the formula for \(\sum nr^n\)}
+
+Let
+\[
+r=-e^{-2}.
+\]
+Then
+\[
+\sum_{n=1}^{\infty} (-1)^n n e^{-2n}
+=
+\sum_{n=1}^{\infty} nr^n.
+\]
+Since
+\[
+|r|=e^{-2}<1,
+\]
+we may use
+\[
+\sum_{n=1}^{\infty} nr^n=\frac{r}{(1-r)^2}.
+\]
+Therefore,
+\[
+\sum_{n=1}^{\infty} (-1)^n n e^{-2n}
+=
+\frac{-e^{-2}}{(1+e^{-2})^2}.
+\]
+Multiply numerator and denominator by \(e^4\):
+\[
+\frac{-e^{-2}}{(1+e^{-2})^2}
+=
+-\frac{e^2}{(e^2+1)^2}.
+\]
+Thus the exact sum is
+\[
+-\frac{e^2}{(e^2+1)^2}.
+\]
+Numerically,
+\[
+-\frac{e^2}{(e^2+1)^2}\approx -0.1049935854,
+\]
+so correct to four decimal places,
+\[
+\boxed{-0.1050}.
+\]
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Derive the formula from a geometric series}
+
+Let
+\[
+S=\sum_{n=1}^{\infty} nr^n,
+\qquad \text{where } r=-e^{-2}.
+\]
+Since \(|r|<1\), the geometric series converges:
+\[
+r+r^2+r^3+\cdots=\frac{r}{1-r}.
+\]
+Now write
+\[
+S=r+2r^2+3r^3+4r^4+\cdots
+\]
+and multiply by \(r\):
+\[
+rS=r^2+2r^3+3r^4+4r^5+\cdots.
+\]
+Subtract:
+\[
+S-rS=r+r^2+r^3+r^4+\cdots=\frac{r}{1-r}.
+\]
+Hence
+\[
+S(1-r)=\frac{r}{1-r}
+\quad\Longrightarrow\quad
+S=\frac{r}{(1-r)^2}.
+\]
+Substitute \(r=-e^{-2}\):
+\[
+S=\frac{-e^{-2}}{(1+e^{-2})^2}
+=
+-\frac{e^2}{(e^2+1)^2}
+\approx -0.1049935854.
+\]
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{-0.1050}
+\]
+\end{solutionbox}
+
+\setcounter{enumi}{39}
+\Needspace{48\baselineskip}
+\item The Bessel function of order 1 is defined by
+\[
+J_1(x)=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n+1}}{n!(n+1)!2^{2n+1}}
+\]
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item Find the domain of \(J_1\).
+\item Show that \(J_1\) satisfies the differential equation
+\[
+x^2 J_1''(x)+x J_1'(x)+(x^2-1)J_1(x)=0
+\]
+\item Show that \(J_0'(x)=-J_1(x)\).
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{Method 1: Direct power-series calculation}
+
+\textbf{(a)} Let
+\[
+u_n(x)=\frac{(-1)^n x^{2n+1}}{n!(n+1)!2^{2n+1}}.
+\]
+Apply the Ratio Test:
+\[
+\left|\frac{u_{n+1}(x)}{u_n(x)}\right|
+=
+\frac{|x|^2}{4(n+1)(n+2)}\to 0
+\qquad (n\to\infty).
+\]
+So the defining series converges for every real \(x\). Therefore
+\[
+\boxed{\text{Domain of }J_1=(-\infty,\infty).}
+\]
+
+\textbf{(b)} Write
+\[
+J_1(x)=\sum_{n=0}^{\infty}a_nx^{2n+1},
+\qquad
+a_n=\frac{(-1)^n}{n!(n+1)!2^{2n+1}}.
+\]
+Since the radius of convergence is infinite, term-by-term differentiation is valid:
+\[
+J_1'(x)=\sum_{n=0}^{\infty}(2n+1)a_nx^{2n},
+\qquad
+J_1''(x)=\sum_{n=1}^{\infty}(2n+1)(2n)a_nx^{2n-1}.
+\]
+Hence
+\[
+x^2J_1''+xJ_1'-J_1
+=
+\sum_{n=0}^{\infty}4n(n+1)a_nx^{2n+1},
+\]
+and
+\[
+x^2J_1
+=
+\sum_{n=0}^{\infty}a_nx^{2n+3}
+=
+\sum_{n=1}^{\infty}a_{n-1}x^{2n+1}.
+\]
+So
+\[
+x^2J_1''+xJ_1'+(x^2-1)J_1
+=
+\sum_{n=1}^{\infty}\bigl(4n(n+1)a_n+a_{n-1}\bigr)x^{2n+1}.
+\]
+Now
+\[
+4n(n+1)a_n
+=
+\frac{(-1)^n}{(n-1)!n!2^{2n-1}},
+\qquad
+a_{n-1}
+=
+\frac{(-1)^{n-1}}{(n-1)!n!2^{2n-1}},
+\]
+so \(4n(n+1)a_n+a_{n-1}=0\) for all \(n\ge 1\). Therefore
+\[
+\boxed{x^2J_1''(x)+xJ_1'(x)+(x^2-1)J_1(x)=0.}
+\]
+
+\textbf{(c)} Use
+\[
+J_0(x)=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n}}{(n!)^2 2^{2n}}.
+\]
+Differentiating term by term,
+\[
+J_0'(x)=\sum_{n=1}^{\infty}\frac{(-1)^n(2n)x^{2n-1}}{(n!)^2 2^{2n}}
+=
+\sum_{n=1}^{\infty}\frac{(-1)^n x^{2n-1}}{(n-1)!n!2^{2n-1}}.
+\]
+Let \(m=n-1\). Then
+\[
+J_0'(x)
+=
+\sum_{m=0}^{\infty}\frac{(-1)^{m+1}x^{2m+1}}{m!(m+1)!2^{2m+1}}
+=
+-\sum_{m=0}^{\infty}\frac{(-1)^m x^{2m+1}}{m!(m+1)!2^{2m+1}}
+=
+-J_1(x).
+\]
+Hence
+\[
+\boxed{J_0'(x)=-J_1(x).}
+\]
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Coefficient/recurrence viewpoint}
+
+\textbf{(a)} For any real \(x\),
+\[
+\left|\frac{(-1)^n x^{2n+1}}{n!(n+1)!2^{2n+1}}\right|
+=
+|x|\cdot \frac{(|x|^2/4)^n}{n!(n+1)!}
+\le
+|x|\cdot \frac{(|x|^2/4)^n}{n!}.
+\]
+The comparison series
+\[
+\sum_{n=0}^{\infty}|x|\cdot \frac{(|x|^2/4)^n}{n!}
+=
+|x|e^{|x|^2/4}
+\]
+converges, so \(J_1\) converges absolutely for every real \(x\). Thus
+\[
+\boxed{\text{Domain of }J_1=(-\infty,\infty).}
+\]
+
+\textbf{(b)} Again write
+\[
+J_1(x)=\sum_{n=0}^{\infty}a_nx^{2n+1},
+\qquad
+a_n=\frac{(-1)^n}{n!(n+1)!2^{2n+1}}.
+\]
+Then
+\[
+x^2J_1''+xJ_1'+(x^2-1)J_1
+=
+\sum_{n=1}^{\infty}\bigl(4n(n+1)a_n+a_{n-1}\bigr)x^{2n+1}.
+\]
+So it is enough to verify the recurrence
+\[
+a_n=-\frac{a_{n-1}}{4n(n+1)}.
+\]
+Indeed,
+\[
+-\frac{a_{n-1}}{4n(n+1)}
+=
+-\frac{1}{4n(n+1)}
+\cdot
+\frac{(-1)^{n-1}}{(n-1)!n!2^{2n-1}}
+=
+\frac{(-1)^n}{n!(n+1)!2^{2n+1}}
+=
+a_n.
+\]
+Hence every coefficient vanishes, so
+\[
+\boxed{x^2J_1''(x)+xJ_1'(x)+(x^2-1)J_1(x)=0.}
+\]
+
+\textbf{(c)} Write
+\[
+J_0(x)=\sum_{n=0}^{\infty}b_nx^{2n},
+\qquad
+b_n=\frac{(-1)^n}{(n!)^2 2^{2n}}.
+\]
+Then
+\[
+J_0'(x)=\sum_{n=0}^{\infty}2(n+1)b_{n+1}x^{2n+1}.
+\]
+Now
+\[
+2(n+1)b_{n+1}
+=
+2(n+1)\cdot \frac{(-1)^{n+1}}{((n+1)!)^2 2^{2n+2}}
+=
+\frac{(-1)^{n+1}}{n!(n+1)!2^{2n+1}}
+=
+-a_n.
+\]
+Therefore
+\[
+J_0'(x)=\sum_{n=0}^{\infty}(-a_n)x^{2n+1}=-J_1(x).
+\]
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{\text{Domain of }J_1=(-\infty,\infty),\quad
+x^2J_1''+xJ_1'+(x^2-1)J_1=0,\quad
+J_0'(x)=-J_1(x).}
+\]
+\end{solutionbox}
+
+\setcounter{enumi}{48}
+\Needspace{36\baselineskip}
+\item Use the power series for \(\tan^{-1}x\) to prove the following expression for \(\pi\) as the sum of an infinite series:
+\[
+\pi = 2\sqrt{3}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}
+\]
+
+\begin{solutionbox}
+\textbf{Method 1: Direct substitution into the power series for \(\tan^{-1}x\)}
+
+We use
+\[
+\tan^{-1}x=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n+1}}{2n+1},
+\qquad |x|<1.
+\]
+Choose
+\[
+x=\frac{1}{\sqrt{3}},
+\]
+since
+\[
+\tan\left(\frac{\pi}{6}\right)=\frac{1}{\sqrt{3}}
+\quad\Longrightarrow\quad
+\tan^{-1}\left(\frac{1}{\sqrt{3}}\right)=\frac{\pi}{6}.
+\]
+Because \(\left|\frac{1}{\sqrt{3}}\right|<1\), substitution is valid:
+\[
+\tan^{-1}\left(\frac{1}{\sqrt{3}}\right)
+=
+\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}\left(\frac{1}{\sqrt{3}}\right)^{2n+1}.
+\]
+Now
+\[
+\left(\frac{1}{\sqrt{3}}\right)^{2n+1}
+=
+\frac{1}{3^n\sqrt{3}},
+\]
+so
+\[
+\frac{\pi}{6}
+=
+\tan^{-1}\left(\frac{1}{\sqrt{3}}\right)
+=
+\frac{1}{\sqrt{3}}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}.
+\]
+Multiplying both sides by \(6\), we get
+\[
+\pi
+=
+\frac{6}{\sqrt{3}}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}
+=
+2\sqrt{3}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}.
+\]
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Derive the arctangent series from the geometric series}
+
+Start from
+\[
+\frac{1}{1-r}=\sum_{n=0}^{\infty}r^n,
+\qquad |r|<1.
+\]
+Let \(r=-x^2\). Then for \(|x|<1\),
+\[
+\frac{1}{1+x^2}
+=
+\sum_{n=0}^{\infty}(-1)^n x^{2n}.
+\]
+Integrate term by term from \(0\) to \(x\):
+\[
+\int_0^x \frac{1}{1+t^2}\,dt
+=
+\sum_{n=0}^{\infty}(-1)^n\int_0^x t^{2n}\,dt.
+\]
+Hence
+\[
+\tan^{-1}x
+=
+\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n+1}}{2n+1}.
+\]
+Now substitute \(x=\frac{1}{\sqrt{3}}\):
+\[
+\tan^{-1}\left(\frac{1}{\sqrt{3}}\right)
+=
+\sum_{n=0}^{\infty}\frac{(-1)^n}{2n+1}\left(\frac{1}{\sqrt{3}}\right)^{2n+1}
+=
+\frac{1}{\sqrt{3}}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}.
+\]
+Since
+\[
+\tan^{-1}\left(\frac{1}{\sqrt{3}}\right)=\frac{\pi}{6},
+\]
+we obtain
+\[
+\frac{\pi}{6}
+=
+\frac{1}{\sqrt{3}}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}.
+\]
+Multiplying by \(6\),
+\[
+\pi
+=
+2\sqrt{3}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}.
+\]
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{\pi = 2\sqrt{3}\sum_{n=0}^{\infty}\frac{(-1)^n}{(2n+1)3^n}.}
+\]
+\end{solutionbox}
+
+\setcounter{enumi}{37}
+\Needspace{50\baselineskip}
+\item The period of a pendulum with length \(L\) that makes a maximum angle \(\theta_0\) with the vertical is
+\[
+T = 4\sqrt{\frac{L}{g}} \int_0^{\pi/2} \frac{dx}{\sqrt{1-k^2\sin^2 x}},
+\qquad
+k=\sin\left(\frac{\theta_0}{2}\right).
+\]
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item Expand the integrand as a binomial series and use the result of Exercise 7.1.56 to show that
+\[
+T = 2\pi\sqrt{\frac{L}{g}}
+\left[
+1+\frac{1^2}{2^2}k^2+\frac{1^2 3^2}{2^2 4^2}k^4+\frac{1^2 3^2 5^2}{2^2 4^2 6^2}k^6+\cdots
+\right]
+\]
+\item Show that
+\[
+2\pi\sqrt{\frac{L}{g}}\left(1+\frac{1}{4}k^2\right)
+\leq
+T
+\leq
+2\pi\sqrt{\frac{L}{g}}\frac{4-3k^2}{4-4k^2}
+\]
+\item Use the inequalities in part (b) to estimate the period of a pendulum with \(L=1\) meter and \(\theta_0=10^\circ\). How does it compare with
+\[
+T \approx 2\pi\sqrt{\frac{L}{g}}\,?
+\]
+What if \(\theta_0=42^\circ\)?
+\end{enumerate}
+
+\begin{solutionbox}
+\textbf{Method 1: Direct binomial-series expansion}
+
+\textbf{(a)} Write
+\[
+\frac{1}{\sqrt{1-k^2\sin^2 x}}=(1-k^2\sin^2 x)^{-1/2}.
+\]
+Using the binomial series
+\[
+(1-u)^{-1/2}
+=
+1+\frac12u+\frac{1\cdot 3}{2\cdot 4}u^2+\frac{1\cdot 3\cdot 5}{2\cdot 4\cdot 6}u^3+\cdots,
+\]
+with \(u=k^2\sin^2 x\), we get
+\[
+\frac{1}{\sqrt{1-k^2\sin^2 x}}
+=
+1+\frac12k^2\sin^2x+\frac{1\cdot 3}{2\cdot 4}k^4\sin^4x+\frac{1\cdot 3\cdot 5}{2\cdot 4\cdot 6}k^6\sin^6x+\cdots.
+\]
+Integrating term by term from \(0\) to \(\pi/2\),
+\[
+\int_0^{\pi/2}\frac{dx}{\sqrt{1-k^2\sin^2x}}
+=
+\int_0^{\pi/2}dx
++\frac12k^2\int_0^{\pi/2}\sin^2x\,dx
++\frac{1\cdot 3}{2\cdot 4}k^4\int_0^{\pi/2}\sin^4x\,dx+\cdots.
+\]
+By Exercise 7.1.56,
+\[
+\int_0^{\pi/2}\sin^{2n}x\,dx
+=
+\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots 2n}\cdot\frac{\pi}{2}.
+\]
+Therefore
+\[
+\int_0^{\pi/2}\frac{dx}{\sqrt{1-k^2\sin^2x}}
+=
+\frac{\pi}{2}
+\left[
+1+\frac{1^2}{2^2}k^2+\frac{1^2 3^2}{2^2 4^2}k^4+\frac{1^2 3^2 5^2}{2^2 4^2 6^2}k^6+\cdots
+\right].
+\]
+Multiplying by \(4\sqrt{L/g}\),
+\[
+\boxed{
+T=
+2\pi\sqrt{\frac{L}{g}}
+\left[
+1+\frac{1^2}{2^2}k^2+\frac{1^2 3^2}{2^2 4^2}k^4+\frac{1^2 3^2 5^2}{2^2 4^2 6^2}k^6+\cdots
+\right].
+}
+\]
+Hence
+\[
+T\approx 2\pi\sqrt{\frac{L}{g}}
+\]
+using one term, and
+\[
+T\approx 2\pi\sqrt{\frac{L}{g}}\left(1+\frac14k^2\right)
+\]
+using two terms.
+
+\textbf{(b)} All coefficients after the first are nonnegative, and for \(n\ge 1\),
+\[
+\left(
+\frac{1\cdot 3\cdot 5\cdots (2n-1)}{2\cdot 4\cdot 6\cdots 2n}
+\right)^2
+\le \frac14.
+\]
+So
+\[
+T\ge 2\pi\sqrt{\frac{L}{g}}\left(1+\frac14k^2\right).
+\]
+Also,
+\[
+T\le
+2\pi\sqrt{\frac{L}{g}}
+\left[
+1+\frac14k^2+\frac14k^4+\frac14k^6+\cdots
+\right].
+\]
+Since
+\[
+k^2+k^4+k^6+\cdots=\frac{k^2}{1-k^2},
+\]
+we obtain
+\[
+T\le
+2\pi\sqrt{\frac{L}{g}}
+\left(1+\frac{k^2}{4(1-k^2)}\right)
+=
+2\pi\sqrt{\frac{L}{g}}\frac{4-3k^2}{4-4k^2}.
+\]
+Thus
+\[
+\boxed{
+2\pi\sqrt{\frac{L}{g}}\left(1+\frac14k^2\right)
+\le T\le
+2\pi\sqrt{\frac{L}{g}}\frac{4-3k^2}{4-4k^2}.
+}
+\]
+
+\textbf{(c)} Take \(L=1\) and \(g=9.8\). Then
+\[
+2\pi\sqrt{\frac{1}{9.8}}\approx 2.0061\text{ s}.
+\]
+If \(\theta_0=10^\circ\), then
+\[
+k=\sin 5^\circ\approx 0.08716,\qquad k^2\approx 0.007596.
+\]
+So
+\[
+2.0061\left(1+\frac14k^2\right)\approx 2.0099\text{ s},
+\]
+and
+\[
+2.0061\cdot \frac{4-3k^2}{4-4k^2}\approx 2.0099\text{ s}.
+\]
+Thus \(T\approx 2.0099\) s, which differs from the small-angle estimate \(2.0061\) s by only about \(0.0038\) s.
+
+If \(\theta_0=42^\circ\), then
+\[
+k=\sin 21^\circ\approx 0.35837,\qquad k^2\approx 0.12843.
+\]
+So
+\[
+2.0061\left(1+\frac14k^2\right)\approx 2.0705\text{ s},
+\]
+and
+\[
+2.0061\cdot \frac{4-3k^2}{4-4k^2}\approx 2.0800\text{ s}.
+\]
+Hence
+\[
+\boxed{2.0705\text{ s}\lesssim T\lesssim 2.0800\text{ s}.}
+\]
+Compared with \(2.0061\) s, the small-angle approximation is now noticeably low.
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Coefficient-pattern method}
+
+\textbf{(a)} Start from the generalized binomial theorem:
+\[
+(1-u)^{-1/2}
+=
+\sum_{n=0}^{\infty}\binom{-1/2}{n}(-u)^n.
+\]
+With \(u=k^2\sin^2x\),
+\[
+\frac{1}{\sqrt{1-k^2\sin^2x}}
+=
+\sum_{n=0}^{\infty}\binom{-1/2}{n}(-1)^n k^{2n}\sin^{2n}x.
+\]
+Now
+\[
+\binom{-1/2}{n}(-1)^n
+=
+\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots 2n}.
+\]
+So
+\[
+\frac{1}{\sqrt{1-k^2\sin^2x}}
+=
+\sum_{n=0}^{\infty}
+\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots 2n}
+k^{2n}\sin^{2n}x.
+\]
+Integrating term by term and using Exercise 7.1.56,
+\[
+\int_0^{\pi/2}\frac{dx}{\sqrt{1-k^2\sin^2x}}
+=
+\frac{\pi}{2}\sum_{n=0}^{\infty}
+\left(
+\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots 2n}
+\right)^2
+k^{2n}.
+\]
+Thus
+\[
+\boxed{
+T=
+2\pi\sqrt{\frac{L}{g}}
+\sum_{n=0}^{\infty}
+\left(
+\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots 2n}
+\right)^2
+k^{2n}.
+}
+\]
+Writing out the first terms gives the required series in part (a).
+
+\textbf{(b)} Let
+\[
+c_n=
+\left(
+\frac{1\cdot 3\cdot 5\cdots(2n-1)}{2\cdot 4\cdot 6\cdots 2n}
+\right)^2.
+\]
+Then \(c_1=\frac14\), and because each factor \(\frac{2j-1}{2j}<1\), we have
+\[
+c_n\le \frac14\qquad (n\ge 1).
+\]
+Therefore
+\[
+T=
+2\pi\sqrt{\frac{L}{g}}
+\left(1+c_1k^2+c_2k^4+\cdots\right)
+\ge
+2\pi\sqrt{\frac{L}{g}}\left(1+\frac14k^2\right),
+\]
+and also
+\[
+T\le
+2\pi\sqrt{\frac{L}{g}}
+\left(1+\frac14k^2+\frac14k^4+\frac14k^6+\cdots\right)
+=
+2\pi\sqrt{\frac{L}{g}}\frac{4-3k^2}{4-4k^2}.
+\]
+So the same inequality from part (b) follows.
+
+\textbf{(c)} The numerical estimates are therefore the same as in Method 1:
+\[
+T\approx 2.0099\text{ s}\qquad (\theta_0=10^\circ),
+\]
+and
+\[
+2.0705\text{ s}\lesssim T\lesssim 2.0800\text{ s}
+\qquad (\theta_0=42^\circ).
+\]
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{
+T=
+2\pi\sqrt{\frac{L}{g}}
+\left[
+1+\frac{1^2}{2^2}k^2+\frac{1^2 3^2}{2^2 4^2}k^4+\cdots
+\right]
+}
+\]
+and
+\[
+\boxed{
+2\pi\sqrt{\frac{L}{g}}\left(1+\frac14k^2\right)
+\le T\le
+2\pi\sqrt{\frac{L}{g}}\frac{4-3k^2}{4-4k^2}.
+}
+\]
+For \(L=1\), this gives \(T\approx 2.0099\) s when \(\theta_0=10^\circ\), and
+\[
+2.0705\text{ s}\lesssim T\lesssim 2.0800\text{ s}
+\]
+when \(\theta_0=42^\circ\).
+\end{solutionbox}
+
+\setcounter{enumi}{2}
+\Needspace{26\baselineskip}
+\item Find an equation of sphere with center \((-3,2,5)\) and radius \(4\). What is the intersection of this sphere with the \(yz\)-plane?
+
+\begin{solutionbox}
+\textbf{Method 1: Use the standard equation of a sphere}
+
+A sphere with center \((a,b,c)\) and radius \(r\) has equation
+\[
+(x-a)^2+(y-b)^2+(z-c)^2=r^2.
+\]
+Here the center is \((-3,2,5)\) and the radius is \(4\), so
+\[
+(x+3)^2+(y-2)^2+(z-5)^2=16.
+\]
+This is the equation of the sphere.
+
+To find the intersection with the \(yz\)-plane, set
+\[
+x=0.
+\]
+Then
+\[
+(0+3)^2+(y-2)^2+(z-5)^2=16,
+\]
+so
+\[
+9+(y-2)^2+(z-5)^2=16
+\]
+and therefore
+\[
+(y-2)^2+(z-5)^2=7.
+\]
+Thus the intersection is a circle in the plane \(x=0\) with center \((0,2,5)\) and radius \(\sqrt{7}\).
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the geometry of a plane slice}
+
+The sphere has center \((-3,2,5)\) and radius \(4\), so its equation is
+\[
+(x+3)^2+(y-2)^2+(z-5)^2=16.
+\]
+The \(yz\)-plane is the plane
+\[
+x=0.
+\]
+The distance from the center \((-3,2,5)\) to this plane is
+\[
+|-3|=3.
+\]
+When a plane cuts a sphere of radius \(r\) at distance \(d\) from its center, the cross-section is a circle of radius
+\[
+\sqrt{r^2-d^2}.
+\]
+So here the radius of the intersection circle is
+\[
+\sqrt{4^2-3^2}=\sqrt{16-9}=\sqrt{7}.
+\]
+Its center is the projection of \((-3,2,5)\) onto the plane \(x=0\), namely
+\[
+(0,2,5).
+\]
+Hence the circle in the \(yz\)-plane has equation
+\[
+(y-2)^2+(z-5)^2=7.
+\]
+
+\medskip
+\textbf{Answer:}
+\[
+\boxed{(x+3)^2+(y-2)^2+(z-5)^2=16}
+\]
+and the intersection with the \(yz\)-plane is
+\[
+\boxed{(y-2)^2+(z-5)^2=7}
+\]
+which is a circle centered at \((0,2,5)\) with radius \(\sqrt{7}\).
+\end{solutionbox}
+
 \end{enumerate}
 
 \end{document}
