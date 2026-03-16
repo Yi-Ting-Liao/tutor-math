@@ -1,0 +1,142 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{xeCJK}
+
+\setlength{\mathindent}{1.5em}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+
+\newcommand{\examdate}{2026/03/18}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{62.}\ }
+\newcommand{\problemtitle}[1]{%
+  \par\vspace{0.4em}%
+  \noindent{\large\bfseries #1}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+}
+\newcommand{\problem}[2]{%
+  \par\noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#1.}}#2\par
+  \vspace{1.4em}%
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\problemtitle{10-1}
+
+\problem{16}{%
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{enumerate}
+\[
+x=\csc t,\ y=\cot t,\ 0<t<\pi
+\]}
+
+\problem{17}{%
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{enumerate}
+\[
+x=\ln t,\ y=\sqrt{t},\ t\geq 1
+\]}
+
+\problem{18}{%
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{enumerate}
+\[
+x=\sinh t,\ y=\cosh t
+\]}
+
+\problem{57}{Find the point at which the parametric curve intersects itself and the corresponding values of \(t\).
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item
+\[
+x=1-t^2,\ y=t-t^3
+\]
+\item
+\[
+x=2t-t^3,\ y=t-t^2
+\]
+\end{enumerate}}
+
+\problemtitle{10-2}
+
+\problem{42}{Let \(\mathcal{R}\) be the region enclosed by the loop of the curve in Example 1.
+\begin{enumerate}[label=(\alph*), leftmargin=2em]
+\item Find the area of \(\mathcal{R}\).
+\item If \(\mathcal{R}\) is rotated about the \(x\)-axis, find the volume of the resulting solid.
+\item Find the centroid of \(\mathcal{R}\).
+\end{enumerate}
+\medskip
+\noindent\textit{Hint:} Use the parametric curve from Example 1:
+\[
+x=t^2,\ y=t^3-3t
+\]
+You can first find the intersection point(s) of the loop and the corresponding parameter values (for example, \(t=\pm\sqrt{3}\) gives the point \((3,0)\)), then use parametric integrals for area, volume about the \(x\)-axis, and centroid.}
+
+\problemtitle{10-3}
+
+\problem{57}{Show that the polar equation
+\[
+r=a\sin\theta+b\cos\theta,\qquad ab\ne 0
+\]
+represents a circle. Find its center and radius.}
+
+\problem{61}{Graph the polar curve. Choose a parameter interval that produces the entire curve.
+\[
+r=e^{\sin\theta}-2\cos(4\theta)
+\]
+\noindent(butterfly curve)}
+
+\problem{62}{Graph the polar curve. Choose a parameter interval that produces the entire curve.
+\[
+r=\lvert\tan\theta\rvert^{\lvert\cot\theta\rvert}
+\]
+\noindent(valentine curve)}
+
+\problemtitle{10-4}
+
+\problem{44}{Find the area of the shaded region bounded by
+\[
+r^2=\sqrt{3}\sin 2\theta
+\]
+and
+\[
+r=\sqrt{2}\cos\theta
+\]}
+
+\end{document}
