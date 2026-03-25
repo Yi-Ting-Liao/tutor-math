@@ -1,0 +1,4 @@
+interface:
+  display_name: "Math Worksheet Transcriber"
+  short_description: "Convert textbook problems to worksheet markdown"
+  default_prompt: "Use $math-worksheet-transcriber to transcribe selected textbook problems into the target worksheet markdown file."

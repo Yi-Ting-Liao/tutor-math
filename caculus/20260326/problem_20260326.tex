@@ -1,0 +1,153 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{xeCJK}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\mathindent}{1.5em}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+
+\newcommand{\examdate}{2026/03/26}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{94.}\ }
+\newcommand{\problemtitle}[2]{%
+  \hypertarget{#1}{}%
+  \par\vspace{0.4em}%
+  \noindent{\large\bfseries #2}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+}
+\newcommand{\worksheettoc}{%
+  \noindent{\Large\bfseries Contents}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+  \begin{tabular}{@{}p{0.26\columnwidth}p{0.66\columnwidth}@{}}
+    \hyperlink{sec:10-1}{\textbf{10-1}} & \hyperlink{sec:10-1}{16, 19, 22, 57} \\
+    \hyperlink{sec:10-3}{\textbf{10-3}} & \hyperlink{sec:10-3}{62} \\
+    \hyperlink{sec:11-3}{\textbf{11-3}} & \hyperlink{sec:11-3}{34} \\
+    \hyperlink{sec:11-10}{\textbf{11-10}} & \hyperlink{sec:11-10}{1, 2, 93, 94} \\
+  \end{tabular}\par
+}
+\newcommand{\problem}[2]{%
+  \par\noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#1.}}#2\par
+  \vspace{1.4em}%
+}
+\newlist{subparts}{enumerate}{1}
+\setlist[subparts]{%
+  label=(\alph*),
+  labelindent=\problemnumberwidth,
+  leftmargin=*,
+  labelsep=0.5em,
+  align=left,
+  itemsep=0.2em,
+  topsep=0.3em,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\worksheettoc
+\vfill\null
+\newpage
+
+\problemtitle{sec:10-1}{10-1}
+
+\problem{16}{%
+\begin{subparts}
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{subparts}
+\[
+x=\csc t,\ y=\cot t,\ 0<t<\pi
+\]}
+
+\problem{19}{%
+\begin{subparts}
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{subparts}
+\[
+x=\ln t,\ y=\sqrt{t},\ t\geq 1
+\]}
+
+\problem{22}{%
+\begin{subparts}
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{subparts}
+\[
+x=\sinh t,\ y=\cosh t
+\]}
+
+\problem{57}{Find the point at which the parametric curve intersects itself and the corresponding values of \(t\).
+\begin{subparts}
+\item \(x=1-t^2,\ y=t-t^3\)
+\item \(x=2t-t^3,\ y=t-t^2\)
+\end{subparts}}
+
+\problemtitle{sec:10-3}{10-3}
+
+\problem{62}{Graph the polar curve. Choose a parameter interval that produces the entire curve.
+\[
+r=\lvert\tan\theta\rvert^{\lvert\cot\theta\rvert}
+\]
+\noindent(valentine curve)}
+
+\problemtitle{sec:11-3}{11-3}
+
+\problem{34}{Find the values of \(p\) for which the series is convergent.
+\[
+\displaystyle \sum_{n=1}^{\infty}\frac{\ln n}{n^p}
+\]}
+
+\problemtitle{sec:11-10}{11-10}
+
+\problem{1}{Use the definition of a Taylor series to find the first four nonzero terms of the series for \(f(x)\) centered at the given value of \(a\). (6 point)
+\[
+f(x)=\sqrt[3]{x},\ a=8
+\]}
+
+\problem{2}{Evaluate the indefinite integral as an infinite series. (7 point)
+\[
+\displaystyle \int \frac{\cos x-1}{x}\,dx
+\]}
+
+\problem{93}{Use the Maclaurin series for \(f(x)=x\sin(x^2)\) to find \(f^{(203)}(0)\).
+\medskip
+\noindent\textit{Note:} This problem uses the Maclaurin series, so the expansion is centered at \(0\). If the center were changed to some nonzero value \(a\), is there still a way to solve it by using a Taylor series centered at \(a\)?}
+
+\problem{94}{If \(f(x)=(1+x^3)^{30}\), what is \(f^{(58)}(0)\)?}
+
+\end{document}

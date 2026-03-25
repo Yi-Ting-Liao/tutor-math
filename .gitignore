@@ -3,6 +3,7 @@
 
 # markdown files
 *.md
+!.github/skills/**/*.md
 
 # MacOS files
 .DS_Store
@@ -16,4 +17,3 @@
 *.lot
 *.fls
 *.fdb_latexmk
-

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Math Problem Markdown"
+  short_description: "Convert worksheet markdown to TeX"
+  default_prompt: "Use $math-problem-markdown to update the target worksheet TeX file from the source problem markdown while preserving the project layout."

@@ -1,0 +1,1413 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\setlength{\mathindent}{1.5em}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{needspace}
+\usepackage{xeCJK}
+\usepackage[hidelinks]{hyperref}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+\newcommand{\examdate}{2026/03/18}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{62.}\ }
+\newlength{\subproblemnumberwidth}
+\settowidth{\subproblemnumberwidth}{\textbf{57(a).}\ }
+\newenvironment{solutionbox}{\begin{framed}}{\end{framed}}
+
+\newcommand{\sectiontitle}[2]{%
+  \hypertarget{#1}{}%
+  \par\vspace{0.8em}%
+  \noindent{\Large\bfseries #2}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.8em}%
+}
+
+\newcommand{\tocproblem}[2]{%
+  \hyperref[#1]{#2} & \hyperref[#1]{\pageref*{#1}} \\
+}
+
+\newcommand{\worksheettoc}{%
+  \noindent{\Large\bfseries Contents}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+  \begin{tabular}{@{}p{0.72\columnwidth}r@{}}
+    \textbf{Problem} & \textbf{Page} \\
+    \tocproblem{prob:10-1-16}{10-1 \quad 16}
+    \tocproblem{prob:10-1-19}{10-1 \quad 19}
+    \tocproblem{prob:10-1-22}{10-1 \quad 22}
+    \tocproblem{prob:10-1-57a}{10-1 \quad 57(a)}
+    \tocproblem{prob:10-1-57b}{10-1 \quad 57(b)}
+    \tocproblem{prob:10-2-42}{10-2 \quad 42}
+    \tocproblem{prob:10-3-57}{10-3 \quad 57}
+    \tocproblem{prob:10-3-61}{10-3 \quad 61}
+    \tocproblem{prob:10-3-62}{10-3 \quad 62}
+    \tocproblem{prob:10-4-44}{10-4 \quad 44}
+  \end{tabular}\par
+}
+
+\newcommand{\problem}[3]{%
+  \Needspace{10\baselineskip}%
+  \phantomsection\label{#1}%
+  \par\vspace{0.8em}%
+  \noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#2.}}#3\par
+}
+
+\newcommand{\subproblem}[3]{%
+  \Needspace{10\baselineskip}%
+  \phantomsection\label{#1}%
+  \par\vspace{0.8em}%
+  \noindent
+  \hangindent=\subproblemnumberwidth
+  \hangafter=1
+  \makebox[\subproblemnumberwidth][l]{\textbf{#2.}}#3\par
+}
+
+\newlist{steps}{enumerate}{1}
+\setlist[steps]{%
+  label=\textbf{Step \arabic*.},
+  leftmargin=*,
+  itemsep=0.35em,
+  topsep=0.35em,
+  align=left
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems Solutions\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\worksheettoc
+\vfill\null
+\newpage
+
+\sectiontitle{sec:10-1}{10-1}
+
+\problem{prob:10-1-16}{16}{Eliminate the parameter and sketch the curve for
+\[
+x=\csc t,\qquad y=\cot t,\qquad 0<t<\pi.
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the identity \(\csc^2 t-\cot^2 t=1\)}
+
+\begin{steps}
+\item Because both coordinates are already written as \(\csc t\) and \(\cot t\), the identity
+\[
+\csc^2 t-\cot^2 t=1
+\]
+is the fastest way to remove the parameter. It is appropriate here because it involves exactly the same two functions that appear in the problem.
+
+Substituting \(x=\csc t\) and \(y=\cot t\), we obtain
+\[
+x^2-y^2=1.
+\]
+
+\item To identify which part of the hyperbola is traced, use the parameter restriction \(0<t<\pi\). On this interval, \(\sin t>0\), so
+\[
+x=\csc t>0.
+\]
+Also, \(\csc t\ge 1\) on \((0,\pi)\), so the curve is not the whole hyperbola; it is only the right-hand branch.
+
+\item For direction, examine the endpoints of the parameter interval:
+\[
+t\to 0^+ \Longrightarrow (x,y)\to(\infty,\infty),
+\]
+\[
+t=\frac{\pi}{2} \Longrightarrow (x,y)=(1,0),
+\]
+\[
+t\to \pi^- \Longrightarrow (x,y)\to(\infty,-\infty).
+\]
+So the point moves down the right branch, from the upper-right part through \((1,0)\), and then toward the lower-right part.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Express \(\sin t\) and \(\cos t\) in terms of \(x\) and \(y\)}
+
+\begin{steps}
+\item Since \(x=\csc t\), taking the reciprocal gives
+\[
+\sin t=\frac{1}{x}.
+\]
+This is a natural first step because \(\sin^2 t+\cos^2 t=1\) is the standard identity we can use once we also find \(\cos t\).
+
+\item To get \(\cos t\), divide the two coordinates:
+\[
+\frac{y}{x}=\frac{\cot t}{\csc t}=\cos t.
+\]
+Now both sine and cosine are written in terms of \(x\) and \(y\), so the parameter is ready to disappear.
+
+\item Apply the Pythagorean identity:
+\[
+\left(\frac{1}{x}\right)^2+\left(\frac{y}{x}\right)^2=1.
+\]
+Multiplying by \(x^2\) gives
+\[
+1+y^2=x^2,
+\]
+or
+\[
+x^2-y^2=1.
+\]
+
+\item The interval \(0<t<\pi\) still implies \(x>0\), so again we get the right branch only. As \(t\) increases, \(\cot t\) decreases from \(+\infty\) to \(-\infty\), which explains why the point is traced from upper-right to lower-right.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+\boxed{x^2-y^2=1}
+\]
+
+Because \(0<t<\pi\), we have \(\sin t>0\), so \(x=\csc t\ge 1\). Therefore the curve is the \textbf{right branch} of the hyperbola \(x^2-y^2=1\).
+
+It is traced from
+\[
+(\infty,\infty)\to(1,0)\to(\infty,-\infty)
+\]
+as \(t\) increases from \(0^+\) to \(\pi^-\).
+\end{solutionbox}
+
+\problem{prob:10-1-19}{19}{Eliminate the parameter and sketch the curve for
+\[
+x=\ln t,\qquad y=\sqrt{t},\qquad t\ge 1.
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Solve for \(t\) from the logarithm}
+
+\begin{steps}
+\item The equation \(x=\ln t\) is easy to invert because the natural logarithm is one-to-one for \(t>0\). That makes it a good place to start.
+
+Exponentiating both sides gives
+\[
+t=e^x.
+\]
+
+\item Substitute this into \(y=\sqrt{t}\):
+\[
+y=\sqrt{e^x}=e^{x/2}.
+\]
+Equivalently,
+\[
+y^2=e^x.
+\]
+This is the Cartesian relation between \(x\) and \(y\).
+
+\item The condition \(t\ge 1\) translates into
+\[
+x=\ln t\ge 0
+\qquad\text{and}\qquad
+y=\sqrt{t}\ge 1.
+\]
+So the graph begins at
+\[
+t=1 \Longrightarrow (x,y)=(0,1),
+\]
+and only the part with \(x\ge 0\) is used.
+
+\item As \(t\) increases, both \(\ln t\) and \(\sqrt{t}\) increase. That means the point moves steadily up and to the right from \((0,1)\).
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Solve for \(t\) from the square root}
+
+\begin{steps}
+\item The equation \(y=\sqrt{t}\) is also easy to invert:
+\[
+t=y^2.
+\]
+This is appropriate because it turns the parameter into a simple algebraic expression.
+
+\item Substitute into the equation for \(x\):
+\[
+x=\ln(y^2)=2\ln y.
+\]
+If we solve this for \(y\), we get
+\[
+y=e^{x/2}.
+\]
+So this method produces the same Cartesian equation, just in a different order.
+
+\item Since \(t\ge 1\), we have \(y\ge 1\). Therefore \(x=2\ln y\ge 0\), so the graph again starts at \((0,1)\) and lies in the region \(x\ge 0\), \(y\ge 1\).
+
+\item The parameter direction is easy to read from \(t=y^2\): larger \(t\) means larger \(y\), and then \(x=\ln t\) also gets larger. Hence the curve is traced upward and to the right.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+\boxed{y=e^{x/2}\quad\text{or equivalently}\quad y^2=e^x}
+\]
+
+Because \(t\ge 1\), the curve starts at
+\[
+(x,y)=(0,1)
+\]
+and only the part with \(x\ge 0\), \(y\ge 1\) is traced.
+
+As \(t\) increases, both \(x\) and \(y\) increase, so the point moves \textbf{up and to the right}.
+\end{solutionbox}
+
+\problem{prob:10-1-22}{22}{Eliminate the parameter and sketch the curve for
+\[
+x=\sinh t,\qquad y=\cosh t.
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the hyperbolic identity}
+
+\begin{steps}
+\item The pair \(\sinh t\) and \(\cosh t\) suggests the basic identity
+\[
+\cosh^2 t-\sinh^2 t=1.
+\]
+This is the direct hyperbolic analogue of the trigonometric identity used in the earlier problems, so it is the natural elimination tool.
+
+\item Substitute \(x=\sinh t\) and \(y=\cosh t\):
+\[
+y^2-x^2=1.
+\]
+Thus the Cartesian equation is a hyperbola.
+
+\item To determine which branch is traced, use the range of \(\cosh t\). Since \(\cosh t\ge 1\) for all real \(t\), we must have
+\[
+y\ge 1.
+\]
+So only the \textbf{upper branch} of the hyperbola is used.
+
+\item For direction, evaluate a few key parameter values:
+\[
+t\to-\infty \Longrightarrow (x,y)\to(-\infty,\infty),
+\]
+\[
+t=0 \Longrightarrow (x,y)=(0,1),
+\]
+\[
+t\to\infty \Longrightarrow (x,y)\to(\infty,\infty).
+\]
+Therefore the point travels along the upper branch from left to right.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the exponential definitions}
+
+\begin{steps}
+\item Write \(\sinh t\) and \(\cosh t\) in exponential form:
+\[
+\sinh t=\frac{e^t-e^{-t}}{2},
+\qquad
+\cosh t=\frac{e^t+e^{-t}}{2}.
+\]
+This is appropriate because adding and subtracting these expressions will isolate \(e^t\) and \(e^{-t}\).
+
+\item Compute
+\[
+y+x=\cosh t+\sinh t=e^t,
+\qquad
+y-x=\cosh t-\sinh t=e^{-t}.
+\]
+Now the parameter appears only inside reciprocal exponentials.
+
+\item Multiply the two equations:
+\[
+(y+x)(y-x)=e^t e^{-t}=1.
+\]
+So
+\[
+y^2-x^2=1.
+\]
+This eliminates the parameter completely.
+
+\item Since \(y=\cosh t\ge 1\), the graph is the upper branch only. The formulas \(y+x=e^t\) and \(y-x=e^{-t}\) also show that increasing \(t\) moves the point from the left side of the branch to the right side.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+\boxed{y^2-x^2=1}
+\]
+
+Because \(y=\cosh t\ge 1\), the curve is the \textbf{upper branch} of the hyperbola \(y^2-x^2=1\).
+
+It is traced from the upper-left, through \((0,1)\), to the upper-right as \(t\) increases.
+\end{solutionbox}
+
+\subproblem{prob:10-1-57a}{57(a)}{Find the point at which the parametric curve intersects itself, and find the corresponding values of \(t\):
+\[
+x=1-t^2,\qquad y=t-t^3.
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the even-odd symmetry of the coordinates}
+
+\begin{steps}
+\item Notice that
+\[
+x(t)=1-t^2
+\]
+is an even function, while
+\[
+y(t)=t-t^3
+\]
+is an odd function. This observation is useful because self-intersections often occur when the same \(x\)-value is produced by \(t\) and \(-t\).
+
+\item Since \(x(-t)=x(t)\) automatically, the only remaining condition for the same point is
+\[
+y(-t)=y(t).
+\]
+But \(y\) is odd, so
+\[
+y(-t)=-y(t).
+\]
+Therefore the only way to have equality is
+\[
+y(t)=0.
+\]
+
+\item Solve
+\[
+t-t^3=t(1-t^2)=0.
+\]
+This gives
+\[
+t=0,\ \pm 1.
+\]
+However, \(t=0\) does not create a self-intersection, because it is only one parameter value. The distinct pair is
+\[
+t=1\quad\text{and}\quad t=-1.
+\]
+
+\item Evaluate the point:
+\[
+x=1-(\pm 1)^2=0,
+\qquad
+y=(\pm 1)-(\pm 1)^3=0.
+\]
+So the curve intersects itself at
+\[
+(0,0).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Solve the two-parameter system directly}
+
+\begin{steps}
+\item Let \(t_1\neq t_2\) be two parameter values that produce the same point. Then we must have
+\[
+1-t_1^2=1-t_2^2
+\qquad\text{and}\qquad
+t_1-t_1^3=t_2-t_2^3.
+\]
+This is the systematic definition of a self-intersection.
+
+\item The equality of the \(x\)-coordinates gives
+\[
+t_1^2=t_2^2,
+\]
+so
+\[
+t_2=\pm t_1.
+\]
+Because \(t_1\neq t_2\), we cannot use \(t_2=t_1\). Hence
+\[
+t_2=-t_1.
+\]
+
+\item Substitute this into the \(y\)-equation:
+\[
+t_1-t_1^3=-t_1+t_1^3.
+\]
+So
+\[
+2t_1-2t_1^3=0
+\quad\Longrightarrow\quad
+2t_1(1-t_1^2)=0.
+\]
+Thus
+\[
+t_1=0,\ \pm 1.
+\]
+Again, \(t_1=0\) would force \(t_2=0\), which is not a self-intersection. Therefore the valid pair is
+\[
+t_1=1,\qquad t_2=-1.
+\]
+
+\item Substituting either value gives
+\[
+(x,y)=(0,0).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The curve intersects itself at
+\[
+\boxed{(0,0)}.
+\]
+
+The corresponding parameter values are
+\[
+\boxed{t=1\ \text{and}\ t=-1.}
+\]
+\end{solutionbox}
+
+\subproblem{prob:10-1-57b}{57(b)}{Find the point at which the parametric curve intersects itself, and find the corresponding values of \(t\):
+\[
+x=2t-t^3,\qquad y=t-t^2.
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Start from the simpler equation \(y(t_1)=y(t_2)\)}
+
+\begin{steps}
+\item Let \(t_1\neq t_2\) produce the same point. Then
+\[
+t_1-t_1^2=t_2-t_2^2.
+\]
+This equation is simpler than the \(x\)-equation, so it is the best place to begin.
+
+\item Rearrange:
+\[
+(t_1-t_2)-(t_1^2-t_2^2)=0.
+\]
+Factor:
+\[
+(t_1-t_2)\bigl[1-(t_1+t_2)\bigr]=0.
+\]
+Since \(t_1\neq t_2\), we must have
+\[
+t_1+t_2=1.
+\]
+
+\item Now use the equality of the \(x\)-coordinates:
+\[
+2t_1-t_1^3=2t_2-t_2^3.
+\]
+Move everything to one side and factor:
+\[
+2(t_1-t_2)-(t_1^3-t_2^3)=0,
+\]
+\[
+(t_1-t_2)\bigl[2-(t_1^2+t_1t_2+t_2^2)\bigr]=0.
+\]
+Again \(t_1\neq t_2\), so
+\[
+t_1^2+t_1t_2+t_2^2=2.
+\]
+
+\item Let \(s=t_1+t_2\) and \(p=t_1t_2\). Since \(s=1\),
+\[
+t_1^2+t_1t_2+t_2^2=s^2-p=1-p.
+\]
+So
+\[
+1-p=2
+\quad\Longrightarrow\quad
+p=-1.
+\]
+Therefore \(t_1\) and \(t_2\) are the roots of
+\[
+u^2-su+p=0
+\quad\Longrightarrow\quad
+u^2-u-1=0.
+\]
+Thus
+\[
+t=\frac{1\pm\sqrt5}{2}.
+\]
+
+\item To find the point, use the quadratic relation \(t^2=t+1\). Then
+\[
+y=t-t^2=t-(t+1)=-1.
+\]
+Also,
+\[
+t^3=t(t^2)=t(t+1)=t^2+t=(t+1)+t=2t+1,
+\]
+so
+\[
+x=2t-t^3=2t-(2t+1)=-1.
+\]
+Therefore the self-intersection point is
+\[
+(-1,-1).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use symmetric sums from the beginning}
+
+\begin{steps}
+\item Suppose \(t_1\neq t_2\) give the same point. Introduce
+\[
+s=t_1+t_2,
+\qquad
+p=t_1t_2.
+\]
+This is appropriate because both the factored equations reduce neatly to relations involving \(s\) and \(p\).
+
+\item From \(y(t_1)=y(t_2)\),
+\[
+t_1-t_1^2=t_2-t_2^2
+\]
+leads to
+\[
+(t_1-t_2)\bigl[1-(t_1+t_2)\bigr]=0.
+\]
+Since \(t_1\neq t_2\), we get
+\[
+s=1.
+\]
+
+\item From \(x(t_1)=x(t_2)\),
+\[
+2t_1-t_1^3=2t_2-t_2^3
+\]
+gives
+\[
+(t_1-t_2)\bigl[2-(t_1^2+t_1t_2+t_2^2)\bigr]=0.
+\]
+So
+\[
+t_1^2+t_1t_2+t_2^2=2.
+\]
+In terms of \(s\) and \(p\),
+\[
+t_1^2+t_1t_2+t_2^2=s^2-p.
+\]
+Because \(s=1\), we get
+\[
+1-p=2
+\quad\Longrightarrow\quad
+p=-1.
+\]
+
+\item Hence \(t_1,t_2\) are the roots of
+\[
+u^2-su+p=0
+\quad\Longrightarrow\quad
+u^2-u-1=0,
+\]
+so
+\[
+t=\frac{1\pm\sqrt5}{2}.
+\]
+
+\item Recover the common point. Since each root satisfies \(t^2=t+1\),
+\[
+y=t-t^2=-1.
+\]
+Also \(t^3=2t+1\), so
+\[
+x=2t-t^3=-1.
+\]
+Thus the curve intersects itself at
+\[
+(-1,-1).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The curve intersects itself at
+\[
+\boxed{(-1,-1)}.
+\]
+
+The corresponding parameter values are
+\[
+\boxed{t=\frac{1+\sqrt5}{2}\quad\text{and}\quad t=\frac{1-\sqrt5}{2}.}
+\]
+\end{solutionbox}
+
+\sectiontitle{sec:10-2}{10-2}
+
+\problem{prob:10-2-42}{42}{Let \(\mathcal{R}\) be the region enclosed by the loop of
+\[
+x=t^2,\qquad y=t^3-3t.
+\]
+Find the area of \(\mathcal{R}\), the volume when \(\mathcal{R}\) is rotated about the \(x\)-axis, and the centroid of \(\mathcal{R}\).}
+
+\begin{solutionbox}
+\textbf{Method 1: Work directly with parametric formulas on the loop}
+
+\begin{steps}
+\item First locate the loop. The curve meets itself when
+\[
+y=t^3-3t=t(t^2-3)=0
+\]
+and \(x=t^2\) matches the same point. The two distinct values
+\[
+t=\pm\sqrt3
+\]
+both give
+\[
+(x,y)=(3,0).
+\]
+Also \(t=0\) gives \((0,0)\). Therefore the loop is traced once for
+\[
+-\sqrt3\le t\le\sqrt3.
+\]
+Because
+\[
+x(-t)=x(t),
+\qquad
+y(-t)=-y(t),
+\]
+the region is symmetric about the \(x\)-axis, so we already know
+\[
+\bar y=0.
+\]
+
+\item For the area, use the closed-curve formula
+\[
+A=-\int y\,dx.
+\]
+The minus sign is needed because the loop is traced clockwise as \(t\) increases from \(-\sqrt3\) to \(\sqrt3\). Since
+\[
+\frac{dx}{dt}=2t,
+\]
+we get
+\[
+A=-\int_{-\sqrt3}^{\sqrt3}(t^3-3t)(2t)\,dt.
+\]
+So
+\[
+A=-2\int_{-\sqrt3}^{\sqrt3}(t^4-3t^2)\,dt
+=4\int_0^{\sqrt3}(3t^2-t^4)\,dt.
+\]
+Evaluating,
+\[
+A=4\left[t^3-\frac{t^5}{5}\right]_0^{\sqrt3}
+=4\left(3\sqrt3-\frac{9\sqrt3}{5}\right)
+=\frac{24\sqrt3}{5}.
+\]
+
+\item For the volume about the \(x\)-axis, washers are the natural choice because rotation about the \(x\)-axis turns each vertical slice into a disk. To avoid counting each \(x\)-value twice, use only one monotone branch, say \(0\le t\le\sqrt3\), where \(x=t^2\) increases from \(0\) to \(3\). On this branch the radius is
+\[
+|y|=3t-t^3.
+\]
+Hence
+\[
+V=\pi\int_0^{\sqrt3}(3t-t^3)^2\frac{dx}{dt}\,dt
+=\pi\int_0^{\sqrt3}(3t-t^3)^2(2t)\,dt.
+\]
+Expand and integrate:
+\[
+V=2\pi\int_0^{\sqrt3}(9t^3-6t^5+t^7)\,dt
+\]
+\[
+=2\pi\left[\frac{9}{4}t^4-t^6+\frac18 t^8\right]_0^{\sqrt3}
+=2\pi\left(\frac{81}{4}-27+\frac{81}{8}\right)
+=\frac{27\pi}{4}.
+\]
+
+\item For the centroid, \(\bar y=0\) by symmetry. To find \(\bar x\), compute the moment about the \(y\)-axis:
+\[
+M_y=-\int x\,y\,dx.
+\]
+Again the minus sign matches the clockwise orientation of the closed loop. Thus
+\[
+M_y=-\int_{-\sqrt3}^{\sqrt3}t^2(t^3-3t)(2t)\,dt
+=-2\int_{-\sqrt3}^{\sqrt3}(t^6-3t^4)\,dt.
+\]
+Since the integrand is even,
+\[
+M_y=4\int_0^{\sqrt3}(3t^4-t^6)\,dt
+=4\left[\frac35 t^5-\frac17 t^7\right]_0^{\sqrt3}.
+\]
+This becomes
+\[
+M_y=4\left(\frac{27\sqrt3}{5}-\frac{27\sqrt3}{7}\right)
+=\frac{216\sqrt3}{35}.
+\]
+Therefore
+\[
+\bar x=\frac{M_y}{A}
+=\frac{216\sqrt3/35}{24\sqrt3/5}
+=\frac97.
+\]
+So the centroid is
+\[
+\left(\frac97,0\right).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Convert the loop to upper and lower Cartesian branches}
+
+\begin{steps}
+\item Since \(x=t^2\), we have
+\[
+t=\pm\sqrt{x},
+\qquad 0\le x\le 3.
+\]
+Substitute into \(y=t^3-3t=t(t^2-3)\):
+\[
+y=\pm\sqrt{x}(x-3).
+\]
+It is clearer to write the branches as
+\[
+y_{\text{upper}}=\sqrt{x}(3-x),
+\qquad
+y_{\text{lower}}=-\sqrt{x}(3-x),
+\qquad 0\le x\le 3.
+\]
+This is appropriate because area, volume, and centroid formulas become the standard single-variable formulas from ordinary integral calculus.
+
+\item Area:
+\[
+A=\int_0^3\bigl(y_{\text{upper}}-y_{\text{lower}}\bigr)\,dx
+=2\int_0^3\sqrt{x}(3-x)\,dx.
+\]
+So
+\[
+A=2\int_0^3\left(3x^{1/2}-x^{3/2}\right)\,dx
+=2\left[2x^{3/2}-\frac25 x^{5/2}\right]_0^3
+=\frac{24\sqrt3}{5}.
+\]
+
+\item Volume about the \(x\)-axis:
+\[
+V=\pi\int_0^3 y_{\text{upper}}^2\,dx
+=\pi\int_0^3\bigl(\sqrt{x}(3-x)\bigr)^2\,dx.
+\]
+Thus
+\[
+V=\pi\int_0^3 x(3-x)^2\,dx
+=\pi\int_0^3(9x-6x^2+x^3)\,dx.
+\]
+Evaluating,
+\[
+V=\pi\left[\frac92 x^2-2x^3+\frac14 x^4\right]_0^3
+=\frac{27\pi}{4}.
+\]
+
+\item The region is symmetric about the \(x\)-axis, so
+\[
+\bar y=0.
+\]
+For \(\bar x\),
+\[
+\bar x=\frac{1}{A}\int_0^3 x\bigl(y_{\text{upper}}-y_{\text{lower}}\bigr)\,dx
+=\frac{2}{A}\int_0^3 x\sqrt{x}(3-x)\,dx.
+\]
+Hence
+\[
+\bar x=\frac{2}{A}\int_0^3\left(3x^{3/2}-x^{5/2}\right)\,dx
+=\frac{2}{A}\left[\frac65 x^{5/2}-\frac27 x^{7/2}\right]_0^3.
+\]
+This gives
+\[
+\bar x=\frac{2}{A}\left(\frac{54\sqrt3}{5}-\frac{54\sqrt3}{7}\right)
+=\frac{216\sqrt3/35}{24\sqrt3/5}
+=\frac97.
+\]
+Therefore
+\[
+(\bar x,\bar y)=\left(\frac97,0\right).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+For the loop of
+\[
+x=t^2,\qquad y=t^3-3t,\qquad -\sqrt3\le t\le\sqrt3,
+\]
+the required quantities are
+\[
+\boxed{A=\frac{24\sqrt3}{5}},
+\qquad
+\boxed{V=\frac{27\pi}{4}},
+\qquad
+\boxed{(\bar x,\bar y)=\left(\frac97,0\right)}.
+\]
+
+The centroid lies on the \(x\)-axis because the loop is symmetric about the \(x\)-axis.
+\end{solutionbox}
+
+\sectiontitle{sec:10-3}{10-3}
+
+\problem{prob:10-3-57}{57}{Show that the polar equation
+\[
+r=a\sin\theta+b\cos\theta,\qquad ab\ne 0,
+\]
+represents a circle. Find its center and radius.}
+
+\begin{solutionbox}
+\textbf{Method 1: Convert the polar equation directly to Cartesian form}
+
+\begin{steps}
+\item Multiply both sides by \(r\):
+\[
+r^2=ar\sin\theta+br\cos\theta.
+\]
+This is the correct move because the Cartesian substitutions use the combinations \(r\cos\theta\), \(r\sin\theta\), and \(r^2\).
+
+\item Use
+\[
+x=r\cos\theta,\qquad y=r\sin\theta,\qquad r^2=x^2+y^2.
+\]
+Then the equation becomes
+\[
+x^2+y^2=ay+bx.
+\]
+
+\item Rearrange and complete the square:
+\[
+x^2-bx+y^2-ay=0,
+\]
+\[
+\left(x-\frac{b}{2}\right)^2-\frac{b^2}{4}
++\left(y-\frac{a}{2}\right)^2-\frac{a^2}{4}=0.
+\]
+So
+\[
+\left(x-\frac{b}{2}\right)^2+\left(y-\frac{a}{2}\right)^2
+=\frac{a^2+b^2}{4}.
+\]
+This is the standard equation of a circle.
+
+\item Therefore the center is
+\[
+\left(\frac{b}{2},\frac{a}{2}\right)
+\]
+and the radius is
+\[
+\frac{\sqrt{a^2+b^2}}{2}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Rewrite the equation as a shifted sine form}
+
+\begin{steps}
+\item Let
+\[
+R=\sqrt{a^2+b^2}.
+\]
+Choose an angle \(\alpha\) such that
+\[
+\cos\alpha=\frac{a}{R},
+\qquad
+\sin\alpha=\frac{b}{R}.
+\]
+This is appropriate because it lets us combine \(a\sin\theta+b\cos\theta\) into one sine expression.
+
+\item Then
+\[
+a\sin\theta+b\cos\theta
+=R\bigl(\sin\theta\cos\alpha+\cos\theta\sin\alpha\bigr)
+=R\sin(\theta+\alpha).
+\]
+So the polar equation becomes
+\[
+r=R\sin(\theta+\alpha).
+\]
+
+\item The standard polar equation
+\[
+r=R\sin\phi
+\]
+is a circle of radius \(R/2\) centered at \((0,R/2)\) in the \(\phi\)-coordinate picture. Replacing \(\phi\) by \(\theta+\alpha\) rotates that circle; rotation does not change the radius, it only rotates the center.
+
+\item Under that rotation, the center \((0,R/2)\) becomes
+\[
+\left(\frac{R}{2}\sin\alpha,\frac{R}{2}\cos\alpha\right)
+=\left(\frac{b}{2},\frac{a}{2}\right).
+\]
+So the circle has center
+\[
+\left(\frac{b}{2},\frac{a}{2}\right)
+\]
+and radius
+\[
+\frac{R}{2}=\frac{\sqrt{a^2+b^2}}{2}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+r=a\sin\theta+b\cos\theta
+\]
+implies
+\[
+r^2=ar\sin\theta+br\cos\theta,
+\]
+so
+\[
+x^2+y^2=ay+bx.
+\]
+Completing the square gives
+\[
+\left(x-\frac{b}{2}\right)^2+\left(y-\frac{a}{2}\right)^2
+=\frac{a^2+b^2}{4}.
+\]
+
+Hence the graph is a circle with
+\[
+\boxed{\text{center } \left(\frac{b}{2},\frac{a}{2}\right)}
+\qquad\text{and}\qquad
+\boxed{\text{radius } \frac{\sqrt{a^2+b^2}}{2}.}
+\]
+\end{solutionbox}
+
+\problem{prob:10-3-61}{61}{Graph the polar curve and choose a parameter interval that produces the entire curve:
+\[
+r=e^{\sin\theta}-2\cos(4\theta).
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Analyze period, symmetry, and key sample angles}
+
+\begin{steps}
+\item The function \(e^{\sin\theta}\) is \(2\pi\)-periodic, and \(\cos(4\theta)\) is also \(2\pi\)-periodic. Therefore
+\[
+r(\theta+2\pi)=r(\theta).
+\]
+So one convenient interval that certainly traces the whole curve is
+\[
+0\le \theta\le 2\pi.
+\]
+This is the right starting point because the interval question asks for a complete tracing interval.
+
+\item Check symmetry:
+\[
+r(\pi-\theta)
+=e^{\sin(\pi-\theta)}-2\cos(4\pi-4\theta)
+=e^{\sin\theta}-2\cos(4\theta)
+=r(\theta).
+\]
+Since \(r(\pi-\theta)=r(\theta)\), the graph is symmetric about the \(y\)-axis. This reduces the amount of sketching work: once the right half is understood, the left half is forced by symmetry.
+
+\item Now compute several key values:
+\[
+r(0)=1-2=-1,
+\qquad
+r\!\left(\frac{\pi}{4}\right)=e^{\sqrt2/2}+2,
+\]
+\[
+r\!\left(\frac{\pi}{2}\right)=e-2,
+\qquad
+r\!\left(\frac{3\pi}{4}\right)=e^{\sqrt2/2}+2,
+\qquad
+r(\pi)=-1.
+\]
+These values explain the overall shape:
+\begin{itemize}[leftmargin=*]
+\item At \(\theta=0\) and \(\theta=\pi\), the radius is negative, so the plotted points lie on the opposite rays. This creates the inner indentations near the horizontal axis.
+\item At \(\theta=\pi/4+k\pi/2\), the term \(-2\cos(4\theta)\) becomes \(+2\), so the curve pushes far outward and creates the large wing-like lobes.
+\item Near \(\theta=\pi/2\), the radius is positive but smaller, so the top middle part narrows between the large upper wings.
+\end{itemize}
+
+\item As \(\theta\) increases from \(0\) to \(2\pi\), the oscillation in \(\cos(4\theta)\) repeatedly pushes the graph outward and inward four times, while the factor \(e^{\sin\theta}\) makes the upper half larger than the lower half. This produces the familiar butterfly shape.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: View the curve as a base radius plus a four-fold oscillation}
+
+\begin{steps}
+\item Separate the equation into two parts:
+\[
+r=e^{\sin\theta}+(-2\cos 4\theta).
+\]
+This viewpoint is useful because each part controls a different geometric feature.
+
+\item The base term \(e^{\sin\theta}\) is always positive and ranges from \(e^{-1}\) to \(e\). It is largest in the upper half-plane, where \(\sin\theta>0\), and smallest in the lower half-plane, where \(\sin\theta<0\). So even before adding the oscillation, the curve already has a top-heavy shape.
+
+\item The oscillatory term \(-2\cos 4\theta\) changes sign four times during one full revolution. It has:
+\[
+-2\cos 4\theta=+2
+\quad\text{when}\quad
+\theta=\frac{\pi}{4}+k\frac{\pi}{2},
+\]
+and
+\[
+-2\cos 4\theta=-2
+\quad\text{when}\quad
+\theta=k\frac{\pi}{2}.
+\]
+So it alternates between strong outward pushes and strong inward pulls four times, which is exactly what creates the wing pattern.
+
+\item When the total radius becomes negative, the point is plotted on the ray \(\theta+\pi\) with distance \(|r|\). That reflection across the pole is important: without it, the inner loops near the center would be misread. Combined with the \(y\)-axis symmetry and the \(2\pi\)-periodicity, this gives the complete analytic sketch on
+\[
+0\le \theta\le 2\pi.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+A convenient interval that produces the entire curve is
+\[
+\boxed{0\le \theta\le 2\pi.}
+\]
+
+Key sketch facts:
+\begin{itemize}[leftmargin=*]
+\item \(r(\pi-\theta)=r(\theta)\), so the graph is symmetric about the \(y\)-axis.
+\item The large outward wings occur near
+\[
+\theta=\frac{\pi}{4}+k\frac{\pi}{2},
+\]
+because there \(-2\cos 4\theta=+2\).
+\item At \(\theta=0\) and \(\theta=\pi\), \(r=-1\), so negative radii reflect points across the pole and create the inner indentations.
+\item The result is the butterfly curve.
+\end{itemize}
+\end{solutionbox}
+
+\problem{prob:10-3-62}{62}{Graph the polar curve and choose a parameter interval that produces the entire curve:
+\[
+r=\lvert\tan\theta\rvert^{\lvert\cot\theta\rvert}.
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Reduce the expression to the single-variable form \(u^{1/u}\)}
+
+\begin{steps}
+\item Let
+\[
+u=\lvert\tan\theta\rvert.
+\]
+Then \(u>0\) whenever the expression is defined, and
+\[
+\lvert\cot\theta\rvert=\frac{1}{u}.
+\]
+So the polar equation becomes
+\[
+r=u^{1/u}.
+\]
+This substitution is appropriate because it turns the unusual power expression into a familiar one-variable optimization and limit problem.
+
+\item To study the endpoints of each quadrant, look at the limits of \(u^{1/u}\). Since
+\[
+\ln r=\frac{\ln u}{u},
+\]
+we have:
+\[
+u\to 0^+ \Longrightarrow \frac{\ln u}{u}\to-\infty \Longrightarrow r\to 0,
+\]
+\[
+u\to\infty \Longrightarrow \frac{\ln u}{u}\to 0 \Longrightarrow r\to 1.
+\]
+Translated back to \(\theta\), this means
+\[
+\theta\to k\pi \Longrightarrow r\to 0,
+\]
+\[
+\theta\to \frac{\pi}{2}+k\pi \Longrightarrow r\to 1.
+\]
+So the curve approaches the pole on the horizontal axis and approaches radius \(1\) near the vertical axis.
+
+\item To find the largest radius, maximize \(r=u^{1/u}\). It is easier to maximize \(\ln r\):
+\[
+f(u)=\frac{\ln u}{u}.
+\]
+Then
+\[
+f'(u)=\frac{1-\ln u}{u^2}.
+\]
+Setting \(f'(u)=0\) gives
+\[
+\ln u=1
+\quad\Longrightarrow\quad
+u=e.
+\]
+Therefore the maximum radius is
+\[
+r_{\max}=e^{1/e},
+\]
+which occurs when
+\[
+\lvert\tan\theta\rvert=e.
+\]
+
+\item Because the formula depends only on \(\lvert\tan\theta\rvert\), we have
+\[
+r(-\theta)=r(\theta),
+\qquad
+r(\pi-\theta)=r(\theta).
+\]
+So the graph is symmetric about both the \(x\)-axis and the \(y\)-axis. A full tracing interval is
+\[
+0\le \theta\le 2\pi.
+\]
+In each quadrant, the radius starts near \(0\), swells to \(e^{1/e}\), and then settles toward \(1\) as \(\theta\) approaches the vertical axis.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Trace the curve quadrant by quadrant}
+
+\begin{steps}
+\item On the first quadrant \(0<\theta<\pi/2\), \(\tan\theta>0\) and increases from \(0\) to \(\infty\). Therefore \(u=\tan\theta\) runs through all positive values, so the first-quadrant branch is exactly the graph of
+\[
+r=u^{1/u}
+\qquad (u>0).
+\]
+This is a good viewpoint because one quadrant already contains the essential radial behavior.
+
+\item On that branch,
+\[
+r\to 0 \quad\text{as}\quad \theta\to 0^+,
+\]
+so the curve begins at the pole on the positive \(x\)-axis. It then expands outward, reaches its largest radius
+\[
+e^{1/e}
+\]
+when \(\tan\theta=e\), and finally approaches
+\[
+r=1
+\]
+as \(\theta\to \pi/2^-\).
+
+\item In the second quadrant, \(\tan\theta<0\), but the absolute values make \(\lvert\tan\theta\rvert\) behave exactly as in the first quadrant. Therefore the second-quadrant part is the mirror image across the \(y\)-axis.
+
+\item The same pattern repeats in the lower half-plane because
+\[
+r(\theta+\pi)=r(\theta).
+\]
+So \(0\le \theta\le 2\pi\) traces the whole graph, with matching bulges in all four quadrants. The symmetry lines are the coordinate axes, and the curve approaches the pole on the horizontal axis while approaching radius \(1\) on the vertical axis.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+A convenient interval that produces the entire curve is
+\[
+\boxed{0\le \theta\le 2\pi.}
+\]
+
+Write
+\[
+u=\lvert\tan\theta\rvert,
+\qquad
+r=u^{1/u}.
+\]
+Then
+\[
+r(-\theta)=r(\theta),
+\qquad
+r(\pi-\theta)=r(\theta),
+\]
+so the graph is symmetric about both coordinate axes.
+
+Also,
+\[
+\theta\to k\pi \Longrightarrow r\to 0,
+\qquad
+\theta\to \frac{\pi}{2}+k\pi \Longrightarrow r\to 1,
+\]
+and the maximum radius is
+\[
+\boxed{r_{\max}=e^{1/e}}
+\]
+when
+\[
+\boxed{\lvert\tan\theta\rvert=e.}
+\]
+
+So each quadrant contains one bulge that rises from the pole, reaches radius \(e^{1/e}\), and then approaches radius \(1\) near the vertical axis.
+\end{solutionbox}
+
+\sectiontitle{sec:10-4}{10-4}
+
+\problem{prob:10-4-44}{44}{Find the area of the common overlap bounded by
+\[
+r^2=\sqrt3\sin 2\theta
+\]
+and
+\[
+r=\sqrt2\cos\theta.
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Compute the overlap directly with a piecewise polar integral}
+
+\begin{steps}
+\item First find where the two curves meet away from the pole. Since the common region is in the first quadrant, set the squared radii equal:
+\[
+\sqrt3\sin 2\theta=2\cos^2\theta.
+\]
+Using \(\sin 2\theta=2\sin\theta\cos\theta\), we get
+\[
+2\sqrt3\sin\theta\cos\theta=2\cos^2\theta.
+\]
+So
+\[
+\cos\theta(\sqrt3\sin\theta-\cos\theta)=0.
+\]
+The nontrivial intersection is
+\[
+\tan\theta=\frac{1}{\sqrt3},
+\qquad
+\theta=\frac{\pi}{6}.
+\]
+This angle is important because it tells us where the boundary switches from one curve to the other.
+
+\item Decide which curve is inside on each part of the interval \(0\le\theta\le\pi/2\). Near \(\theta=0\),
+\[
+r^2=\sqrt3\sin 2\theta
+\]
+is small, while
+\[
+r=\sqrt2\cos\theta
+\]
+is close to \(\sqrt2\). So the lemniscate is the inner boundary first. After \(\theta=\pi/6\), the circle becomes the smaller radius and therefore controls the overlap.
+
+\item Hence the area of the common region is
+\[
+A=\frac12\int_0^{\pi/6}\sqrt3\sin 2\theta\,d\theta
++\frac12\int_{\pi/6}^{\pi/2}2\cos^2\theta\,d\theta.
+\]
+The first integral is
+\[
+\frac{\sqrt3}{2}\int_0^{\pi/6}\sin 2\theta\,d\theta
+=\frac{\sqrt3}{2}\left[-\frac12\cos 2\theta\right]_0^{\pi/6}
+=\frac{\sqrt3}{8}.
+\]
+
+\item For the second integral, use
+\[
+\cos^2\theta=\frac{1+\cos 2\theta}{2}.
+\]
+Then
+\[
+\int_{\pi/6}^{\pi/2}\cos^2\theta\,d\theta
+=\left[\frac{\theta}{2}+\frac{\sin 2\theta}{4}\right]_{\pi/6}^{\pi/2}
+=\frac{\pi}{6}-\frac{\sqrt3}{8}.
+\]
+Therefore
+\[
+A=\frac{\sqrt3}{8}+\left(\frac{\pi}{6}-\frac{\sqrt3}{8}\right)
+=\frac{\pi}{6}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Take a larger simple region and subtract the excess}
+
+\begin{steps}
+\item The first-quadrant part of the circle is easy to integrate on the whole interval \(0\le\theta\le\pi/2\), so start with that larger region:
+\[
+A_{\text{circle part}}
+=\frac12\int_0^{\pi/2}2\cos^2\theta\,d\theta
+=\int_0^{\pi/2}\cos^2\theta\,d\theta
+=\frac{\pi}{4}.
+\]
+This is a good choice because it avoids splitting the interval at the beginning.
+
+\item On \(0\le\theta\le\pi/6\), the circle lies outside the lemniscate, so the portion that must be removed is
+\[
+A_{\text{excess}}
+=\frac12\int_0^{\pi/6}\bigl(2\cos^2\theta-\sqrt3\sin 2\theta\bigr)\,d\theta.
+\]
+Subtracting this excess from the first-quadrant circle sector leaves exactly the common overlap.
+
+\item Compute the excess:
+\[
+A_{\text{excess}}
+=\int_0^{\pi/6}\cos^2\theta\,d\theta
+-\frac{\sqrt3}{2}\int_0^{\pi/6}\sin 2\theta\,d\theta.
+\]
+Now
+\[
+\int_0^{\pi/6}\cos^2\theta\,d\theta
+=\left[\frac{\theta}{2}+\frac{\sin 2\theta}{4}\right]_0^{\pi/6}
+=\frac{\pi}{12}+\frac{\sqrt3}{8},
+\]
+and
+\[
+\frac{\sqrt3}{2}\int_0^{\pi/6}\sin 2\theta\,d\theta
+=\frac{\sqrt3}{8}.
+\]
+So
+\[
+A_{\text{excess}}
+=\frac{\pi}{12}.
+\]
+
+\item Therefore
+\[
+A=A_{\text{circle part}}-A_{\text{excess}}
+=\frac{\pi}{4}-\frac{\pi}{12}
+=\frac{\pi}{6}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The curves intersect at
+\[
+\theta=\frac{\pi}{6}.
+\]
+For \(0\le\theta\le\pi/6\), the lemniscate is inside the circle; for \(\pi/6\le\theta\le\pi/2\), the circle is inside the lemniscate.
+
+So the common overlap area is
+\[
+A=\frac12\int_0^{\pi/6}\sqrt3\sin 2\theta\,d\theta
++\frac12\int_{\pi/6}^{\pi/2}2\cos^2\theta\,d\theta
+=\boxed{\frac{\pi}{6}}.
+\]
+\end{solutionbox}
+
+\end{document}

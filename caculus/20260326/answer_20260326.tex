@@ -1,0 +1,1520 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\setlength{\mathindent}{1.5em}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+\newcommand{\examdate}{2026/03/26}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{94.}\ }
+\newlength{\subproblemnumberwidth}
+\settowidth{\subproblemnumberwidth}{\textbf{57(a).}\ }
+\newenvironment{solutionbox}{\begin{framed}}{\end{framed}}
+
+\newcommand{\sectiontitle}[2]{%
+  \hypertarget{#1}{}%
+  \par\vspace{0.8em}%
+  \noindent{\Large\bfseries #2}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.8em}%
+}
+
+\newcommand{\tocproblem}[2]{%
+  \hyperref[#1]{#2} & \hyperref[#1]{\pageref*{#1}} \\
+}
+
+\newcommand{\worksheettoc}{%
+  \noindent{\Large\bfseries Contents}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+  \begin{tabular}{@{}p{0.72\columnwidth}r@{}}
+    \textbf{Problem} & \textbf{Page} \\
+    \tocproblem{prob:10-1-16}{10-1 \quad 16}
+    \tocproblem{prob:10-1-19}{10-1 \quad 19}
+    \tocproblem{prob:10-1-22}{10-1 \quad 22}
+    \tocproblem{prob:10-1-57a}{10-1 \quad 57(a)}
+    \tocproblem{prob:10-1-57b}{10-1 \quad 57(b)}
+    \tocproblem{prob:10-4-62}{10-4 \quad 62}
+    \tocproblem{prob:11-3-34}{11-3 \quad 34}
+    \tocproblem{prob:11-10-1}{11-10 \quad 1}
+    \tocproblem{prob:11-10-2}{11-10 \quad 2}
+    \tocproblem{prob:11-10-93}{11-10 \quad 93}
+    \tocproblem{prob:11-10-94}{11-10 \quad 94}
+  \end{tabular}\par
+}
+
+\newcommand{\problem}[3]{%
+  \Needspace{10\baselineskip}%
+  \phantomsection\label{#1}%
+  \par\vspace{0.8em}%
+  \noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#2.}}#3\par
+}
+
+\newcommand{\subproblem}[3]{%
+  \Needspace{10\baselineskip}%
+  \phantomsection\label{#1}%
+  \par\vspace{0.8em}%
+  \noindent
+  \hangindent=\subproblemnumberwidth
+  \hangafter=1
+  \makebox[\subproblemnumberwidth][l]{\textbf{#2.}}#3\par
+}
+
+\newlist{subparts}{enumerate}{1}
+\setlist[subparts]{%
+  label=(\alph*),
+  labelindent=\problemnumberwidth,
+  leftmargin=*,
+  labelsep=0.5em,
+  align=left,
+  itemsep=0.2em,
+  topsep=0.3em,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\newlist{steps}{enumerate}{1}
+\setlist[steps]{%
+  label=\textbf{Step \arabic*.},
+  leftmargin=*,
+  itemsep=0.35em,
+  topsep=0.35em,
+  align=left
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems Solutions\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\worksheettoc
+\vfill\null
+\newpage
+
+\sectiontitle{sec:10-1}{10-1}
+
+\problem{prob:10-1-16}{16}{%
+\begin{subparts}
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{subparts}
+\[
+x=\csc t,\ y=\cot t,\ 0<t<\pi
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the identity \(\csc^2 t-\cot^2 t=1\)}
+
+\begin{steps}
+\item The two coordinates are already written in terms of \(\csc t\) and \(\cot t\), so the identity
+\[
+\csc^2 t-\cot^2 t=1
+\]
+is the most direct elimination tool. This step is appropriate because it removes the parameter without solving for \(t\).
+
+Substituting \(x=\csc t\) and \(y=\cot t\), we get
+\[
+x^2-y^2=1.
+\]
+
+\item The equation \(x^2-y^2=1\) is a hyperbola, but the parameter restriction tells us which branch actually appears. Since \(0<t<\pi\), we have \(\sin t>0\), so
+\[
+x=\csc t>0.
+\]
+Therefore only the \textbf{right-hand branch} is traced.
+
+\item To determine the direction, inspect easy values of \(t\):
+\[
+t\to 0^+ \Longrightarrow \sin t\to 0^+, \ \cot t\to +\infty,
+\]
+so \((x,y)\to(\infty,\infty)\).
+Also,
+\[
+t=\frac{\pi}{2}\Longrightarrow (x,y)=(1,0),
+\]
+and
+\[
+t\to \pi^- \Longrightarrow (x,y)\to(\infty,-\infty).
+\]
+These checkpoints show that the point moves downward along the right branch.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Solve for \(\sin t\) and \(\cos t\) in terms of \(x\) and \(y\)}
+
+\begin{steps}
+\item Because \(x=\csc t\), taking the reciprocal gives
+\[
+\sin t=\frac{1}{x}.
+\]
+This is a natural first move because the reciprocal of \(\csc t\) is simple, and it prepares the standard identity \(\sin^2 t+\cos^2 t=1\).
+
+\item Next find \(\cos t\) from the ratio of the coordinates:
+\[
+\frac{y}{x}=\frac{\cot t}{\csc t}=\cos t.
+\]
+This step is appropriate because it expresses the second basic trigonometric function entirely in terms of \(x\) and \(y\).
+
+\item Now apply
+\[
+\sin^2 t+\cos^2 t=1:
+\]
+\[
+\left(\frac{1}{x}\right)^2+\left(\frac{y}{x}\right)^2=1.
+\]
+Multiplying by \(x^2\) gives
+\[
+1+y^2=x^2,
+\]
+so
+\[
+x^2-y^2=1.
+\]
+
+\item The restriction \(0<t<\pi\) again implies \(x>0\), so the traced part is the right branch only. Since \(\cot t\) decreases from \(+\infty\) to \(-\infty\) on \((0,\pi)\), the motion goes from the upper-right portion through \((1,0)\) to the lower-right portion.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+\boxed{x^2-y^2=1}
+\]
+
+Because \(0<t<\pi\), we have \(\sin t>0\), so \(x=\csc t>0\). Therefore the curve is the \textbf{right branch} of the hyperbola \(x^2-y^2=1\).
+
+As \(t\) increases,
+\[
+(\infty,\infty)\to(1,0)\to(\infty,-\infty),
+\]
+so the direction is from upper-right to lower-right.
+\end{solutionbox}
+
+\problem{prob:10-1-19}{19}{%
+\begin{subparts}
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{subparts}
+\[
+x=\ln t,\ y=\sqrt{t},\ t\geq 1
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Solve for \(t\) from the logarithm}
+
+\begin{steps}
+\item The equation \(x=\ln t\) is easy to invert because the logarithm is one-to-one on \(t>0\). That makes it the cleanest place to start.
+
+Exponentiating gives
+\[
+t=e^x.
+\]
+
+\item Substitute this into \(y=\sqrt{t}\):
+\[
+y=\sqrt{e^x}=e^{x/2}.
+\]
+Equivalently,
+\[
+y^2=e^x.
+\]
+This removes the parameter and produces the Cartesian relation directly.
+
+\item The condition \(t\ge 1\) becomes
+\[
+x=\ln t\ge 0
+\qquad\text{and}\qquad
+y=\sqrt{t}\ge 1.
+\]
+So the graph begins at
+\[
+t=1 \Longrightarrow (x,y)=(0,1),
+\]
+and only the part with \(x\ge 0\) is used.
+
+\item As \(t\) increases, both \(\ln t\) and \(\sqrt t\) increase, so the point moves steadily up and to the right. This gives the correct tracing direction.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Solve for \(t\) from the square root}
+
+\begin{steps}
+\item From
+\[
+y=\sqrt t,
+\]
+we get
+\[
+t=y^2.
+\]
+This is appropriate because it turns the parameter into a very simple algebraic expression.
+
+\item Substitute \(t=y^2\) into \(x=\ln t\):
+\[
+x=\ln(y^2)=2\ln y.
+\]
+Solving for \(y\) gives
+\[
+y=e^{x/2}.
+\]
+So this method reaches the same Cartesian equation from the opposite direction.
+
+\item Since \(t\ge 1\), we have \(y\ge 1\). Then
+\[
+x=2\ln y\ge 0,
+\]
+so the curve again starts at \((0,1)\) and lies only in the region \(x\ge 0\), \(y\ge 1\).
+
+\item The parameter direction is also easy to read here: larger \(t\) means larger \(y\), and then \(x=\ln t\) increases as well. Hence the motion is upward and to the right.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+\boxed{y=e^{x/2}}
+\qquad\text{or equivalently}\qquad
+\boxed{y^2=e^x}
+\]
+
+Because \(t\ge 1\), the curve starts at
+\[
+(x,y)=(0,1)
+\]
+and only the part with \(x\ge 0\), \(y\ge 1\) is traced.
+
+As \(t\) increases, both coordinates increase, so the point moves up and to the right.
+\end{solutionbox}
+
+\problem{prob:10-1-22}{22}{%
+\begin{subparts}
+\item Eliminate the parameter to find a Cartesian equation of the curve.
+\item Sketch the curve and indicate with an arrow the direction in which the curve is traced as the parameter increases.
+\end{subparts}
+\[
+x=\sinh t,\ y=\cosh t
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the hyperbolic identity}
+
+\begin{steps}
+\item The coordinates are \(\sinh t\) and \(\cosh t\), so the matching identity
+\[
+\cosh^2 t-\sinh^2 t=1
+\]
+is the direct elimination formula. It is the natural choice because it contains exactly the two functions in the problem.
+
+\item Substitute \(x=\sinh t\) and \(y=\cosh t\):
+\[
+y^2-x^2=1.
+\]
+So the Cartesian equation is a hyperbola.
+
+\item To identify the traced branch, use the range of \(\cosh t\). Since
+\[
+\cosh t\ge 1 \quad \text{for all real } t,
+\]
+we must have
+\[
+y\ge 1.
+\]
+Therefore the curve is the \textbf{upper branch} of the hyperbola.
+
+\item For direction, test key values:
+\[
+t\to-\infty \Longrightarrow (x,y)\to(-\infty,\infty),
+\]
+\[
+t=0 \Longrightarrow (x,y)=(0,1),
+\]
+\[
+t\to\infty \Longrightarrow (x,y)\to(\infty,\infty).
+\]
+So as \(t\) increases, the point moves from left to right along the upper branch.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the exponential definitions}
+
+\begin{steps}
+\item Write
+\[
+\sinh t=\frac{e^t-e^{-t}}{2},
+\qquad
+\cosh t=\frac{e^t+e^{-t}}{2}.
+\]
+This is appropriate because adding and subtracting these expressions isolates \(e^t\) and \(e^{-t}\).
+
+\item Compute
+\[
+y+x=\cosh t+\sinh t=e^t,
+\qquad
+y-x=\cosh t-\sinh t=e^{-t}.
+\]
+Now the parameter appears only in reciprocal exponentials, which is ideal for elimination.
+
+\item Multiply the two equations:
+\[
+(y+x)(y-x)=e^t e^{-t}=1.
+\]
+Thus
+\[
+y^2-x^2=1.
+\]
+
+\item Since \(y=\cosh t\ge 1\), only the upper branch is traced. Also, \(e^t\) increases and \(e^{-t}\) decreases as \(t\) increases, so the point slides from the left side of the branch through \((0,1)\) and out to the right side.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+\boxed{y^2-x^2=1}
+\]
+
+Because \(y=\cosh t\ge 1\), the curve is the \textbf{upper branch} of the hyperbola \(y^2-x^2=1\).
+
+As \(t\) increases, the point moves from the upper-left through \((0,1)\) to the upper-right.
+\end{solutionbox}
+
+\problem{prob:10-1-57}{57}{Find the point at which the parametric curve intersects itself and the corresponding values of \(t\).}
+
+\subproblem{prob:10-1-57a}{57(a)}{\(x=1-t^2,\ y=t-t^3\)}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the even-odd symmetry}
+
+\begin{steps}
+\item Observe that
+\[
+x(t)=1-t^2
+\]
+is an even function, while
+\[
+y(t)=t-t^3
+\]
+is an odd function. This is useful because self-intersections often occur when the same \(x\)-value is produced by \(t\) and \(-t\).
+
+\item Since
+\[
+x(-t)=x(t),
+\]
+the remaining requirement for \(t\) and \(-t\) to describe the same point is
+\[
+y(-t)=y(t).
+\]
+But \(y\) is odd, so
+\[
+y(-t)=-y(t).
+\]
+Therefore equality can happen only when
+\[
+y(t)=0.
+\]
+
+\item Solve
+\[
+t-t^3=t(1-t^2)=0.
+\]
+So
+\[
+t=0,\ \pm 1.
+\]
+The value \(t=0\) does not create a self-intersection because it gives only one parameter value. The distinct pair is
+\[
+t=1 \quad \text{and} \quad t=-1.
+\]
+
+\item Evaluate the point:
+\[
+x=1-(\pm1)^2=0,
+\qquad
+y=(\pm1)-(\pm1)^3=0.
+\]
+Hence the curve intersects itself at
+\[
+(0,0).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Solve the two-parameter system directly}
+
+\begin{steps}
+\item Let \(t_1\neq t_2\) produce the same point. Then both coordinates must match:
+\[
+1-t_1^2=1-t_2^2,
+\qquad
+t_1-t_1^3=t_2-t_2^3.
+\]
+This is the formal definition of a self-intersection, so it is the systematic place to start.
+
+\item From the \(x\)-equation,
+\[
+t_1^2=t_2^2,
+\]
+so
+\[
+t_2=\pm t_1.
+\]
+Because \(t_1\neq t_2\), the case \(t_2=t_1\) is impossible. Therefore
+\[
+t_2=-t_1.
+\]
+
+\item Substitute this into the \(y\)-equation:
+\[
+t_1-t_1^3=-t_1+t_1^3.
+\]
+Thus
+\[
+2t_1-2t_1^3=0
+\quad\Longrightarrow\quad
+2t_1(1-t_1^2)=0.
+\]
+So
+\[
+t_1=0,\ \pm1.
+\]
+Again \(t_1=0\) would force \(t_2=0\), which is not a self-intersection. Hence the valid pair is
+\[
+t_1=1,\qquad t_2=-1.
+\]
+
+\item Substituting either value gives
+\[
+(x,y)=(0,0).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The curve intersects itself at
+\[
+\boxed{(0,0)}.
+\]
+
+The corresponding parameter values are
+\[
+\boxed{t=1 \text{ and } t=-1.}
+\]
+
+To justify that this is truly a self-intersection, notice that the two
+\emph{distinct} parameter values \(t=1\) and \(t=-1\) give the same point:
+\[
+x(1)=1-1=0,\qquad y(1)=1-1=0,
+\]
+\[
+x(-1)=1-1=0,\qquad y(-1)=-1-(-1)^3=0.
+\]
+So the curve passes through \((0,0)\) twice.
+
+Moreover,
+\[
+\frac{dy}{dx}=\frac{dy/dt}{dx/dt}
+=\frac{1-3t^2}{-2t}.
+\]
+At \(t=1\),
+\[
+\frac{dy}{dx}=\frac{-2}{-2}=1,
+\]
+while at \(t=-1\),
+\[
+\frac{dy}{dx}=\frac{-2}{2}=-1.
+\]
+The tangent slopes are different, so the two branches cross each other at the
+origin. Therefore \((0,0)\) is genuinely an intersection point of the graph.
+\end{solutionbox}
+
+\subproblem{prob:10-1-57b}{57(b)}{\(x=2t-t^3,\ y=t-t^2\)}
+
+\begin{solutionbox}
+\textbf{Method 1: Start with the simpler equation \(y(t_1)=y(t_2)\)}
+
+\begin{steps}
+\item Let \(t_1\neq t_2\) give the same point. Then
+\[
+t_1-t_1^2=t_2-t_2^2.
+\]
+This is the better equation to start from because it is only quadratic, while the \(x\)-equation is cubic.
+
+\item Rearranging gives
+\[
+(t_1-t_2)-(t_1^2-t_2^2)=0.
+\]
+Factor:
+\[
+(t_1-t_2)\bigl[1-(t_1+t_2)\bigr]=0.
+\]
+Since \(t_1\neq t_2\), we must have
+\[
+t_1+t_2=1.
+\]
+
+\item Now use the equality of the \(x\)-coordinates:
+\[
+2t_1-t_1^3=2t_2-t_2^3.
+\]
+Move everything to one side and factor:
+\[
+2(t_1-t_2)-(t_1^3-t_2^3)=0,
+\]
+\[
+(t_1-t_2)\bigl[2-(t_1^2+t_1t_2+t_2^2)\bigr]=0.
+\]
+Again \(t_1\neq t_2\), so
+\[
+t_1^2+t_1t_2+t_2^2=2.
+\]
+
+\item Let
+\[
+s=t_1+t_2,\qquad p=t_1t_2.
+\]
+Because \(s=1\),
+\[
+t_1^2+t_1t_2+t_2^2=s^2-p=1-p.
+\]
+So
+\[
+1-p=2
+\quad\Longrightarrow\quad
+p=-1.
+\]
+Therefore \(t_1,t_2\) are the roots of
+\[
+u^2-su+p=0
+\quad\Longrightarrow\quad
+u^2-u-1=0.
+\]
+Hence
+\[
+t=\frac{1\pm\sqrt5}{2}.
+\]
+
+\item To find the common point, use the relation \(t^2=t+1\). Then
+\[
+y=t-t^2=t-(t+1)=-1.
+\]
+Also,
+\[
+t^3=t(t^2)=t(t+1)=t^2+t=(t+1)+t=2t+1,
+\]
+so
+\[
+x=2t-t^3=2t-(2t+1)=-1.
+\]
+Thus the self-intersection point is
+\[
+(-1,-1).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use symmetric sums from the beginning}
+
+\begin{steps}
+\item Suppose \(t_1\neq t_2\) produce the same point, and set
+\[
+s=t_1+t_2,\qquad p=t_1t_2.
+\]
+This is appropriate because factorization naturally turns the equal-coordinate equations into statements about \(s\) and \(p\).
+
+\item From
+\[
+t_1-t_1^2=t_2-t_2^2
+\]
+we get
+\[
+(t_1-t_2)\bigl[1-(t_1+t_2)\bigr]=0.
+\]
+Since \(t_1\neq t_2\), it follows that
+\[
+s=1.
+\]
+
+\item From
+\[
+2t_1-t_1^3=2t_2-t_2^3
+\]
+we obtain
+\[
+(t_1-t_2)\bigl[2-(t_1^2+t_1t_2+t_2^2)\bigr]=0.
+\]
+So
+\[
+t_1^2+t_1t_2+t_2^2=2.
+\]
+In terms of \(s\) and \(p\),
+\[
+t_1^2+t_1t_2+t_2^2=s^2-p.
+\]
+Because \(s=1\), this gives
+\[
+1-p=2
+\quad\Longrightarrow\quad
+p=-1.
+\]
+
+\item Therefore \(t_1,t_2\) are the roots of
+\[
+u^2-u-1=0,
+\]
+so
+\[
+t=\frac{1\pm\sqrt5}{2}.
+\]
+
+\item Each root satisfies \(t^2=t+1\), so
+\[
+y=t-t^2=-1,
+\qquad
+x=2t-t^3=-1.
+\]
+Hence the common point is
+\[
+(-1,-1).
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The curve intersects itself at
+\[
+\boxed{(-1,-1)}.
+\]
+
+The corresponding parameter values are
+\[
+\boxed{t=\frac{1+\sqrt5}{2}\quad\text{and}\quad t=\frac{1-\sqrt5}{2}.}
+\]
+
+To justify that the graph really intersects itself, let
+\[
+t_1=\frac{1+\sqrt5}{2},\qquad t_2=\frac{1-\sqrt5}{2}.
+\]
+These are distinct real numbers, and both satisfy
+\[
+t^2=t+1.
+\]
+Hence for either one,
+\[
+y=t-t^2=t-(t+1)=-1,
+\]
+and
+\[
+t^3=t(t^2)=t(t+1)=2t+1,
+\]
+so
+\[
+x=2t-t^3=2t-(2t+1)=-1.
+\]
+Thus
+\[
+\bigl(x(t_1),y(t_1)\bigr)=\bigl(x(t_2),y(t_2)\bigr)=(-1,-1),
+\]
+which proves that the same point is reached by two different parameter values.
+
+Also,
+\[
+\frac{dy}{dx}=\frac{dy/dt}{dx/dt}
+=\frac{1-2t}{2-3t^2}.
+\]
+Using \(t^2=t+1\), this becomes
+\[
+\frac{dy}{dx}=\frac{1-2t}{-1-3t}.
+\]
+So at \(t=t_1\),
+\[
+\frac{dy}{dx}=\frac{3-\sqrt5}{2},
+\]
+and at \(t=t_2\),
+\[
+\frac{dy}{dx}=\frac{3+\sqrt5}{2}.
+\]
+These slopes are different, so the two branches cross at \((-1,-1)\) rather
+than merely touching there.
+\end{solutionbox}
+
+\sectiontitle{sec:4}{10-4}
+
+\problem{prob:10-4-62}{62}{Graph the polar curve. Choose a parameter interval that produces the entire curve.
+\[
+r=\lvert\tan\theta\rvert^{\lvert\cot\theta\rvert}.
+\]
+\noindent(valentine curve)}
+
+\begin{solutionbox}
+\textbf{Method 1: Rewrite the radius as \(u^{1/u}\)}
+
+\begin{steps}
+\item Let
+\[
+u=\lvert\tan\theta\rvert.
+\]
+Then \(u>0\) whenever the formula is defined, and
+\[
+\lvert\cot\theta\rvert=\frac{1}{u}.
+\]
+So the polar equation becomes
+\[
+r=u^{1/u}.
+\]
+This substitution is appropriate because it turns the unusual polar formula into a one-variable function whose size and extrema are easier to study.
+
+\item To understand the branch endpoints, analyze the limits of
+\[
+r=u^{1/u}.
+\]
+Take logarithms:
+\[
+\ln r=\frac{\ln u}{u}.
+\]
+If \(u\to 0^+\), then \(\ln u\to-\infty\) and \((\ln u)/u\to-\infty\), so
+\[
+r\to 0.
+\]
+If \(u\to\infty\), then \((\ln u)/u\to 0\), so
+\[
+r\to 1.
+\]
+Translating back to \(\theta\),
+\[
+\theta\to k\pi \Longrightarrow r\to 0,
+\qquad
+\theta\to\frac{\pi}{2}+k\pi \Longrightarrow r\to 1.
+\]
+So each quadrant branch starts near the pole and approaches radius \(1\) near the vertical axis.
+
+\item To find the largest radius, maximize \(r=u^{1/u}\). Since the logarithm is increasing, it is enough to maximize
+\[
+f(u)=\ln r=\frac{\ln u}{u}.
+\]
+Differentiate:
+\[
+f'(u)=\frac{1-\ln u}{u^2}.
+\]
+Setting \(f'(u)=0\) gives
+\[
+\ln u=1
+\quad\Longrightarrow\quad
+u=e.
+\]
+Therefore the maximum radius is
+\[
+r_{\max}=e^{1/e},
+\]
+and it occurs when
+\[
+\lvert\tan\theta\rvert=e.
+\]
+This tells us the bulges in each quadrant swell out to the same largest distance.
+
+\item Because the formula depends only on \(\lvert\tan\theta\rvert\), we have
+\[
+r(-\theta)=r(\theta),
+\qquad
+r(\pi-\theta)=r(\theta).
+\]
+So the graph is symmetric about both coordinate axes. One complete tracing sweep is obtained by passing once through the four quadrant intervals
+\[
+\left(0,\frac{\pi}{2}\right),\ 
+\left(\frac{\pi}{2},\pi\right),\ 
+\left(\pi,\frac{3\pi}{2}\right),\ 
+\left(\frac{3\pi}{2},2\pi\right).
+\]
+Equivalently, we can say that the whole graph is produced on
+\[
+0<\theta<2\pi
+\]
+with the axis angles omitted because the formula is undefined there.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Trace the curve quadrant by quadrant}
+
+\begin{steps}
+\item On the first quadrant \(0<\theta<\pi/2\), both \(\tan\theta\) and \(\cot\theta\) are positive, so
+\[
+r=(\tan\theta)^{\cot\theta}.
+\]
+As \(\theta\) increases from \(0^+\) to \(\pi/2^-\), \(\tan\theta\) runs from \(0\) to \(\infty\). This means the first-quadrant branch already contains the essential radial behavior of the whole graph.
+
+\item Near \(\theta=0^+\), \(\tan\theta\) is tiny, so the radius tends to \(0\). Near \(\theta=\pi/2^-\), \(\tan\theta\) is huge, and the radius tends to \(1\). Therefore the first-quadrant branch starts near the pole, bulges outward, and approaches the point \((0,1)\) as a limit position.
+
+\item In the second quadrant, \(\tan\theta<0\), but the absolute values make \(\lvert\tan\theta\rvert\) behave exactly as in the first quadrant. So the second-quadrant piece is the mirror image of the first across the \(y\)-axis. By the same reasoning, the lower half-plane is the mirror image of the upper half-plane across the \(x\)-axis.
+
+\item Putting the quadrants together, the graph consists of four congruent bulges, one in each quadrant. The branches approach the pole along the \(x\)-axis directions and approach the points \((0,\pm1)\) as \(\theta\) approaches the vertical-axis directions. This is why the graph is commonly described as a valentine-shaped curve. A full sweep is again obtained on
+\[
+0<\theta<2\pi
+\]
+with breaks at the undefined axis angles.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+A convenient full tracing choice is
+\[
+\boxed{0<\theta<2\pi}
+\]
+with
+\[
+\theta\neq \frac{\pi}{2},\ \pi,\ \frac{3\pi}{2},
+\]
+since the formula is undefined on those axis directions.
+
+Let
+\[
+u=\lvert\tan\theta\rvert.
+\]
+Then
+\[
+r=u^{1/u}.
+\]
+Hence
+\[
+\theta\to k\pi \Longrightarrow r\to 0,
+\qquad
+\theta\to \frac{\pi}{2}+k\pi \Longrightarrow r\to 1,
+\]
+and
+\[
+r_{\max}=e^{1/e}
+\]
+when
+\[
+\lvert\tan\theta\rvert=e.
+\]
+
+Also,
+\[
+r(-\theta)=r(\theta),
+\qquad
+r(\pi-\theta)=r(\theta),
+\]
+so the graph is symmetric about both coordinate axes. Thus the curve has four matching bulges, one in each quadrant, giving the valentine shape.
+\end{solutionbox}
+
+\sectiontitle{sec:11-3}{11-3}
+
+\problem{prob:11-3-34}{34}{Find the values of \(p\) for which the series is convergent:
+\[
+\displaystyle \sum_{n=1}^{\infty}\frac{\ln n}{n^p}
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the Integral Test}
+
+\begin{steps}
+\item Consider
+\[
+f(x)=\frac{\ln x}{x^p},\qquad x\ge 2.
+\]
+For large \(x\), this function is positive and decreasing when \(p>0\), so the Integral Test is appropriate. It converts the series question into an improper integral question:
+\[
+\int_2^\infty \frac{\ln x}{x^p}\,dx.
+\]
+
+\item First treat the case \(p>1\). Integrate by parts with
+\[
+u=\ln x,\qquad dv=x^{-p}\,dx.
+\]
+This choice is natural because differentiating \(\ln x\) simplifies it, while integrating \(x^{-p}\) is straightforward. Then
+\[
+du=\frac{dx}{x},
+\qquad
+v=\frac{x^{1-p}}{1-p}.
+\]
+So
+\[
+\int \frac{\ln x}{x^p}\,dx
+=\frac{x^{1-p}\ln x}{1-p}-\frac{1}{1-p}\int x^{-p}\,dx.
+\]
+Therefore
+\[
+\int \frac{\ln x}{x^p}\,dx
+=\frac{x^{1-p}\ln x}{1-p}-\frac{x^{1-p}}{(1-p)^2}+C.
+\]
+When \(p>1\), we have \(1-p<0\), so \(x^{1-p}\to 0\) as \(x\to\infty\), and also \(x^{1-p}\ln x\to 0\). Hence the improper integral converges, so the series converges.
+
+\item Now check \(p=1\). Then the series becomes
+\[
+\sum_{n=1}^\infty \frac{\ln n}{n},
+\]
+and the corresponding integral is
+\[
+\int_2^\infty \frac{\ln x}{x}\,dx
+=\frac{(\ln x)^2}{2}\Big|_2^\infty.
+\]
+This diverges because \((\ln x)^2\to\infty\). Therefore the series diverges at \(p=1\).
+
+\item Finally, if \(p<1\), then for all sufficiently large \(n\) we have \(\ln n\ge 1\), so
+\[
+\frac{\ln n}{n^p}\ge \frac{1}{n^p}.
+\]
+The \(p\)-series \(\sum 1/n^p\) diverges when \(p\le 1\), so our series diverges by comparison. Combining all cases gives
+\[
+\boxed{p>1}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use Cauchy Condensation}
+
+\begin{steps}
+\item For \(p\le 0\), the terms do not even go to zero:
+\[
+\frac{\ln n}{n^p}=(\ln n)n^{-p}.
+\]
+If \(p=0\), this is \(\ln n\to\infty\); if \(p<0\), it grows even faster. Since a convergent series must have terms tending to \(0\), the series diverges immediately when \(p\le 0\).
+
+\item Now suppose \(p>0\), and let
+\[
+a_n=\frac{\ln n}{n^p}.
+\]
+For large \(n\), \(a_n\) is decreasing because the function
+\[
+f(x)=\frac{\ln x}{x^p}
+\]
+has derivative
+\[
+f'(x)=x^{-p-1}(1-p\ln x),
+\]
+which is negative once \(x>e^{1/p}\). This is exactly the condition needed to apply Cauchy Condensation.
+
+\item The condensed series is
+\[
+\sum_{k=1}^\infty 2^k a_{2^k}
+=\sum_{k=1}^\infty 2^k\frac{\ln(2^k)}{(2^k)^p}
+=(\ln 2)\sum_{k=1}^\infty k\,2^{k(1-p)}.
+\]
+This step is appropriate because condensation replaces the logarithm in the numerator by the simpler factor \(k\), making the convergence threshold easier to see.
+
+\item If \(p>1\), then \(2^{1-p}<1\), so
+\[
+\sum_{k=1}^\infty k\,2^{k(1-p)}
+\]
+is a convergent power-weighted geometric series. If \(p=1\), it becomes
+\[
+\sum_{k=1}^\infty k,
+\]
+which diverges. If \(0<p<1\), then the factor \(2^{1-p}>1\), so the terms do not even go to zero, and the series diverges. Hence condensation again gives
+\[
+\boxed{p>1}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+\sum_{n=1}^{\infty}\frac{\ln n}{n^p}
+\]
+is convergent exactly when
+\[
+\boxed{p>1.}
+\]
+
+Reason:
+\begin{itemize}[leftmargin=*]
+\item If \(p>1\), the Integral Test shows
+\[
+\int_2^\infty \frac{\ln x}{x^p}\,dx
+\]
+converges.
+\item If \(p=1\), the series behaves like \(\sum (\ln n)/n\), which diverges.
+\item If \(p<1\), then eventually \((\ln n)/n^p\ge 1/n^p\), and \(\sum 1/n^p\) diverges.
+\end{itemize}
+\end{solutionbox}
+
+\sectiontitle{sec:11-10}{11-10}
+
+\problem{prob:11-10-1}{1}{Use the definition of a Taylor series to find the first four nonzero terms of the series for \(f(x)\) centered at the given value of \(a\). (6 point)
+\[
+f(x)=\sqrt[3]{x},\ a=8
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Rewrite the function in binomial form around \(x=8\)}
+
+\begin{steps}
+\item Because the series is centered at \(a=8\), the natural variable is \(x-8\). Rewrite \(x\) as
+\[
+x=8+(x-8)=8\left(1+\frac{x-8}{8}\right).
+\]
+This is appropriate because it turns the cube root into a standard binomial expression of the form \((1+u)^{1/3}\).
+
+\item Now compute
+\[
+\sqrt[3]{x}
+=\left[8\left(1+\frac{x-8}{8}\right)\right]^{1/3}
+=2\left(1+\frac{x-8}{8}\right)^{1/3}.
+\]
+Use the generalized binomial expansion
+\[
+(1+u)^{1/3}
+=1+\frac13u+\frac{\frac13\left(-\frac23\right)}{2!}u^2
++\frac{\frac13\left(-\frac23\right)\left(-\frac53\right)}{3!}u^3+\cdots.
+\]
+This series is the correct tool because it is exactly the Taylor series of \((1+u)^{1/3}\) about \(u=0\).
+
+\item Substitute
+\[
+u=\frac{x-8}{8}
+\]
+and simplify term by term:
+\[
+2\left(1+\frac13\frac{x-8}{8}-\frac19\frac{(x-8)^2}{8^2}
++\frac{5}{81}\frac{(x-8)^3}{8^3}+\cdots\right).
+\]
+Therefore
+\[
+\sqrt[3]{x}
+=2+\frac{x-8}{12}-\frac{(x-8)^2}{288}+\frac{5(x-8)^3}{20736}+\cdots.
+\]
+
+\item These are the first four nonzero terms because the constant term and the next three powers of \(x-8\) all have nonzero coefficients.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the Taylor formula from derivatives at \(a=8\)}
+
+\begin{steps}
+\item The Taylor series centered at \(a=8\) is
+\[
+f(x)=f(8)+f'(8)(x-8)+\frac{f''(8)}{2!}(x-8)^2+\frac{f'''(8)}{3!}(x-8)^3+\cdots.
+\]
+This is appropriate because the problem explicitly asks for the Taylor series centered at \(8\).
+
+\item Differentiate:
+\[
+\begin{aligned}
+f(x)&=x^{1/3},\\
+f'(x)&=\frac13x^{-2/3},\\
+f''(x)&=-\frac29x^{-5/3},\\
+f'''(x)&=\frac{10}{27}x^{-8/3}.
+\end{aligned}
+\]
+These derivatives are easy to obtain from the power rule, so this method is straightforward.
+
+\item Evaluate at \(x=8\). Since
+\[
+8^{1/3}=2,\quad 8^{2/3}=4,\quad 8^{5/3}=32,\quad 8^{8/3}=256,
+\]
+we get
+\[
+f(8)=2,
+\qquad
+f'(8)=\frac{1}{12},
+\qquad
+f''(8)=-\frac{1}{144},
+\qquad
+f'''(8)=\frac{5}{3456}.
+\]
+
+\item Substitute into the Taylor formula:
+\[
+f(x)=2+\frac{1}{12}(x-8)-\frac{1}{144}\frac{(x-8)^2}{2!}
++\frac{5}{3456}\frac{(x-8)^3}{3!}+\cdots.
+\]
+So
+\[
+\sqrt[3]{x}
+=2+\frac{x-8}{12}-\frac{(x-8)^2}{288}+\frac{5(x-8)^3}{20736}+\cdots.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The first four nonzero terms of the Taylor series of \(\sqrt[3]{x}\) about \(a=8\) are
+\[
+\boxed{
+\sqrt[3]{x}
+=2+\frac{x-8}{12}-\frac{(x-8)^2}{288}+\frac{5(x-8)^3}{20736}+\cdots
+}
+\]
+\end{solutionbox}
+
+\problem{prob:11-10-2}{2}{Evaluate the indefinite integral as an infinite series. (7 point)
+\[
+\displaystyle \int \frac{\cos x-1}{x}\,dx
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Expand the integrand first, then integrate term by term}
+
+\begin{steps}
+\item Start from the Maclaurin series for cosine:
+\[
+\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\frac{x^6}{6!}+\cdots
+=\sum_{n=0}^{\infty}\frac{(-1)^n x^{2n}}{(2n)!}.
+\]
+This is the right starting point because the integrand contains \(\cos x\), and power series can usually be integrated term by term inside their interval of convergence.
+
+\item Subtract \(1\):
+\[
+\cos x-1
+=\sum_{n=1}^{\infty}\frac{(-1)^n x^{2n}}{(2n)!}.
+\]
+Now divide by \(x\):
+\[
+\frac{\cos x-1}{x}
+=\sum_{n=1}^{\infty}\frac{(-1)^n x^{2n-1}}{(2n)!}.
+\]
+This step is appropriate because the constant term has disappeared, so dividing by \(x\) does not create a power-series problem.
+
+\item Integrate term by term:
+\[
+\int \frac{\cos x-1}{x}\,dx
+=C+\sum_{n=1}^{\infty}\frac{(-1)^n}{(2n)!}\int x^{2n-1}\,dx.
+\]
+Thus
+\[
+\int \frac{\cos x-1}{x}\,dx
+=C+\sum_{n=1}^{\infty}\frac{(-1)^n x^{2n}}{(2n)(2n)!}.
+\]
+
+\item Writing out the first few terms,
+\[
+\int \frac{\cos x-1}{x}\,dx
+=C-\frac{x^2}{4}+\frac{x^4}{96}-\frac{x^6}{4320}+\frac{x^8}{322560}-\cdots.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Assume an antiderivative power series and solve for its coefficients}
+
+\begin{steps}
+\item Let
+\[
+F(x)=\int \frac{\cos x-1}{x}\,dx.
+\]
+Assume
+\[
+F(x)=\sum_{n=0}^{\infty}a_n x^n.
+\]
+This is appropriate because the problem asks for the antiderivative \emph{as a series}, so solving directly for the coefficients is a natural alternative to integrating term by term.
+
+\item Differentiate:
+\[
+F'(x)=\sum_{n=1}^{\infty} n a_n x^{n-1}.
+\]
+Then multiply by \(x\):
+\[
+xF'(x)=\sum_{n=1}^{\infty} n a_n x^n.
+\]
+But
+\[
+xF'(x)=\cos x-1
+=\sum_{m=1}^{\infty}\frac{(-1)^m x^{2m}}{(2m)!}.
+\]
+Now both sides are power series in powers of \(x\), so coefficient comparison becomes possible.
+
+\item Compare coefficients. There are no odd-power terms on the right, so
+\[
+a_{2m-1}=0 \qquad (m\ge 1).
+\]
+For the even powers,
+\[
+(2m)a_{2m}=\frac{(-1)^m}{(2m)!},
+\]
+so
+\[
+a_{2m}=\frac{(-1)^m}{(2m)(2m)!}.
+\]
+The constant coefficient \(a_0\) is arbitrary, so write it as \(C\).
+
+\item Therefore
+\[
+F(x)=C+\sum_{m=1}^{\infty}\frac{(-1)^m x^{2m}}{(2m)(2m)!}.
+\]
+This matches the result from Method 1:
+\[
+F(x)=C-\frac{x^2}{4}+\frac{x^4}{96}-\frac{x^6}{4320}+\cdots.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+\boxed{
+\int \frac{\cos x-1}{x}\,dx
+=C+\sum_{n=1}^{\infty}\frac{(-1)^n x^{2n}}{(2n)(2n)!}
+}
+\]
+
+In expanded form,
+\[
+\boxed{
+\int \frac{\cos x-1}{x}\,dx
+=C-\frac{x^2}{4}+\frac{x^4}{96}-\frac{x^6}{4320}+\frac{x^8}{322560}-\cdots
+}
+\]
+\end{solutionbox}
+
+\problem{prob:11-10-93}{93}{Use the Maclaurin series for \(f(x)=x\sin(x^2)\) to find \(f^{(203)}(0)\).
+
+\medskip
+\noindent\textit{Note:} This problem uses the Maclaurin series, so the expansion is centered at \(0\). If the center were changed to some nonzero value \(a\), is there still a way to solve it by using a Taylor series centered at \(a\)?}
+
+\begin{solutionbox}
+\textbf{Method 1: Expand \(\sin(x^2)\) directly}
+
+\begin{steps}
+\item Start from the Maclaurin series
+\[
+\sin u=u-\frac{u^3}{3!}+\frac{u^5}{5!}-\frac{u^7}{7!}+\cdots
+=\sum_{n=0}^{\infty}\frac{(-1)^n u^{2n+1}}{(2n+1)!}.
+\]
+This is the correct starting point because the function is \(x\sin(x^2)\), so substituting \(u=x^2\) immediately matches the structure of the problem.
+
+\item Substitute \(u=x^2\):
+\[
+\sin(x^2)=x^2-\frac{x^6}{3!}+\frac{x^{10}}{5!}-\frac{x^{14}}{7!}+\cdots
+=\sum_{n=0}^{\infty}\frac{(-1)^n x^{4n+2}}{(2n+1)!}.
+\]
+Now multiply by \(x\):
+\[
+f(x)=x\sin(x^2)
+=x^3-\frac{x^7}{3!}+\frac{x^{11}}{5!}-\frac{x^{15}}{7!}+\cdots
+=\sum_{n=0}^{\infty}\frac{(-1)^n x^{4n+3}}{(2n+1)!}.
+\]
+
+\item To find \(f^{(203)}(0)\), identify the coefficient of \(x^{203}\), because in a Maclaurin series
+\[
+f(x)=\sum_{m=0}^{\infty}\frac{f^{(m)}(0)}{m!}x^m.
+\]
+We need
+\[
+4n+3=203
+\quad\Longrightarrow\quad
+n=50.
+\]
+So the \(x^{203}\)-term is
+\[
+\frac{x^{203}}{101!}.
+\]
+
+\item Therefore
+\[
+\frac{f^{(203)}(0)}{203!}=\frac{1}{101!},
+\]
+which gives
+\[
+\boxed{f^{(203)}(0)=\frac{203!}{101!}}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the complex-exponential form}
+
+\begin{steps}
+\item Write
+\[
+\sin(x^2)=\Im\!\bigl(e^{ix^2}\bigr),
+\]
+so
+\[
+f(x)=x\sin(x^2)=\Im\!\bigl(xe^{ix^2}\bigr).
+\]
+This is appropriate because the exponential series is especially easy to expand and track coefficients in.
+
+\item Expand:
+\[
+e^{ix^2}=\sum_{n=0}^{\infty}\frac{(ix^2)^n}{n!}
+=\sum_{n=0}^{\infty}\frac{i^n x^{2n}}{n!}.
+\]
+Then
+\[
+xe^{ix^2}=\sum_{n=0}^{\infty}\frac{i^n x^{2n+1}}{n!}.
+\]
+
+\item The \(x^{203}\)-term appears when
+\[
+2n+1=203
+\quad\Longrightarrow\quad
+n=101.
+\]
+So the relevant term is
+\[
+\frac{i^{101}x^{203}}{101!}.
+\]
+Since
+\[
+i^{101}=i^{100}i=(i^4)^{25}i=i,
+\]
+its imaginary part is \(1\). Therefore the coefficient of \(x^{203}\) in \(x\sin(x^2)\) is again
+\[
+\frac{1}{101!}.
+\]
+
+\item Hence
+\[
+\frac{f^{(203)}(0)}{203!}=\frac{1}{101!},
+\]
+so
+\[
+\boxed{f^{(203)}(0)=\frac{203!}{101!}}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+x\sin(x^2)
+=x^3-\frac{x^7}{3!}+\frac{x^{11}}{5!}-\cdots+\frac{x^{203}}{101!}+\cdots
+\]
+
+So
+\[
+\frac{f^{(203)}(0)}{203!}=\frac{1}{101!},
+\]
+hence
+\[
+\boxed{f^{(203)}(0)=\frac{203!}{101!}}.
+\]
+
+\medskip
+\noindent\textbf{Note.} If the center were changed to some nonzero \(a\), one could still use a Taylor series centered at \(a\), but then one would have to re-expand that series into powers of \(x\) to read off the coefficient of \(x^{203}\). The Maclaurin series is the most efficient choice because it gives the coefficient at \(x=0\) directly.
+\end{solutionbox}
+
+\problem{prob:11-10-94}{94}{If \(f(x)=(1+x^3)^{30}\), what is \(f^{(58)}(0)\)?}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the binomial theorem}
+
+\begin{steps}
+\item Expand:
+\[
+(1+x^3)^{30}
+=\sum_{k=0}^{30}\binom{30}{k}(x^3)^k
+=\sum_{k=0}^{30}\binom{30}{k}x^{3k}.
+\]
+This is the natural method because the function is already in binomial form.
+
+\item In a Maclaurin series, the coefficient of \(x^{58}\) determines \(f^{(58)}(0)\). But every exponent in the expansion is of the form \(3k\), and
+\[
+58
+\]
+is not divisible by \(3\). Therefore there is no \(x^{58}\)-term at all.
+
+\item Hence the coefficient of \(x^{58}\) is \(0\), so
+\[
+\frac{f^{(58)}(0)}{58!}=0.
+\]
+Therefore
+\[
+\boxed{f^{(58)}(0)=0}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the cube-root-of-unity symmetry}
+
+\begin{steps}
+\item Let
+\[
+\omega=e^{2\pi i/3}.
+\]
+Then \(\omega^3=1\). Because the function depends on \(x\) only through \(x^3\),
+\[
+f(\omega x)=(1+(\omega x)^3)^{30}=(1+\omega^3 x^3)^{30}=(1+x^3)^{30}=f(x).
+\]
+This symmetry is appropriate because it forces strong restrictions on which Maclaurin coefficients can be nonzero.
+
+\item Write the Maclaurin series as
+\[
+f(x)=\sum_{n=0}^{\infty}a_n x^n.
+\]
+Then
+\[
+f(\omega x)=\sum_{n=0}^{\infty}a_n \omega^n x^n.
+\]
+Since \(f(\omega x)=f(x)\) for all \(x\), coefficient comparison gives
+\[
+a_n\omega^n=a_n.
+\]
+Thus either \(a_n=0\), or \(\omega^n=1\).
+
+\item But \(\omega^n=1\) happens only when \(3\mid n\). So every coefficient \(a_n\) with \(n\) not divisible by \(3\) must be zero. In particular,
+\[
+a_{58}=0
+\]
+because \(58\) is not a multiple of \(3\).
+
+\item Since
+\[
+a_{58}=\frac{f^{(58)}(0)}{58!},
+\]
+we get
+\[
+\boxed{f^{(58)}(0)=0}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+(1+x^3)^{30}=\sum_{k=0}^{30}\binom{30}{k}x^{3k}.
+\]
+
+All powers are multiples of \(3\), and \(58\) is not a multiple of \(3\). Therefore the coefficient of \(x^{58}\) is \(0\), so
+\[
+\boxed{f^{(58)}(0)=0}.
+\]
+\end{solutionbox}
+
+\end{document}
