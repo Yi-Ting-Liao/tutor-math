@@ -781,112 +781,283 @@ r=\lvert\tan\theta\rvert^{\lvert\cot\theta\rvert}.
 \noindent(valentine curve)}
 
 \begin{solutionbox}
-\textbf{Method 1: Rewrite the radius as \(u^{1/u}\)}
+\textbf{Method: Identify the structural features before plotting many points}
 
 \begin{steps}
-\item Let
-\[
-u=\lvert\tan\theta\rvert.
-\]
-Then \(u>0\) whenever the formula is defined, and
-\[
-\lvert\cot\theta\rvert=\frac{1}{u}.
-\]
-So the polar equation becomes
-\[
-r=u^{1/u}.
-\]
-This substitution is appropriate because it turns the unusual polar formula into a one-variable function whose size and extrema are easier to study.
+\item If you want to sketch this curve by hand, the right approach is not to compute many points mechanically. The better approach is to identify the structural features first.
 
-\item To understand the branch endpoints, analyze the limits of
+Begin by checking where the formula is not defined. Since the expression contains both \(\tan\theta\) and \(\cot\theta\), we must watch the axis directions carefully:
+\begin{itemize}[leftmargin=*]
+\item \(\tan\theta\) is undefined at
 \[
-r=u^{1/u}.
+\theta=\frac{\pi}{2},\ \frac{3\pi}{2},\dots
 \]
-Take logarithms:
+\item \(\cot\theta\) is undefined at
 \[
-\ln r=\frac{\ln u}{u}.
+\theta=0,\ \pi,\ 2\pi,\dots
 \]
-If \(u\to 0^+\), then \(\ln u\to-\infty\) and \((\ln u)/u\to-\infty\), so
+\end{itemize}
+These are exactly the directions where we need to study limits rather than direct substitution.
+
+Also, because of the absolute values,
+\begin{itemize}[leftmargin=*]
+\item \(\lvert\tan\theta\rvert\ge 0\),
+\item \(\lvert\cot\theta\rvert\ge 0\),
+\end{itemize}
+so
 \[
+r\ge 0.
+\]
+That means we do not have to deal with negative-radius plotting issues.
+
+\item Next look for symmetry, because symmetry saves a great deal of sketching work.
+
+For symmetry about the \(x\)-axis, replace \(\theta\) by \(-\theta\):
+\[
+\tan(-\theta)=-\tan\theta \Rightarrow \lvert\tan(-\theta)\rvert=\lvert\tan\theta\rvert,
+\]
+\[
+\cot(-\theta)=-\cot\theta \Rightarrow \lvert\cot(-\theta)\rvert=\lvert\cot\theta\rvert.
+\]
+Hence
+\[
+r(-\theta)=r(\theta),
+\]
+so the graph is symmetric about the \(x\)-axis.
+
+For symmetry about the \(y\)-axis, replace \(\theta\) by \(\pi-\theta\):
+\[
+\tan(\pi-\theta)=-\tan\theta \Rightarrow \lvert\tan(\pi-\theta)\rvert=\lvert\tan\theta\rvert,
+\]
+\[
+\cot(\pi-\theta)=-\cot\theta \Rightarrow \lvert\cot(\pi-\theta)\rvert=\lvert\cot\theta\rvert.
+\]
+Therefore
+\[
+r(\pi-\theta)=r(\theta),
+\]
+so the graph is also symmetric about the \(y\)-axis.
+
+Finally, both \(\lvert\tan\theta\rvert\) and \(\lvert\cot\theta\rvert\) have period \(\pi\), so \(r\) also has period \(\pi\). For analysis, this means it is enough to study the first quadrant
+\[
+0<\theta<\frac{\pi}{2}.
+\]
+For one full tracing sweep of the entire graph, we can take
+\[
+0<\theta<2\pi
+\]
+with the undefined axis angles omitted.
+
+\item On the first quadrant,
+\[
+0<\theta<\frac{\pi}{2},
+\]
+we have
+\[
+\tan\theta>0,\qquad \cot\theta>0.
+\]
+So the absolute values disappear, and the equation simplifies to
+\[
+r=(\tan\theta)^{\cot\theta}.
+\]
+This is the most convenient form for detailed analysis in the first quadrant.
+
+\item The behavior near the coordinate axes is the most important part of the sketch.
+
+First, let \(\theta\to 0^+\). Then
+\[
+\tan\theta\to 0^+,\qquad \cot\theta\to +\infty.
+\]
+So
+\[
+r=(\tan\theta)^{\cot\theta}
+\]
+has the indeterminate-looking form ``a very small positive number raised to a very large positive power.'' In this situation, intuition alone is unreliable, so take logarithms:
+\[
+\ln r=\cot\theta\cdot \ln(\tan\theta).
+\]
+As \(\theta\to 0^+\),
+\[
+\cot\theta\sim \frac{1}{\theta},
+\qquad
+\tan\theta\sim \theta.
+\]
+Therefore
+\[
+\ln r\sim \frac{\ln\theta}{\theta}.
+\]
+Since \(\ln\theta\to -\infty\) as \(\theta\to 0^+\), we get
+\[
+\frac{\ln\theta}{\theta}\to -\infty.
+\]
+Hence
+\[
+\ln r\to -\infty
+\quad\Longrightarrow\quad
 r\to 0.
 \]
-If \(u\to\infty\), then \((\ln u)/u\to 0\), so
+So as \(\theta\) approaches \(0\), the curve moves toward the origin.
+
+\item Now let
 \[
+\theta\to \frac{\pi}{2}^{-}.
+\]
+Then
+\[
+\tan\theta\to +\infty,\qquad \cot\theta\to 0^+.
+\]
+Again the limit is not obvious from inspection, so take logarithms:
+\[
+\ln r=\cot\theta\ln(\tan\theta).
+\]
+Let
+\[
+u=\frac{\pi}{2}-\theta\to 0^+.
+\]
+Then
+\[
+\tan\theta\sim \frac{1}{u},
+\qquad
+\cot\theta\sim u.
+\]
+Thus
+\[
+\ln r\sim u\ln\!\left(\frac{1}{u}\right).
+\]
+Because
+\[
+u\ln\!\left(\frac{1}{u}\right)\to 0,
+\]
+we obtain
+\[
+\ln r\to 0
+\quad\Longrightarrow\quad
 r\to 1.
 \]
-Translating back to \(\theta\),
+So near \(\theta=\frac{\pi}{2}\), the curve approaches the point on the \(y\)-axis with radius \(1\), namely \((0,1)\), as a limit position.
+
+\item To sketch by hand, it is also important to compute a few easy anchor points.
+
+At
 \[
-\theta\to k\pi \Longrightarrow r\to 0,
+\theta=\frac{\pi}{4},
+\]
+we have
+\[
+\tan\frac{\pi}{4}=1,\qquad \cot\frac{\pi}{4}=1,
+\]
+so
+\[
+r=1^1=1.
+\]
+Thus the curve passes through
+\[
+\left(r,\theta\right)=\left(1,\frac{\pi}{4}\right).
+\]
+
+At
+\[
+\theta=\frac{\pi}{6},
+\]
+we have
+\[
+\tan\frac{\pi}{6}=\frac{1}{\sqrt3},
 \qquad
-\theta\to\frac{\pi}{2}+k\pi \Longrightarrow r\to 1.
+\cot\frac{\pi}{6}=\sqrt3,
 \]
-So each quadrant branch starts near the pole and approaches radius \(1\) near the vertical axis.
+so
+\[
+r=\left(\frac{1}{\sqrt3}\right)^{\sqrt3},
+\]
+which is less than \(1\). Therefore at \(\theta=\frac{\pi}{6}\), the curve lies closer to the origin than it does at \(\theta=\frac{\pi}{4}\).
 
-\item To find the largest radius, maximize \(r=u^{1/u}\). Since the logarithm is increasing, it is enough to maximize
+At
 \[
-f(u)=\ln r=\frac{\ln u}{u}.
+\theta=\frac{\pi}{3},
 \]
-Differentiate:
+we have
 \[
-f'(u)=\frac{1-\ln u}{u^2}.
+\tan\frac{\pi}{3}=\sqrt3,
+\qquad
+\cot\frac{\pi}{3}=\frac{1}{\sqrt3},
 \]
-Setting \(f'(u)=0\) gives
+so
 \[
-\ln u=1
-\quad\Longrightarrow\quad
-u=e.
+r=(\sqrt3)^{1/\sqrt3},
 \]
-Therefore the maximum radius is
-\[
-r_{\max}=e^{1/e},
-\]
-and it occurs when
-\[
-\lvert\tan\theta\rvert=e.
-\]
-This tells us the bulges in each quadrant swell out to the same largest distance.
+which is slightly greater than \(1\). This shows that in the first quadrant the branch grows outward past \(r=1\) before settling back toward \(r=1\).
 
-\item Because the formula depends only on \(\lvert\tan\theta\rvert\), we have
+\item Putting these facts together, the first-quadrant branch behaves as follows:
+\begin{itemize}[leftmargin=*]
+\item as \(\theta\to 0^+\), \(r\to 0\),
+\item at \(\theta=\frac{\pi}{4}\), \(r=1\),
+\item later the radius becomes slightly larger than \(1\),
+\item as \(\theta\to \frac{\pi}{2}^{-}\), \(r\to 1\).
+\end{itemize}
+So the first-quadrant branch starts near the origin, expands outward, passes through the point with \(r=1\) on the \(45^\circ\) ray, rises to a modest peak above \(1\), and then approaches \((0,1)\). It is not a sharp petal that folds back inward; it is a smooth branch that bulges outward and then joins the neighborhood of the unit circle.
+
+\item The other quadrants are obtained by symmetry. Because the graph is symmetric about both the \(x\)-axis and the \(y\)-axis, and because the radius has period \(\pi\), the full graph consists of four corresponding branches:
+\begin{itemize}[leftmargin=*]
+\item first quadrant: from near the origin to near \((0,1)\),
+\item second quadrant: the mirror image back toward the origin,
+\item third and fourth quadrants: the corresponding lower branches.
+\end{itemize}
+Overall, the graph has four symmetric bulges, narrows toward the origin in the middle, and approaches points on the unit circle in the vertical directions. This is why it is described as a valentine-shaped curve.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand Sketch Procedure}
+
+\begin{steps}
+\item First write the symmetry relations:
 \[
 r(-\theta)=r(\theta),
 \qquad
 r(\pi-\theta)=r(\theta).
 \]
-So the graph is symmetric about both coordinate axes. One complete tracing sweep is obtained by passing once through the four quadrant intervals
-\[
-\left(0,\frac{\pi}{2}\right),\ 
-\left(\frac{\pi}{2},\pi\right),\ 
-\left(\pi,\frac{3\pi}{2}\right),\ 
-\left(\frac{3\pi}{2},2\pi\right).
-\]
-Equivalently, we can say that the whole graph is produced on
-\[
-0<\theta<2\pi
-\]
-with the axis angles omitted because the formula is undefined there.
-\end{steps}
-\end{solutionbox}
+So for analysis, it is enough to study the first quadrant.
 
-\begin{solutionbox}
-\textbf{Method 2: Trace the curve quadrant by quadrant}
-
-\begin{steps}
-\item On the first quadrant \(0<\theta<\pi/2\), both \(\tan\theta\) and \(\cot\theta\) are positive, so
+\item On
+\[
+0<\theta<\frac{\pi}{2},
+\]
+rewrite the equation as
 \[
 r=(\tan\theta)^{\cot\theta}.
 \]
-As \(\theta\) increases from \(0^+\) to \(\pi/2^-\), \(\tan\theta\) runs from \(0\) to \(\infty\). This means the first-quadrant branch already contains the essential radial behavior of the whole graph.
 
-\item Near \(\theta=0^+\), \(\tan\theta\) is tiny, so the radius tends to \(0\). Near \(\theta=\pi/2^-\), \(\tan\theta\) is huge, and the radius tends to \(1\). Therefore the first-quadrant branch starts near the pole, bulges outward, and approaches the point \((0,1)\) as a limit position.
-
-\item In the second quadrant, \(\tan\theta<0\), but the absolute values make \(\lvert\tan\theta\rvert\) behave exactly as in the first quadrant. So the second-quadrant piece is the mirror image of the first across the \(y\)-axis. By the same reasoning, the lower half-plane is the mirror image of the upper half-plane across the \(x\)-axis.
-
-\item Putting the quadrants together, the graph consists of four congruent bulges, one in each quadrant. The branches approach the pole along the \(x\)-axis directions and approach the points \((0,\pm1)\) as \(\theta\) approaches the vertical-axis directions. This is why the graph is commonly described as a valentine-shaped curve. A full sweep is again obtained on
+\item Mark the three key behaviors:
 \[
-0<\theta<2\pi
+\theta\to 0^+ \Rightarrow r\to 0,
+\qquad
+\theta=\frac{\pi}{4} \Rightarrow r=1,
+\qquad
+\theta\to \frac{\pi}{2}^{-} \Rightarrow r\to 1.
 \]
-with breaks at the undefined axis angles.
+\item Add one more checkpoint to see whether the branch rises above \(1\). For example, at
+\[
+\theta=\frac{\pi}{3},
+\]
+we get
+\[
+r=(\sqrt3)^{1/\sqrt3}>1.
+\]
+So you know the branch swells outward slightly before returning toward \(r=1\).
+
+\item Draw the smooth first-quadrant branch first, then complete the graph by symmetry across the two coordinate axes.
 \end{steps}
+
+\medskip
+\noindent\textbf{Common mistakes:}
+\begin{itemize}[leftmargin=*]
+\item Do not assume the curve blows up to infinity near \(\theta=\frac{\pi}{2}\). Even though \(\tan\theta\to\infty\), the exponent \(\cot\theta\to 0\), and the actual limit is
+\[
+r\to 1.
+\]
+\item Do not guess the limit near \(\theta=0\) from the form \(0^\infty\). When both the base and the exponent vary, taking logarithms is the correct method.
+\item Do not mistake this for a rose curve. It does not have the standard form \(r=a\cos(n\theta)\) or \(r=a\sin(n\theta)\), so its branches are smoother and rounder than the sharp petals of a rose.
+\end{itemize}
 \end{solutionbox}
 
 \begin{solutionbox}
@@ -902,36 +1073,37 @@ with
 \]
 since the formula is undefined on those axis directions.
 
-Let
-\[
-u=\lvert\tan\theta\rvert.
-\]
-Then
-\[
-r=u^{1/u}.
-\]
-Hence
-\[
-\theta\to k\pi \Longrightarrow r\to 0,
-\qquad
-\theta\to \frac{\pi}{2}+k\pi \Longrightarrow r\to 1,
-\]
-and
-\[
-r_{\max}=e^{1/e}
-\]
-when
-\[
-\lvert\tan\theta\rvert=e.
-\]
-
 Also,
 \[
 r(-\theta)=r(\theta),
 \qquad
 r(\pi-\theta)=r(\theta),
 \]
-so the graph is symmetric about both coordinate axes. Thus the curve has four matching bulges, one in each quadrant, giving the valentine shape.
+so the graph is symmetric about both coordinate axes.
+
+On the first quadrant,
+\[
+0<\theta<\frac{\pi}{2},
+\]
+we have
+\[
+r=(\tan\theta)^{\cot\theta}.
+\]
+Its key behavior is
+\[
+\theta\to 0^+ \Longrightarrow r\to 0,
+\qquad
+\theta=\frac{\pi}{4} \Longrightarrow r=1,
+\qquad
+\theta\to \frac{\pi}{2}^{-} \Longrightarrow r\to 1.
+\]
+Also,
+\[
+\theta=\frac{\pi}{3}
+\quad\Longrightarrow\quad
+r=(\sqrt3)^{1/\sqrt3}>1,
+\]
+so the first-quadrant branch starts near the origin, bulges slightly outside \(r=1\), and then approaches \((0,1)\). Reflecting this branch across the axes gives four smooth symmetric branches, producing the valentine-shaped graph.
 \end{solutionbox}
 
 \sectiontitle{sec:11-3}{11-3}
