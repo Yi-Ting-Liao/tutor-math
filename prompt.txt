@@ -1,0 +1,15 @@
+Help me solve the problems in /Users/test/Desktop/project/tutor_math/caculus/20260409/problem_20260409.tex(if need, you can also refer to the pngs in /Users/test/Desktop/project/tutor_math/caculus/20260409)
+
+and write the answers into /Users/test/Desktop/project/tutor_math/caculus/20260409/answer_20260409.tex
+
+Requirements:
+1. Give me two different methods.
+2. In each method, explain the rationale for every step — not just what to do, but why this step is appropriate.
+3. Write clearly and organize the solution by method and by step.
+4. At the end, give the final answer in a clean hand-in version.
+5. Do not make the answer too short.
+
+
+幫我將  /Users/test/Desktop/project/tutor_math/caculus/20260409/problem.md 的題目寫進 /Users/test/Desktop/project/tutor_math/caculus/20260409/problem_20260409.tex
+
+按照 latex 原本設定好的格式，你完成後不需要編譯，請做靜態檢查就好

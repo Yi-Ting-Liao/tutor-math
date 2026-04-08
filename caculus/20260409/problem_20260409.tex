@@ -1,0 +1,163 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{xeCJK}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\mathindent}{1.5em}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+
+\newcommand{\examdate}{2026/04/09}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{69.}\ }
+\newcommand{\problemtitle}[2]{%
+  \hypertarget{#1}{}%
+  \par\vspace{0.4em}%
+  \noindent{\large\bfseries #2}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+}
+\newcommand{\worksheettoc}{%
+  \noindent{\Large\bfseries Contents}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+  \begin{tabular}{@{}p{0.26\columnwidth}p{0.66\columnwidth}@{}}
+    \hyperlink{sec:11-11}{\textbf{11-11}} & \hyperlink{sec:11-11}{3} \\
+    \hyperlink{sec:10-5}{\textbf{10-5}} & \hyperlink{sec:10-5}{44, 47, 50, 69} \\
+    \hyperlink{sec:10-6}{\textbf{10-6}} & \hyperlink{sec:10-6}{24, 25} \\
+    \hyperlink{sec:10-review}{\textbf{10 Review}} & \hyperlink{sec:10-review}{44, 58, 62} \\
+  \end{tabular}\par
+}
+\newcommand{\problem}[2]{%
+  \par\noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#1.}}#2\par
+  \vspace{1.4em}%
+}
+\newlist{subparts}{enumerate}{1}
+\setlist[subparts]{%
+  label=(\alph*),
+  labelindent=\problemnumberwidth,
+  leftmargin=*,
+  labelsep=0.5em,
+  align=left,
+  itemsep=0.2em,
+  topsep=0.3em,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\worksheettoc
+\vfill\null
+\newpage
+
+\problemtitle{sec:11-11}{11-11}
+
+\problem{3}{%
+\begin{subparts}
+\item Approximate \(f\) by a Taylor polynomial with degree \(n\) at the number \(a\). (3 point)
+\item Use Taylor's Inequality to estimate the accuracy of the approximation \(f(x)\approx T_n(x)\) when \(x\) lies in the given interval. (4 point)
+\end{subparts}
+\[
+f(x)=e^{x^2},\ a=0,\ n=3,\ 0\le x\le 0.1
+\]}
+
+\problemtitle{sec:10-5}{10-5}
+
+\problem{44}{Find an equation for the conic that satisfies the given conditions.
+\medskip
+\noindent Ellipse, foci \((\pm4,0)\), passing through \((-4,1.8)\)}
+
+\problem{47}{Find an equation for the conic that satisfies the given conditions.
+\medskip
+\noindent Hyperbola, vertices \((-3,-4)\), \((-3,6)\), foci \((-3,-7)\), \((-3,9)\)}
+
+\problem{50}{Find an equation for the conic that satisfies the given conditions.
+\medskip
+\noindent Hyperbola, foci \((2,0)\), \((2,8)\), asymptotes \(y=3+\frac{1}{2}x\) and \(y=5-\frac{1}{2}x\)}
+
+\problem{69}{The graph shows two red circles with centers \((-1,0)\) and \((1,0)\) and radii \(3\) and \(5\), respectively. Consider the collection of all circles tangent to both of these circles. (Some of these are shown in blue.) Show that the centers of all such circles lie on an ellipse with foci \((\pm1,0)\). Find an equation of this ellipse.}
+
+\problemtitle{sec:10-6}{10-6}
+
+\problem{24}{Graph the conic and its directrix. Also graph the conic obtained by rotating this curve about the origin through an angle \(\pi/3\).
+\[
+r=\frac{4}{5+6\cos\theta}
+\]}
+
+\problem{25}{Graph the conics
+\[
+r=\frac{e}{1-e\cos\theta}
+\]
+with \(e=0.4\), \(0.6\), \(0.8\), and \(1.0\) on a common screen. How does the value of \(e\) affect the shape of the curve?}
+
+\problemtitle{sec:10-review}{10 Review}
+
+\problem{44}{%
+\begin{subparts}
+\item Find the exact length of the portion of the curve shown in blue.
+\item Find the area of the shaded region.
+\end{subparts}
+\[
+r=2\cos^2(\theta/2)
+\]}
+
+\problem{58}{Show that if \(m\) is any real number, then there are exactly two lines of slope \(m\) that are tangent to the ellipse
+\[
+x^2/a^2+y^2/b^2=1
+\]
+and their equations are
+\[
+y=mx\pm\sqrt{a^2m^2+b^2}
+\]}
+
+\problem{62}{A curve called the folium of Descartes is defined by the parametric equations
+\[
+x=\frac{3t}{1+t^3},\ y=\frac{3t^2}{1+t^3}
+\]
+\begin{subparts}
+\item Show that if \((a,b)\) lies on the curve, then so does \((b,a)\); that is, the curve is symmetric with respect to the line \(y=x\). Where does the curve intersect this line?
+\item Find the points on the curve where the tangent lines are horizontal or vertical.
+\item Show that the line \(y=-x-1\) is a slant asymptote.
+\item Sketch the curve.
+\item Show that a Cartesian equation of this curve is \(x^3+y^3=3xy\).
+\item Show that the polar equation can be written in the form
+\[
+r=\frac{3\sec\theta\tan\theta}{1+\tan^3\theta}
+\]
+\item Find the area enclosed by the loop of this curve.
+\item Show that the area of the loop is the same as the area that lies between the asymptote and the infinite branches of the curve. (Use a computer algebra system to evaluate the integral.)
+\end{subparts}}
+
+\end{document}

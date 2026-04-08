@@ -1,0 +1,1802 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\setlength{\mathindent}{1.5em}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+\newcommand{\examdate}{2026/04/09}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{69.}\ }
+\newenvironment{solutionbox}{\begin{framed}}{\end{framed}}
+
+\newcommand{\sectiontitle}[2]{%
+  \hypertarget{#1}{}%
+  \par\vspace{0.8em}%
+  \noindent{\Large\bfseries #2}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.8em}%
+}
+
+\newcommand{\tocproblem}[2]{%
+  \hyperref[#1]{#2} & \hyperref[#1]{\pageref*{#1}} \\
+}
+
+\newcommand{\worksheettoc}{%
+  \noindent{\Large\bfseries Contents}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+  \begin{tabular}{@{}p{0.72\columnwidth}r@{}}
+    \textbf{Problem} & \textbf{Page} \\
+    \tocproblem{prob:11-11-3}{11-11 \quad 3}
+    \tocproblem{prob:10-5-44}{10-5 \quad 44}
+    \tocproblem{prob:10-5-47}{10-5 \quad 47}
+    \tocproblem{prob:10-5-50}{10-5 \quad 50}
+    \tocproblem{prob:10-5-69}{10-5 \quad 69}
+    \tocproblem{prob:10-6-24}{10-6 \quad 24}
+    \tocproblem{prob:10-6-25}{10-6 \quad 25}
+    \tocproblem{prob:10-review-44}{10 Review \quad 44}
+    \tocproblem{prob:10-review-58}{10 Review \quad 58}
+    \tocproblem{prob:10-review-62}{10 Review \quad 62}
+  \end{tabular}\par
+}
+
+\newcommand{\problem}[3]{%
+  \Needspace{10\baselineskip}%
+  \phantomsection\label{#1}%
+  \par\vspace{0.8em}%
+  \noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#2.}}#3\par
+}
+
+\newlist{subparts}{enumerate}{1}
+\setlist[subparts]{%
+  label=(\alph*),
+  labelindent=\problemnumberwidth,
+  leftmargin=*,
+  labelsep=0.5em,
+  align=left,
+  itemsep=0.2em,
+  topsep=0.3em,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\newlist{steps}{enumerate}{1}
+\setlist[steps]{%
+  label=\textbf{Step \arabic*.},
+  leftmargin=*,
+  itemsep=0.35em,
+  topsep=0.35em,
+  align=left
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems Solutions\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\worksheettoc
+\vfill\null
+\newpage
+
+\sectiontitle{sec:11-11}{11-11}
+
+\problem{prob:11-11-3}{3}{%
+\begin{subparts}
+\item Approximate \(f\) by a Taylor polynomial with degree \(n\) at the number \(a\).
+\item Use Taylor's Inequality to estimate the accuracy of the approximation \(f(x)\approx T_n(x)\) when \(x\) lies in the given interval.
+\end{subparts}
+\[
+f(x)=e^{x^2},\qquad a=0,\qquad n=3,\qquad 0\le x\le 0.1
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Start from the known Maclaurin series for \(e^u\)}
+
+\begin{steps}
+\item The function is \(e^{x^2}\), so the most natural first move is to use the familiar expansion
+\[
+e^u=1+u+\frac{u^2}{2!}+\frac{u^3}{3!}+\cdots
+\]
+and then substitute \(u=x^2\). This is appropriate because the exponential series is standard and immediately matches the structure of the problem.
+
+Substituting \(u=x^2\) gives
+\[
+e^{x^2}=1+x^2+\frac{x^4}{2!}+\frac{x^6}{3!}+\cdots
+\]
+
+\item A degree-\(3\) Taylor polynomial keeps all terms through \(x^3\). Here the series has only even powers, so there are no \(x\)- or \(x^3\)-terms to keep. Therefore
+\[
+T_3(x)=1+x^2.
+\]
+This is the correct degree-\(3\) polynomial even though the highest visible power is only \(x^2\).
+
+\item For the error estimate, Taylor's Inequality uses the \((n+1)\)-st derivative, so here we need \(f^{(4)}\). Differentiating gives
+\[
+f^{(4)}(x)=\bigl(12+48x^2+16x^4\bigr)e^{x^2}.
+\]
+This step is appropriate because the remainder after a third-degree polynomial is controlled by the fourth derivative.
+
+\item On the interval \(0\le x\le 0.1\), every factor in
+\[
+\bigl(12+48x^2+16x^4\bigr)e^{x^2}
+\]
+is increasing, so the maximum occurs at \(x=0.1\). Thus we may take
+\[
+M=\bigl(12+48(0.1)^2+16(0.1)^4\bigr)e^{0.01}
+=12.4816\,e^{0.01}.
+\]
+
+\item Taylor's Inequality says
+\[
+|R_3(x)|\le \frac{M|x|^4}{4!}.
+\]
+Since \(|x|\le 0.1\),
+\[
+|R_3(x)|\le \frac{12.4816\,e^{0.01}(0.1)^4}{24}
+\approx 5.26\times 10^{-5}.
+\]
+So the approximation error is at most about \(5.26\times 10^{-5}\) on the given interval.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Build the Taylor polynomial from derivatives at \(0\)}
+
+\begin{steps}
+\item The Taylor polynomial at \(a=0\) is determined by the derivatives at \(0\), so a direct derivative calculation is another clean route. This method is appropriate because it follows the definition of the Taylor polynomial exactly.
+
+We have
+\[
+f(x)=e^{x^2},\qquad f(0)=1.
+\]
+Also,
+\[
+f'(x)=2xe^{x^2}\quad\Longrightarrow\quad f'(0)=0,
+\]
+\[
+f''(x)=\bigl(2+4x^2\bigr)e^{x^2}\quad\Longrightarrow\quad f''(0)=2,
+\]
+\[
+f'''(x)=\bigl(12x+8x^3\bigr)e^{x^2}\quad\Longrightarrow\quad f'''(0)=0.
+\]
+
+\item Therefore
+\[
+T_3(x)=f(0)+f'(0)x+\frac{f''(0)}{2!}x^2+\frac{f'''(0)}{3!}x^3
+=1+0+\frac{2}{2}x^2+0
+=1+x^2.
+\]
+This agrees with Method 1, which is a good consistency check.
+
+\item The Lagrange remainder for a third-degree Taylor polynomial is
+\[
+R_3(x)=\frac{f^{(4)}(\xi)}{4!}x^4
+\]
+for some \(\xi\) between \(0\) and \(x\). So, again, we need a bound on \(f^{(4)}\) over \(0\le \xi\le 0.1\).
+
+\item Since
+\[
+f^{(4)}(x)=\bigl(12+48x^2+16x^4\bigr)e^{x^2},
+\]
+we may use the same maximum
+\[
+M=12.4816\,e^{0.01}.
+\]
+Then
+\[
+|R_3(x)|\le \frac{M(0.1)^4}{24}\approx 5.26\times 10^{-5}.
+\]
+This is exactly the estimate Taylor's Inequality asks for.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The Maclaurin series of \(e^{x^2}\) is
+\[
+e^{x^2}=1+x^2+\frac{x^4}{2!}+\frac{x^6}{3!}+\cdots
+\]
+so the degree-\(3\) Taylor polynomial is
+\[
+\boxed{T_3(x)=1+x^2.}
+\]
+
+Also,
+\[
+f^{(4)}(x)=\bigl(12+48x^2+16x^4\bigr)e^{x^2}.
+\]
+On \(0\le x\le 0.1\), the maximum is
+\[
+M=12.4816\,e^{0.01}.
+\]
+Therefore, by Taylor's Inequality,
+\[
+|R_3(x)|\le \frac{M|x|^4}{4!}
+\le \frac{12.4816\,e^{0.01}(0.1)^4}{24}
+\approx 5.26\times 10^{-5}.
+\]
+
+So
+\[
+\boxed{e^{x^2}\approx 1+x^2}
+\]
+with error at most
+\[
+\boxed{5.26\times 10^{-5}}
+\]
+for \(0\le x\le 0.1\).
+\end{solutionbox}
+
+\sectiontitle{sec:10-5}{10-5}
+
+\problem{prob:10-5-44}{44}{Find an equation for the conic that satisfies the given conditions.
+\medskip
+\noindent Ellipse, foci \((\pm4,0)\), passing through \((-4,1.8)\)}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the standard ellipse form with known foci}
+
+\begin{steps}
+\item Because the foci are \((\pm4,0)\), the center is the origin and the major axis is horizontal. So the ellipse must have the form
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1,
+\qquad c=4,
+\qquad c^2=a^2-b^2.
+\]
+This setup is appropriate because the focal data already tells us the orientation and center.
+
+\item Since \(c=4\), we have
+\[
+b^2=a^2-16.
+\]
+That reduces the number of unknowns from two to one.
+
+\item The point \(\left(-4,\frac95\right)\) lies on the ellipse, so substitute it:
+\[
+\frac{(-4)^2}{a^2}+\frac{(9/5)^2}{b^2}=1.
+\]
+Using \(b^2=a^2-16\), this becomes
+\[
+\frac{16}{a^2}+\frac{81/25}{a^2-16}=1.
+\]
+
+\item Multiply through and solve for \(a^2\):
+\[
+25a^4-881a^2+6400=0.
+\]
+Factoring the quadratic in \(a^2\) gives
+\[
+\left(a^2-25\right)\left(25a^2-256\right)=0.
+\]
+So
+\[
+a^2=25 \quad\text{or}\quad a^2=\frac{256}{25}.
+\]
+
+\item For an ellipse with \(c=4\), we need \(a^2>c^2=16\). Therefore
+\[
+a^2=\frac{256}{25}
+\]
+is impossible, and the valid choice is
+\[
+a^2=25.
+\]
+Then
+\[
+b^2=a^2-16=9.
+\]
+
+\item Hence the equation is
+\[
+\boxed{\frac{x^2}{25}+\frac{y^2}{9}=1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the defining distance-sum property of an ellipse}
+
+\begin{steps}
+\item For any point \(P\) on an ellipse, the sum of the distances to the two foci is constant and equals \(2a\). This method is appropriate because the problem gives one point on the ellipse and both foci.
+
+Let
+\[
+F_1=(-4,0),\qquad F_2=(4,0),\qquad P=\left(-4,\frac95\right).
+\]
+
+\item Compute the two focal distances:
+\[
+PF_1=\left|\frac95-0\right|=\frac95,
+\]
+because \(P\) is directly above \(F_1\), and
+\[
+PF_2=\sqrt{(-8)^2+\left(\frac95\right)^2}
+=\sqrt{64+\frac{81}{25}}
+=\sqrt{\frac{1681}{25}}
+=\frac{41}{5}.
+\]
+
+\item Therefore
+\[
+PF_1+PF_2=\frac95+\frac{41}{5}=\frac{50}{5}=10.
+\]
+So
+\[
+2a=10 \qquad\Longrightarrow\qquad a=5.
+\]
+
+\item Since the focal distance is \(c=4\),
+\[
+b^2=a^2-c^2=25-16=9.
+\]
+Thus the ellipse is
+\[
+\boxed{\frac{x^2}{25}+\frac{y^2}{9}=1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+Because the foci are \((\pm4,0)\), the ellipse has center \((0,0)\) and form
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1,
+\qquad a^2-b^2=16.
+\]
+
+Using the point \(\left(-4,\frac95\right)\),
+\[
+\frac{16}{a^2}+\frac{81/25}{b^2}=1.
+\]
+Solving gives
+\[
+a^2=25,\qquad b^2=9.
+\]
+
+Therefore the equation is
+\[
+\boxed{\frac{x^2}{25}+\frac{y^2}{9}=1.}
+\]
+\end{solutionbox}
+
+\problem{prob:10-5-47}{47}{Find an equation for the conic that satisfies the given conditions.
+\medskip
+\noindent Hyperbola, vertices \((-3,-4)\), \((-3,6)\), foci \((-3,-7)\), \((-3,9)\)}
+
+\begin{solutionbox}
+\textbf{Method 1: Read the center, \(a\), and \(c\) from the given points}
+
+\begin{steps}
+\item The vertices and foci all have the same \(x\)-coordinate, so the transverse axis is vertical. That tells us the hyperbola must have form
+\[
+\frac{(y-k)^2}{a^2}-\frac{(x-h)^2}{b^2}=1.
+\]
+This is the right model because the geometry is already aligned with the coordinate axes.
+
+\item The center is the midpoint of the vertices:
+\[
+\left(\frac{-3+(-3)}{2},\frac{-4+6}{2}\right)=(-3,1).
+\]
+So \(h=-3\) and \(k=1\).
+
+\item The distance from the center to either vertex is
+\[
+a=|6-1|=5.
+\]
+The distance from the center to either focus is
+\[
+c=|9-1|=8.
+\]
+
+\item For a hyperbola,
+\[
+c^2=a^2+b^2.
+\]
+Therefore
+\[
+b^2=c^2-a^2=64-25=39.
+\]
+
+\item Substituting everything into the standard form gives
+\[
+\boxed{\frac{(y-1)^2}{25}-\frac{(x+3)^2}{39}=1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Start from the distance-difference definition}
+
+\begin{steps}
+\item Translate the center to the origin by setting
+\[
+X=x+3,\qquad Y=y-1.
+\]
+Then the foci become \((0,\pm8)\). This translation is appropriate because it makes the distance formulas much cleaner.
+
+\item For a hyperbola, the absolute difference of the distances to the foci is constant and equals \(2a\). Since the vertices are \(5\) units from the center,
+\[
+2a=10.
+\]
+So the locus satisfies
+\[
+\left|\sqrt{X^2+(Y-8)^2}-\sqrt{X^2+(Y+8)^2}\right|=10.
+\]
+
+\item Square once:
+\[
+\begin{aligned}
+&X^2+(Y-8)^2+X^2+(Y+8)^2-100\\
+&\qquad=2\sqrt{\bigl(X^2+(Y-8)^2\bigr)\bigl(X^2+(Y+8)^2\bigr)}.
+\end{aligned}
+\]
+After simplifying the left side, this becomes
+\[
+X^2+Y^2+14
+=\sqrt{\bigl(X^2+Y^2+64\bigr)^2-256Y^2}.
+\]
+Squaring again removes the remaining radical.
+
+\item After expanding and simplifying, we get
+\[
+39Y^2-25X^2=975.
+\]
+Dividing by \(975\) gives
+\[
+\frac{Y^2}{25}-\frac{X^2}{39}=1.
+\]
+
+\item Replace \(X=x+3\) and \(Y=y-1\):
+\[
+\boxed{\frac{(y-1)^2}{25}-\frac{(x+3)^2}{39}=1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The center is the midpoint of the vertices:
+\[
+(h,k)=(-3,1).
+\]
+Because the transverse axis is vertical,
+\[
+\frac{(y-k)^2}{a^2}-\frac{(x-h)^2}{b^2}=1.
+\]
+
+From the vertices,
+\[
+a=5,
+\]
+and from the foci,
+\[
+c=8.
+\]
+So
+\[
+b^2=c^2-a^2=64-25=39.
+\]
+
+Therefore the equation is
+\[
+\boxed{\frac{(y-1)^2}{25}-\frac{(x+3)^2}{39}=1.}
+\]
+\end{solutionbox}
+
+\problem{prob:10-5-50}{50}{Find an equation for the conic that satisfies the given conditions.
+\medskip
+\noindent Hyperbola, foci \((2,0)\), \((2,8)\), asymptotes \(y=3+\frac12x\) and \(y=5-\frac12x\)}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the center, focus distance, and asymptote slope}
+
+\begin{steps}
+\item The center of a hyperbola is the midpoint of the foci:
+\[
+\left(\frac{2+2}{2},\frac{0+8}{2}\right)=(2,4).
+\]
+This is also the intersection point of the asymptotes, which checks the data immediately.
+
+\item Since the foci have the same \(x\)-coordinate, the transverse axis is vertical. So the equation must be
+\[
+\frac{(y-4)^2}{a^2}-\frac{(x-2)^2}{b^2}=1.
+\]
+
+\item The focal distance is
+\[
+c=4.
+\]
+For a vertical hyperbola, the asymptotes are
+\[
+y-4=\pm\frac{a}{b}(x-2).
+\]
+The given slopes are \(\pm\frac12\), so
+\[
+\frac{a}{b}=\frac12
+\qquad\Longrightarrow\qquad
+b=2a.
+\]
+This step is appropriate because the asymptotes encode the ratio between the two semi-axes.
+
+\item Use the hyperbola relation
+\[
+c^2=a^2+b^2.
+\]
+Substituting \(c=4\) and \(b=2a\),
+\[
+16=a^2+4a^2=5a^2.
+\]
+Hence
+\[
+a^2=\frac{16}{5},
+\qquad
+b^2=\frac{64}{5}.
+\]
+
+\item Therefore
+\[
+\boxed{\frac{(y-4)^2}{16/5}-\frac{(x-2)^2}{64/5}=1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Compare the asymptotes to a translated general equation}
+
+\begin{steps}
+\item Shift the center to the origin by setting
+\[
+X=x-2,\qquad Y=y-4.
+\]
+Then the foci are \((0,\pm4)\), and the asymptotes become
+\[
+Y=\pm\frac12X.
+\]
+This translation is useful because it isolates the essential shape from the location.
+
+\item A vertical hyperbola centered at the origin can be written as
+\[
+\frac{Y^2}{a^2}-\frac{X^2}{b^2}=1.
+\]
+Its asymptotes are
+\[
+Y=\pm\frac{a}{b}X.
+\]
+Matching slopes with the given asymptotes gives
+\[
+\frac{a}{b}=\frac12.
+\]
+
+\item The translated foci are \((0,\pm4)\), so
+\[
+c=4.
+\]
+Because \(c^2=a^2+b^2\), and \(b=2a\), we again get
+\[
+16=5a^2,
+\qquad
+a^2=\frac{16}{5},
+\qquad
+b^2=\frac{64}{5}.
+\]
+
+\item Return to the original variables:
+\[
+\boxed{\frac{(y-4)^2}{16/5}-\frac{(x-2)^2}{64/5}=1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The center is the midpoint of the foci:
+\[
+(h,k)=(2,4).
+\]
+Because the foci are vertical, the hyperbola has form
+\[
+\frac{(y-4)^2}{a^2}-\frac{(x-2)^2}{b^2}=1.
+\]
+
+The asymptote slopes are \(\pm\frac12\), so
+\[
+\frac{a}{b}=\frac12 \quad\Longrightarrow\quad b=2a.
+\]
+Also
+\[
+c=4,\qquad c^2=a^2+b^2.
+\]
+Thus
+\[
+16=a^2+4a^2=5a^2,
+\]
+so
+\[
+a^2=\frac{16}{5},\qquad b^2=\frac{64}{5}.
+\]
+
+Therefore
+\[
+\boxed{\frac{(y-4)^2}{16/5}-\frac{(x-2)^2}{64/5}=1.}
+\]
+\end{solutionbox}
+
+\problem{prob:10-5-69}{69}{The graph shows two red circles with centers \((-1,0)\) and \((1,0)\) and radii \(3\) and \(5\), respectively. Consider the collection of all circles tangent to both of these circles. (Some of these are shown in blue.) Show that the centers of all such circles lie on an ellipse with foci \((\pm1,0)\). Find an equation of this ellipse.}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the tangency distances directly}
+
+\begin{steps}
+\item Let the center of a blue circle be \(P=(x,y)\), and let its radius be \(r\). In the family shown in the picture, each blue circle lies outside the smaller red circle and inside the larger red circle. Therefore
+\[
+PF_1=r+3,
+\qquad
+PF_2=5-r,
+\]
+where
+\[
+F_1=(-1,0),\qquad F_2=(1,0).
+\]
+This is the right first step because tangency converts immediately into distance equations.
+
+\item Add the two equations:
+\[
+PF_1+PF_2=(r+3)+(5-r)=8.
+\]
+So every center \(P\) satisfies
+\[
+PF_1+PF_2=8.
+\]
+That is exactly the defining property of an ellipse with foci \(F_1\) and \(F_2\).
+
+\item For an ellipse, the constant sum is \(2a\). Hence
+\[
+2a=8 \qquad\Longrightarrow\qquad a=4.
+\]
+The foci are \((\pm1,0)\), so
+\[
+c=1.
+\]
+
+\item Now compute \(b^2\):
+\[
+b^2=a^2-c^2=16-1=15.
+\]
+Therefore the ellipse is
+\[
+\boxed{\frac{x^2}{16}+\frac{y^2}{15}=1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Eliminate the moving radius algebraically}
+
+\begin{steps}
+\item Write the two center-to-center distances explicitly:
+\[
+d_1=\sqrt{(x+1)^2+y^2},
+\qquad
+d_2=\sqrt{(x-1)^2+y^2}.
+\]
+These are the distances from \(P=(x,y)\) to the two fixed centers.
+
+\item Tangency gives one equation with the unknown moving radius \(r\) for each red circle:
+\[
+d_1=r+3,
+\qquad
+d_2=5-r.
+\]
+Introducing \(r\) is useful because it captures the geometry exactly.
+
+\item Eliminate \(r\) by adding the equations:
+\[
+d_1+d_2=8.
+\]
+So
+\[
+\sqrt{(x+1)^2+y^2}+\sqrt{(x-1)^2+y^2}=8.
+\]
+This is the standard definition of an ellipse with foci \((\pm1,0)\).
+
+\item Since \(2a=8\), we get \(a=4\). With \(c=1\),
+\[
+b^2=a^2-c^2=16-1=15.
+\]
+Hence
+\[
+\boxed{\frac{x^2}{16}+\frac{y^2}{15}=1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+Let \(P=(x,y)\) be the center of a blue circle and let its radius be \(r\). For the family shown,
+\[
+PF_1=r+3,\qquad PF_2=5-r,
+\]
+where \(F_1=(-1,0)\) and \(F_2=(1,0)\).
+
+Adding gives
+\[
+PF_1+PF_2=8.
+\]
+So the centers lie on an ellipse with foci \((\pm1,0)\) and
+\[
+2a=8 \quad\Longrightarrow\quad a=4.
+\]
+Since
+\[
+c=1,
+\]
+we have
+\[
+b^2=a^2-c^2=16-1=15.
+\]
+
+Therefore the ellipse is
+\[
+\boxed{\frac{x^2}{16}+\frac{y^2}{15}=1.}
+\]
+\end{solutionbox}
+
+\sectiontitle{sec:10-6}{10-6}
+
+\problem{prob:10-6-24}{24}{Graph the conic and its directrix. Also graph the conic obtained by rotating this curve about the origin through an angle \(\pi/3\).
+\[
+r=\frac{4}{5+6\cos\theta}
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Recognize the standard focus-directrix polar form}
+
+\begin{steps}
+\item Divide numerator and denominator by \(5\):
+\[
+r=\frac{4/5}{1+(6/5)\cos\theta}.
+\]
+This is appropriate because it puts the equation into the standard conic form
+\[
+r=\frac{ed}{1+e\cos\theta}.
+\]
+
+\item Matching coefficients gives
+\[
+e=\frac65,
+\qquad
+ed=\frac45.
+\]
+So
+\[
+d=\frac{4/5}{6/5}=\frac23.
+\]
+Since \(e>1\), the conic is a hyperbola.
+
+\item For the form
+\[
+r=\frac{ed}{1+e\cos\theta},
+\]
+the directrix is
+\[
+x=d.
+\]
+Therefore the directrix is
+\[
+\boxed{x=\frac23.}
+\]
+
+\item To sketch the actual branch, it helps to know a few key points. At \(\theta=0\),
+\[
+r=\frac{4}{11},
+\]
+so one vertex is
+\[
+\left(\frac{4}{11},0\right).
+\]
+The other vertex is obtained from the rectangular equation below and is \((4,0)\), so the hyperbola opens left-right, with the focus at the origin on the left branch.
+
+\item Rotating a polar curve through an angle \(\alpha\) about the origin replaces \(\theta\) by \(\theta-\alpha\). Therefore the rotated curve is
+\[
+\boxed{r=\frac{4}{5+6\cos(\theta-\pi/3)}.}
+\]
+The directrix rotates with the curve, so the line \(x=\frac23\) becomes
+\[
+x\cos\frac{\pi}{3}+y\sin\frac{\pi}{3}=\frac23,
+\]
+that is,
+\[
+\boxed{x+\sqrt3\,y=\frac43.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Convert to Cartesian form to identify the graph}
+
+\begin{steps}
+\item Multiply both sides by the denominator:
+\[
+r(5+6\cos\theta)=4.
+\]
+Since \(r\cos\theta=x\), this becomes
+\[
+5r+6x=4.
+\]
+Using rectangular coordinates is appropriate here because graphing is easier once the conic is in standard Cartesian form.
+
+\item Replace \(r\) by \(\sqrt{x^2+y^2}\):
+\[
+5\sqrt{x^2+y^2}=4-6x.
+\]
+Squaring gives
+\[
+25(x^2+y^2)=(4-6x)^2.
+\]
+Expand and simplify:
+\[
+11x^2-25y^2-48x+16=0.
+\]
+
+\item Complete the square in \(x\):
+\[
+11\left(x-\frac{24}{11}\right)^2-25y^2=\frac{400}{11}.
+\]
+So
+\[
+\frac{\left(x-\frac{24}{11}\right)^2}{400/121}-\frac{y^2}{16/11}=1.
+\]
+This confirms that the conic is a horizontal hyperbola.
+
+\item From the standard form we read
+\[
+h=\frac{24}{11},\qquad a=\frac{20}{11},\qquad b^2=\frac{16}{11}.
+\]
+Hence the vertices are
+\[
+\left(\frac{24}{11}\pm\frac{20}{11},0\right)
+=\left(\frac{4}{11},0\right),\ (4,0).
+\]
+These are the key points needed for a clean sketch.
+
+\item The rotated graph is obtained by rotating every point through \(\pi/3\) about the origin. In polar form that is exactly
+\[
+\boxed{r=\frac{4}{5+6\cos(\theta-\pi/3)}.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\[
+r=\frac{4}{5+6\cos\theta}
+=\frac{4/5}{1+(6/5)\cos\theta}.
+\]
+So
+\[
+e=\frac65>1,
+\qquad
+d=\frac23.
+\]
+Therefore the conic is a hyperbola with directrix
+\[
+\boxed{x=\frac23.}
+\]
+
+Its Cartesian equation is
+\[
+\boxed{\frac{\left(x-\frac{24}{11}\right)^2}{400/121}-\frac{y^2}{16/11}=1,}
+\]
+so it is a right-left opening hyperbola with vertices
+\[
+\left(\frac{4}{11},0\right),\qquad (4,0).
+\]
+
+After rotation through \(\pi/3\) about the origin, the curve becomes
+\[
+\boxed{r=\frac{4}{5+6\cos(\theta-\pi/3)}.}
+\]
+The rotated directrix is
+\[
+\boxed{x+\sqrt3\,y=\frac43.}
+\]
+\end{solutionbox}
+
+\problem{prob:10-6-25}{25}{Graph the conics
+\[
+r=\frac{e}{1-e\cos\theta}
+\]
+with \(e=0.4\), \(0.6\), \(0.8\), and \(1.0\) on a common screen. How does the value of \(e\) affect the shape of the curve?}
+
+\begin{solutionbox}
+\textbf{Method 1: Use eccentricity to classify the conics}
+
+\begin{steps}
+\item The equation
+\[
+r=\frac{e}{1-e\cos\theta}
+\]
+matches the standard focus-directrix form
+\[
+r=\frac{ed}{1-e\cos\theta}
+\]
+with
+\[
+d=1.
+\]
+So all of these conics have focus at the origin and directrix
+\[
+x=1.
+\]
+This is the right viewpoint because the parameter \(e\) is literally the eccentricity.
+
+\item The classification depends entirely on the size of \(e\):
+\[
+0<e<1 \Longrightarrow \text{ellipse},
+\qquad
+e=1 \Longrightarrow \text{parabola}.
+\]
+Therefore the cases \(e=0.4,\ 0.6,\ 0.8\) are ellipses, while \(e=1.0\) is a parabola.
+
+\item As \(e\) increases, the curve becomes less circular and more stretched in the positive \(x\)-direction. One easy way to see that is to inspect the point at \(\theta=0\):
+\[
+r(0)=\frac{e}{1-e}.
+\]
+This grows rapidly as \(e\) approaches \(1\), so the graph pushes farther to the right.
+
+\item At \(\theta=\pi\),
+\[
+r(\pi)=\frac{e}{1+e},
+\]
+which changes much more slowly. So the left side does not move nearly as dramatically as the right side. That explains why the ellipse becomes more elongated rather than simply larger.
+
+\item Conclusion: increasing \(e\) makes the ellipse more eccentric. At \(e=1\), the limiting case is a parabola.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Convert to Cartesian form and analyze the semi-axes}
+
+\begin{steps}
+\item Start from
+\[
+r=\frac{e}{1-e\cos\theta}.
+\]
+Multiply through:
+\[
+r-er\cos\theta=e.
+\]
+Since \(r\cos\theta=x\),
+\[
+r-ex=e.
+\]
+Replacing \(r\) by \(\sqrt{x^2+y^2}\) gives
+\[
+\sqrt{x^2+y^2}=e(x+1).
+\]
+
+\item Square both sides:
+\[
+x^2+y^2=e^2(x+1)^2.
+\]
+For \(0<e<1\), rearranging and completing the square gives
+\[
+\frac{\left(x-\frac{e^2}{1-e^2}\right)^2}{\left(\frac{e}{1-e^2}\right)^2}
+\;+\;
+\frac{y^2}{\frac{e^2}{1-e^2}}
+=1.
+\]
+So the semi-major and semi-minor axes are
+\[
+a=\frac{e}{1-e^2},
+\qquad
+b=\frac{e}{\sqrt{1-e^2}}.
+\]
+
+\item Now compare the ratio
+\[
+\frac{b}{a}=\sqrt{1-e^2}.
+\]
+As \(e\) increases, \(\sqrt{1-e^2}\) decreases. That means the ellipse becomes flatter relative to its major axis, which is another precise way of saying it becomes more elongated.
+
+\item When \(e=1\), the equation
+\[
+\sqrt{x^2+y^2}=x+1
+\]
+squares to
+\[
+y^2=2x+1,
+\]
+which is a parabola. So the family really does move continuously from ellipse shapes toward a parabola as \(e\) increases.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+The equation
+\[
+r=\frac{e}{1-e\cos\theta}
+\]
+has eccentricity \(e\) and directrix \(x=1\).
+
+So:
+\[
+e=0.4,\ 0.6,\ 0.8 \quad\Rightarrow\quad \text{ellipses},
+\]
+\[
+e=1.0 \quad\Rightarrow\quad \text{a parabola}.
+\]
+
+As \(e\) increases, the curve becomes more eccentric and stretches farther in the positive \(x\)-direction. In other words, the ellipses become less circular and approach the parabola
+\[
+\boxed{y^2=2x+1}
+\]
+when \(e=1\).
+\end{solutionbox}
+
+\sectiontitle{sec:10-review}{10 Review}
+
+\problem{prob:10-review-44}{44}{%
+\begin{subparts}
+\item Find the exact length of the portion of the curve shown in blue.
+\item Find the area of the shaded region.
+\end{subparts}
+\[
+r=2\cos^2(\theta/2)
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Use the standard polar arc-length and area formulas}
+
+\begin{steps}
+\item First simplify the polar equation:
+\[
+r=2\cos^2(\theta/2)=1+\cos\theta.
+\]
+This is the standard cardioid form, which makes the calculations cleaner.
+
+\item From the picture, the blue arc is the upper-left part of the cardioid, running from \((0,1)\) down to the cusp at the origin. That corresponds to
+\[
+\frac{\pi}{2}\le \theta\le \pi.
+\]
+Identifying the correct interval is essential because both the length and the area depend on it.
+
+\item For arc length, use
+\[
+L=\int_{\alpha}^{\beta}\sqrt{r^2+\left(\frac{dr}{d\theta}\right)^2}\,d\theta.
+\]
+Here
+\[
+r=1+\cos\theta,
+\qquad
+\frac{dr}{d\theta}=-\sin\theta.
+\]
+So
+\[
+r^2+\left(\frac{dr}{d\theta}\right)^2
+=(1+\cos\theta)^2+\sin^2\theta
+=2+2\cos\theta
+=4\cos^2(\theta/2).
+\]
+On \(\frac{\pi}{2}\le\theta\le\pi\), we have \(\cos(\theta/2)\ge0\), so the square root is
+\[
+2\cos(\theta/2).
+\]
+
+\item Therefore
+\[
+L=\int_{\pi/2}^{\pi}2\cos(\theta/2)\,d\theta
+=4\sin(\theta/2)\Big|_{\pi/2}^{\pi}
+=4-2\sqrt2.
+\]
+So the exact blue arc length is
+\[
+\boxed{4-2\sqrt2.}
+\]
+
+\item For the shaded area, use the polar area formula
+\[
+A=\frac12\int_{\alpha}^{\beta}r^2\,d\theta.
+\]
+The shaded region in the picture is the region bounded by the same arc and the \(y\)-axis, so we use the same interval:
+\[
+A=\frac12\int_{\pi/2}^{\pi}(1+\cos\theta)^2\,d\theta.
+\]
+
+\item Expand the square:
+\[
+(1+\cos\theta)^2=1+2\cos\theta+\cos^2\theta.
+\]
+Hence
+\[
+A=\frac12\left[\int_{\pi/2}^{\pi}1\,d\theta
+ + 2\int_{\pi/2}^{\pi}\cos\theta\,d\theta
+ + \int_{\pi/2}^{\pi}\cos^2\theta\,d\theta\right].
+\]
+Evaluating each part gives
+\[
+A=\frac12\left(\frac{\pi}{2}-2+\frac{\pi}{4}\right)
+=\frac{3\pi}{8}-1.
+\]
+
+\item Therefore the shaded area is
+\[
+\boxed{\frac{3\pi}{8}-1.}
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the half-angle substitution from the start}
+
+\begin{steps}
+\item Keep the original form
+\[
+r=2\cos^2(\theta/2),
+\]
+because both the arc-length integrand and the area integrand simplify nicely in half-angle form.
+
+\item For the blue arc, use the same interval
+\[
+\frac{\pi}{2}\le\theta\le\pi.
+\]
+As in Method 1,
+\[
+\sqrt{r^2+\left(\frac{dr}{d\theta}\right)^2}=2\cos(\theta/2).
+\]
+Now let
+\[
+u=\frac{\theta}{2}.
+\]
+Then \(d\theta=2\,du\), and the endpoints become \(u=\frac{\pi}{4}\) to \(u=\frac{\pi}{2}\). So
+\[
+L=4\int_{\pi/4}^{\pi/2}\cos u\,du
+=4\left[\sin u\right]_{\pi/4}^{\pi/2}
+=4-2\sqrt2.
+\]
+
+\item For area,
+\[
+A=\frac12\int_{\pi/2}^{\pi}4\cos^4(\theta/2)\,d\theta
+=4\int_{\pi/4}^{\pi/2}\cos^4 u\,du.
+\]
+This step is appropriate because power-reduction formulas are standard for fourth powers of sine or cosine.
+
+\item Use
+\[
+\cos^4 u=\frac{3+4\cos(2u)+\cos(4u)}{8}.
+\]
+Then
+\[
+A=4\int_{\pi/4}^{\pi/2}\frac{3+4\cos(2u)+\cos(4u)}{8}\,du.
+\]
+Integrating term by term gives
+\[
+A=\frac{3\pi}{8}-1.
+\]
+
+\item So the same answers are recovered:
+\[
+\boxed{L=4-2\sqrt2},
+\qquad
+\boxed{A=\frac{3\pi}{8}-1}.
+\]
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+Since
+\[
+r=2\cos^2(\theta/2)=1+\cos\theta,
+\]
+the blue arc shown in the figure corresponds to
+\[
+\frac{\pi}{2}\le\theta\le\pi.
+\]
+
+Its length is
+\[
+L=\int_{\pi/2}^{\pi}\sqrt{r^2+\left(\frac{dr}{d\theta}\right)^2}\,d\theta
+=\int_{\pi/2}^{\pi}2\cos(\theta/2)\,d\theta
+=\boxed{4-2\sqrt2}.
+\]
+
+The shaded area is
+\[
+A=\frac12\int_{\pi/2}^{\pi}r^2\,d\theta
+=\frac12\int_{\pi/2}^{\pi}(1+\cos\theta)^2\,d\theta
+=\boxed{\frac{3\pi}{8}-1}.
+\]
+\end{solutionbox}
+
+\problem{prob:10-review-58}{58}{Show that if \(m\) is any real number, then there are exactly two lines of slope \(m\) that are tangent to the ellipse
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1
+\]
+and their equations are
+\[
+y=mx\pm\sqrt{a^2m^2+b^2}.
+\]}
+
+\begin{solutionbox}
+\textbf{Method 1: Substitute the line and force a double root}
+
+\begin{steps}
+\item Any line with slope \(m\) has equation
+\[
+y=mx+c,
+\]
+where \(c\) is its \(y\)-intercept. This is the right starting point because the slope is fixed and tangency will determine the intercept.
+
+\item Substitute \(y=mx+c\) into the ellipse:
+\[
+\frac{x^2}{a^2}+\frac{(mx+c)^2}{b^2}=1.
+\]
+This gives a quadratic equation in \(x\). A line is tangent exactly when that quadratic has one repeated solution, that is, discriminant \(0\).
+
+\item Expand:
+\[
+\left(\frac1{a^2}+\frac{m^2}{b^2}\right)x^2+\frac{2mc}{b^2}x+\left(\frac{c^2}{b^2}-1\right)=0.
+\]
+So the discriminant condition is
+\[
+\left(\frac{2mc}{b^2}\right)^2
+-4\left(\frac1{a^2}+\frac{m^2}{b^2}\right)\left(\frac{c^2}{b^2}-1\right)=0.
+\]
+
+\item Simplify the equation. After multiplying through and cancelling common factors, we obtain
+\[
+c^2=a^2m^2+b^2.
+\]
+This is the key tangency condition for the intercept.
+
+\item Therefore
+\[
+c=\pm\sqrt{a^2m^2+b^2}.
+\]
+So the tangent lines are
+\[
+\boxed{y=mx\pm\sqrt{a^2m^2+b^2}.}
+\]
+
+\item There are exactly two such lines because the quantity under the square root is always positive:
+\[
+a^2m^2+b^2>0.
+\]
+Thus there are exactly two real choices for \(c\), one with \(+\) and one with \(-\).
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the tangent point and the slope formula}
+
+\begin{steps}
+\item Let \((x_0,y_0)\) be a point of tangency on the ellipse
+\[
+\frac{x_0^2}{a^2}+\frac{y_0^2}{b^2}=1.
+\]
+For an ellipse, the tangent line at \((x_0,y_0)\) is
+\[
+\frac{xx_0}{a^2}+\frac{yy_0}{b^2}=1.
+\]
+This form is appropriate because it encodes tangency directly.
+
+\item The slope of the tangent line can be found by implicit differentiation of
+\[
+\frac{x^2}{a^2}+\frac{y^2}{b^2}=1:
+\]
+\[
+\frac{2x}{a^2}+\frac{2y}{b^2}y'=0
+\qquad\Longrightarrow\qquad
+y'=-\frac{b^2x}{a^2y}.
+\]
+At \((x_0,y_0)\), the slope is \(m\), so
+\[
+m=-\frac{b^2x_0}{a^2y_0}.
+\]
+
+\item Solve this for \(x_0\):
+\[
+x_0=-\frac{a^2m}{b^2}y_0.
+\]
+Substitute into the ellipse equation:
+\[
+\frac{1}{a^2}\left(\frac{a^4m^2}{b^4}y_0^2\right)+\frac{y_0^2}{b^2}=1.
+\]
+After simplifying,
+\[
+y_0^2=\frac{b^4}{a^2m^2+b^2}.
+\]
+
+\item Therefore
+\[
+y_0=\pm\frac{b^2}{\sqrt{a^2m^2+b^2}}.
+\]
+Using
+\[
+x_0=-\frac{a^2m}{b^2}y_0,
+\]
+we get the corresponding tangent points. Now insert \((x_0,y_0)\) into the tangent line formula:
+\[
+\frac{xx_0}{a^2}+\frac{yy_0}{b^2}=1.
+\]
+After simplification, this becomes
+\[
+y=mx\pm\sqrt{a^2m^2+b^2}.
+\]
+
+\item The sign choice gives two distinct tangent points and therefore two distinct tangent lines. Hence there are exactly two tangent lines of slope \(m\).
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+Let a line of slope \(m\) be
+\[
+y=mx+c.
+\]
+Substitute into the ellipse:
+\[
+\frac{x^2}{a^2}+\frac{(mx+c)^2}{b^2}=1.
+\]
+For tangency, the resulting quadratic in \(x\) must have discriminant \(0\). This gives
+\[
+c^2=a^2m^2+b^2.
+\]
+Hence
+\[
+c=\pm\sqrt{a^2m^2+b^2}.
+\]
+
+Therefore the two tangent lines are
+\[
+\boxed{y=mx\pm\sqrt{a^2m^2+b^2}.}
+\]
+Because \(a^2m^2+b^2>0\) for every real \(m\), these are exactly two real tangent lines.
+\end{solutionbox}
+
+\problem{prob:10-review-62}{62}{A curve called the folium of Descartes is defined by the parametric equations
+\[
+x=\frac{3t}{1+t^3},\qquad y=\frac{3t^2}{1+t^3}
+\]
+\begin{subparts}
+\item Show that if \((a,b)\) lies on the curve, then so does \((b,a)\); that is, the curve is symmetric with respect to the line \(y=x\). Where does the curve intersect this line?
+\item Find the points on the curve where the tangent lines are horizontal or vertical.
+\item Show that the line \(y=-x-1\) is a slant asymptote.
+\item Sketch the curve.
+\item Show that a Cartesian equation of this curve is \(x^3+y^3=3xy\).
+\item Show that the polar equation can be written in the form
+\[
+r=\frac{3\sec\theta\tan\theta}{1+\tan^3\theta}
+\]
+\item Find the area enclosed by the loop of this curve.
+\item Show that the area of the loop is the same as the area that lies between the asymptote and the infinite branches of the curve. (Use a computer algebra system to evaluate the integral.)
+\end{subparts}}
+
+\begin{solutionbox}
+\textbf{Method 1: Work directly with the parameter \(t\)}
+
+\begin{steps}
+\item For symmetry, compare the point at \(t\) with the point at \(1/t\):
+\[
+x\!\left(\frac1t\right)=\frac{3/t}{1+1/t^3}=\frac{3t^2}{1+t^3}=y(t),
+\]
+\[
+y\!\left(\frac1t\right)=\frac{3/t^2}{1+1/t^3}=\frac{3t}{1+t^3}=x(t).
+\]
+So whenever \((x(t),y(t))=(a,b)\), the point \((b,a)\) also lies on the curve. That proves symmetry about \(y=x\).
+
+To find intersections with \(y=x\), set \(x(t)=y(t)\):
+\[
+\frac{3t}{1+t^3}=\frac{3t^2}{1+t^3}
+\qquad\Longrightarrow\qquad
+t=t^2.
+\]
+Thus \(t=0\) or \(t=1\), giving
+\[
+\boxed{(0,0)\ \text{and}\ \left(\frac32,\frac32\right)}.
+\]
+
+\item Differentiate both coordinates:
+\[
+\frac{dx}{dt}=\frac{3(1-2t^3)}{(1+t^3)^2},
+\qquad
+\frac{dy}{dt}=\frac{3t(2-t^3)}{(1+t^3)^2}.
+\]
+These formulas are the correct tool for horizontal and vertical tangents because, for a parametric curve, horizontal tangents come from \(dy/dt=0\) and vertical tangents come from \(dx/dt=0\), provided the other derivative is not \(0\).
+
+Horizontal tangents:
+\[
+\frac{dy}{dt}=0
+\quad\Longrightarrow\quad
+t=0 \ \text{or}\ t^3=2.
+\]
+So the points are
+\[
+t=0 \Longrightarrow (0,0),
+\qquad
+t=\sqrt[3]{2} \Longrightarrow \bigl(\sqrt[3]{2},\sqrt[3]{4}\bigr).
+\]
+
+Vertical tangents:
+\[
+\frac{dx}{dt}=0
+\quad\Longrightarrow\quad
+t^3=\frac12.
+\]
+Thus
+\[
+t=\sqrt[3]{\frac12}
+\Longrightarrow
+\bigl(\sqrt[3]{4},\sqrt[3]{2}\bigr).
+\]
+Also, because the curve returns to the origin as \(t\to\infty\), the symmetry shows the origin has a vertical tangent there as well. So the tangent behavior at the origin is a horizontal branch and a vertical branch.
+
+\item To find the slant asymptote, compute
+\[
+x+y+1
+=\frac{3t+3t^2}{1+t^3}+1
+=\frac{(t+1)^3}{1+t^3}
+=\frac{(t+1)^2}{t^2-t+1}.
+\]
+As \(t\to-1\),
+\[
+x+y+1\to0.
+\]
+At the same time, \(1+t^3\to0\), so both \(x\) and \(y\) become unbounded. Therefore
+\[
+\boxed{y=-x-1}
+\]
+is a slant asymptote.
+
+\item The derivative information and asymptote now give a reliable sketch:
+\[
+\boxed{\text{loop in the first quadrant, symmetric about }y=x,}
+\]
+with self-intersection at the origin, another intersection with \(y=x\) at \(\left(\frac32,\frac32\right)\), and outer branches approaching \(y=-x-1\) in Quadrants II and IV.
+
+\item To eliminate the parameter, notice that
+\[
+\frac{y}{x}
+=\frac{3t^2/(1+t^3)}{3t/(1+t^3)}
+=t.
+\]
+This is appropriate because the ratio simplifies immediately.
+
+So \(t=\dfrac{y}{x}\). Substitute into
+\[
+x=\frac{3t}{1+t^3}:
+\]
+\[
+x=\frac{3(y/x)}{1+(y/x)^3}
+=\frac{3x^2y}{x^3+y^3}.
+\]
+Multiply through:
+\[
+\boxed{x^3+y^3=3xy.}
+\]
+
+\item For the polar equation, use
+\[
+t=\frac{y}{x}=\tan\theta,
+\qquad
+x=r\cos\theta.
+\]
+From
+\[
+x=\frac{3t}{1+t^3},
+\]
+we get
+\[
+r\cos\theta=\frac{3\tan\theta}{1+\tan^3\theta}.
+\]
+Multiply by \(\sec\theta\):
+\[
+\boxed{r=\frac{3\sec\theta\tan\theta}{1+\tan^3\theta}.}
+\]
+
+\item The loop is traced once as \(t\) runs from \(0\) to \(\infty\). For a closed parametric curve, the area is
+\[
+A_{\text{loop}}
+=\frac12\int_0^\infty\left(x\frac{dy}{dt}-y\frac{dx}{dt}\right)\,dt.
+\]
+Using the derivative formulas above,
+\[
+x\frac{dy}{dt}-y\frac{dx}{dt}
+=\frac{9t^2}{(1+t^3)^2}.
+\]
+Therefore
+\[
+A_{\text{loop}}
+=\frac12\int_0^\infty \frac{9t^2}{(1+t^3)^2}\,dt.
+\]
+Let \(u=1+t^3\), so \(du=3t^2\,dt\). Then
+\[
+A_{\text{loop}}
+=\frac32\int_1^\infty u^{-2}\,du
+=\frac32.
+\]
+So
+\[
+\boxed{A_{\text{loop}}=\frac32.}
+\]
+
+\item For the outer region between the asymptote and the two infinite branches, truncate the branches at a parameter value \(a\in(-1,0)\) and connect the two truncated endpoints by the segment joining the symmetric points
+\[
+U(a)=\bigl(x(a),y(a)\bigr),
+\qquad
+L(a)=\bigl(y(a),x(a)\bigr).
+\]
+This closes the region while keeping the algebra manageable, and the closing segment approaches the asymptote as \(a\to-1^+\).
+
+Applying Green's Theorem to that closed contour gives an area
+\[
+A(a)
+=-\frac{3a^2(2a^2-4a+3)}{2(a^2-a+1)^2}.
+\]
+Taking absolute values and letting \(a\to-1^+\),
+\[
+\lim_{a\to-1^+}|A(a)|
+=\frac32.
+\]
+So the finite area between the asymptote and the infinite branches is also
+\[
+\boxed{\frac32.}
+\]
+Hence it is equal to the area of the loop.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Method 2: Use the structure of the Cartesian equation}
+
+\begin{steps}
+\item From Method 1 we already have the Cartesian equation
+\[
+x^3+y^3=3xy.
+\]
+This equation is useful because it lets us analyze the whole curve without carrying the parameter everywhere.
+
+\item The equation is unchanged if we swap \(x\) and \(y\), so the curve is symmetric about \(y=x\). To find where it meets \(y=x\), substitute \(y=x\):
+\[
+2x^3=3x^2
+\qquad\Longrightarrow\qquad
+x^2(2x-3)=0.
+\]
+Hence the intersections are
+\[
+\boxed{(0,0)\ \text{and}\ \left(\frac32,\frac32\right)}.
+\]
+
+\item Differentiate implicitly:
+\[
+3x^2+3y^2y'=3y+3xy'.
+\]
+Solving for \(y'\),
+\[
+y'=\frac{y-x^2}{y^2-x}.
+\]
+This formula is appropriate because it separates the horizontal and vertical tangent conditions very clearly.
+
+Horizontal tangents come from
+\[
+y-x^2=0 \quad\Longrightarrow\quad y=x^2.
+\]
+Substitute into \(x^3+y^3=3xy\):
+\[
+x^3+x^6=3x^3
+\qquad\Longrightarrow\qquad
+x^3(x^3-2)=0.
+\]
+So
+\[
+\boxed{(0,0)\ \text{and}\ \bigl(\sqrt[3]{2},\sqrt[3]{4}\bigr)}
+\]
+have horizontal tangents.
+
+Vertical tangents come from
+\[
+y^2-x=0 \quad\Longrightarrow\quad x=y^2.
+\]
+Substituting gives
+\[
+y^6+y^3=3y^3
+\qquad\Longrightarrow\qquad
+y^3(y^3-2)=0,
+\]
+so
+\[
+\boxed{(0,0)\ \text{and}\ \bigl(\sqrt[3]{4},\sqrt[3]{2}\bigr)}
+\]
+have vertical tangents.
+
+\item To recover the asymptote, let
+\[
+u=x+y,\qquad p=xy.
+\]
+Since
+\[
+x^3+y^3=(x+y)^3-3xy(x+y)=u^3-3pu,
+\]
+the equation \(x^3+y^3=3xy\) becomes
+\[
+u^3-3pu=3p.
+\]
+So
+\[
+p=\frac{u^3}{3(u+1)}.
+\]
+When points on the outer branches go to infinity, \(p=xy\) becomes unbounded, so the denominator must approach \(0\). Therefore
+\[
+u=x+y\to-1,
+\]
+which means the asymptote is
+\[
+\boxed{y=-x-1.}
+\]
+
+\item The polar equation comes from substituting
+\[
+x=r\cos\theta,\qquad y=r\sin\theta
+\]
+into
+\[
+x^3+y^3=3xy:
+\]
+\[
+r^3(\cos^3\theta+\sin^3\theta)=3r^2\sin\theta\cos\theta.
+\]
+Assuming \(r\ne0\),
+\[
+r=\frac{3\sin\theta\cos\theta}{\cos^3\theta+\sin^3\theta}.
+\]
+Divide numerator and denominator by \(\cos^3\theta\):
+\[
+\boxed{r=\frac{3\sec\theta\tan\theta}{1+\tan^3\theta}.}
+\]
+
+\item For the loop area, use the polar form. On the loop, \(t=\tan\theta\) runs from \(0\) to \(\infty\), so \(\theta\) runs from \(0\) to \(\pi/2\). Thus
+\[
+A_{\text{loop}}
+=\frac12\int_0^{\pi/2} r^2\,d\theta
+=\frac12\int_0^{\pi/2}
+\left(\frac{3\sec\theta\tan\theta}{1+\tan^3\theta}\right)^2 d\theta.
+\]
+Let \(u=\tan\theta\). Then \(d\theta=\dfrac{du}{1+u^2}\), so
+\[
+A_{\text{loop}}
+=\frac12\int_0^\infty
+\frac{9(1+u^2)u^2}{(1+u^3)^2}\cdot\frac{du}{1+u^2}
+=\frac12\int_0^\infty\frac{9u^2}{(1+u^3)^2}\,du
+=\frac32.
+\]
+
+\item For the outer region, use the rotated coordinates
+\[
+u=x+y,\qquad v=x-y.
+\]
+Then
+\[
+x=\frac{u+v}{2},\qquad y=\frac{u-v}{2},
+\qquad dx\,dy=\frac12\,du\,dv.
+\]
+Substituting into \(x^3+y^3=3xy\) gives
+\[
+3v^2(u+1)=u^2(3-u).
+\]
+So for \(-1<u<0\), the two outer branches are
+\[
+v=\pm\,|u|\sqrt{\frac{3-u}{3(u+1)}}.
+\]
+Hence the area between them and the asymptote \(u=-1\) is
+\[
+A_{\text{outer}}
+=\frac12\int_{-1}^{0}
+2(-u)\sqrt{\frac{3-u}{3(u+1)}}\,du.
+\]
+This improper integral is exactly the kind of integral the problem's hint says may be finished by a CAS; a computer algebra system evaluates it to
+\[
+\boxed{A_{\text{outer}}=\frac32.}
+\]
+So the outer area equals the loop area.
+
+\item Therefore the complete answer is:
+\[
+\boxed{\text{loop area}=\text{outer area}=\frac32.}
+\]
+The sketch is the usual folium: a loop in the first quadrant, symmetry about \(y=x\), and two infinite branches approaching \(y=-x-1\) in Quadrants II and IV.
+\end{steps}
+\end{solutionbox}
+
+\begin{solutionbox}
+\textbf{Hand-in Version}
+
+\begin{subparts}
+\item Symmetry: replacing \(t\) by \(1/t\) swaps \(x\) and \(y\), so the curve is symmetric about \(y=x\). It meets \(y=x\) at
+\[
+\boxed{(0,0)\ \text{and}\ \left(\frac32,\frac32\right).}
+\]
+
+\item
+\[
+\frac{dx}{dt}=\frac{3(1-2t^3)}{(1+t^3)^2},
+\qquad
+\frac{dy}{dt}=\frac{3t(2-t^3)}{(1+t^3)^2}.
+\]
+So the horizontal tangents occur at
+\[
+\boxed{(0,0)\ \text{and}\ \bigl(\sqrt[3]{2},\sqrt[3]{4}\bigr),}
+\]
+and the vertical tangents occur at
+\[
+\boxed{(0,0)\ \text{and}\ \bigl(\sqrt[3]{4},\sqrt[3]{2}\bigr).}
+\]
+
+\item
+\[
+x+y+1=\frac{(t+1)^2}{t^2-t+1}\to0
+\quad\text{as }t\to-1,
+\]
+so the slant asymptote is
+\[
+\boxed{y=-x-1.}
+\]
+
+\item Sketch: the curve has a loop in the first quadrant, is symmetric about \(y=x\), crosses itself at the origin, crosses \(y=x\) again at \(\left(\frac32,\frac32\right)\), and has outer branches approaching \(y=-x-1\) in Quadrants II and IV.
+
+\item Eliminating \(t\) gives
+\[
+\boxed{x^3+y^3=3xy.}
+\]
+
+\item The polar equation is
+\[
+\boxed{r=\frac{3\sec\theta\tan\theta}{1+\tan^3\theta}.}
+\]
+
+\item The loop area is
+\[
+\boxed{\frac32.}
+\]
+
+\item The area between the asymptote and the two infinite branches is also
+\[
+\boxed{\frac32.}
+\]
+So the two areas are equal.
+\end{subparts}
+\end{solutionbox}
+
+\end{document}
