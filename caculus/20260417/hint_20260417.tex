@@ -1,0 +1,336 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\setlength{\mathindent}{1.5em}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{xeCJK}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+\newcommand{\examdate}{2026/04/17}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{69.}\ }
+\newenvironment{hintbox}{\begin{framed}}{\end{framed}}
+
+\newcommand{\sectiontitle}[2]{%
+  \hypertarget{#1}{}%
+  \par\vspace{0.8em}%
+  \noindent{\Large\bfseries #2}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.8em}%
+}
+
+\newcommand{\tocproblem}[2]{%
+  \hyperref[#1]{#2} & \hyperref[#1]{\pageref*{#1}} \\
+}
+
+\newcommand{\worksheettoc}{%
+  \noindent{\Large\bfseries Contents}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+  \begin{tabular}{@{}p{0.72\columnwidth}r@{}}
+    \textbf{Problem} & \textbf{Page} \\
+    \tocproblem{prob:13-1-41}{13-1 \quad 41}
+    \tocproblem{prob:13-1-42}{13-1 \quad 42}
+    \tocproblem{prob:13-1-43}{13-1 \quad 43}
+    \tocproblem{prob:13-1-44}{13-1 \quad 44}
+    \tocproblem{prob:13-1-45}{13-1 \quad 45}
+    \tocproblem{prob:13-1-46}{13-1 \quad 46}
+    \tocproblem{prob:13-1-57}{13-1 \quad 57}
+    \tocproblem{prob:13-1-59}{13-1 \quad 59}
+    \tocproblem{prob:13-1-60}{13-1 \quad 60}
+    \tocproblem{prob:13-2-24}{13-2 \quad 24}
+    \tocproblem{prob:13-2-28}{13-2 \quad 28}
+    \tocproblem{prob:13-2-29}{13-2 \quad 29}
+    \tocproblem{prob:13-2-35}{13-2 \quad 35}
+    \tocproblem{prob:13-2-52}{13-2 \quad 52}
+  \end{tabular}\par
+}
+
+\newcommand{\problem}[3]{%
+  \Needspace{10\baselineskip}%
+  \phantomsection\label{#1}%
+  \par\vspace{0.8em}%
+  \noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#2.}}#3\par
+}
+
+\newlist{hints}{enumerate}{1}
+\setlist[hints]{%
+  label=\textbf{提示 \arabic*.},
+  leftmargin=*,
+  itemsep=0.45em,
+  topsep=0.35em,
+  align=left
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries 微積分分層提示\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\worksheettoc
+\vfill\null
+\newpage
+
+\sectiontitle{sec:13-1}{13-1}
+
+\problem{prob:13-1-41}{41}{作圖題：
+\[
+r(t)=\langle \cos t\sin 2t,\ \sin t\sin 2t,\ \cos 2t\rangle
+\]}
+
+\begin{hintbox}
+\begin{hints}
+\item 學生最常卡在一開始就想「直接畫三維圖」，結果完全沒有方向。這題更好的起點是先問：它有沒有被限制在某個熟悉曲面上？
+\item 如果你對球面、圓柱面、旋轉曲面的判斷還不熟，先回想：哪一類題目會鼓勵你先看 \(x^2+y^2\)、再和 \(z^2\) 放在一起？
+\item 前兩個座標有共同因子，這不是巧合。這種型態通常在暗示你把平面投影寫成「半徑 \(\times\) 方向」來看，而不是逐點亂代。
+\item 這題的另一個卡點是學生常看不出角度到底是誰。你可以把前兩式和極座標的標準型去比，先只辨認「哪個量在轉」、「哪個量在伸縮」。
+\item 最後才挑幾個最有代表性的參數值，例如讓共同因子變成 \(0\)、或讓第三個座標取極值的時刻。這些點是你畫圖時最可靠的骨架。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-1-42}{42}{作圖題：
+\[
+r(t)=\langle te^t,\ e^{-t},\ t\rangle
+\]}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題常見的卡點是把它當成「只能靠電腦看」的曲線。其實它比較像消參數題，先找最容易拿來代換的那個座標。
+\item 如果你對「空間曲線是兩個曲面的交線」這個觀念不熟，這題很適合練。因為每個座標都不複雜，消掉參數後通常會露出很乾淨的關係。
+\item 很多學生只會消出一個關係就停住，但作圖常常還需要第二個觀察。試著再問自己：三個變數之間還有沒有更直接的乘積、商、或單調關係？
+\item 若你不確定形狀怎麼彎，先看兩個投影就夠了。通常一個投影幫你判斷「往哪裡長」，另一個投影幫你看「中途有沒有折返」。
+\item 最後再思考 \(t\to\infty\) 和 \(t\to-\infty\) 時，每一個座標分別跑向哪裡。學生常因為忽略端點行為，而把開放曲線誤畫成閉合曲線。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-1-43}{43}{作圖題：
+\[
+r(t)=\left\langle \sin 3t\cos t,\ \frac{1}{4}t,\ \sin 3t\sin t\right\rangle
+\]}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題很多學生會被三維形式嚇到，但真正的關鍵其實在 \(x\) 和 \(z\)。先把高度 \(y\) 暫時放一邊，會比較看得出主幹。
+\item 如果你對花瓣曲線不熟，先觀察 \(x,z\) 的共同因子。共同振幅這件事通常表示：在某個平面投影裡，曲線是先旋轉、再遠近伸縮。
+\item 學生常卡在不知道這題到底會不會閉合。這時候要特別看 \(y=\frac{t}{4}\) 的角色，它是在提醒你：空間中的高度可能一直變，不一定會回到原處。
+\item 若你已經隱約看出平面投影的花瓣感，下一步不要急著求完整式子，先找哪些參數值會讓共同振幅消失。這些點能幫你知道曲線何時穿回中心軸。
+\item 這題真正要培養的觀念是：先在一個投影平面辨認題型，再把第三個座標解讀成「把這個圖樣沿某軸往上搬」。用這樣的結構去想，圖會清楚很多。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-1-44}{44}{作圖題：
+\[
+r(t)=\langle \cos(8\cos t)\sin t,\ \sin(8\cos t)\sin t,\ \cos t\rangle
+\]}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題最常讓學生卡住的地方是角度裡又包一個 \(\cos t\)，看起來很亂。先別管裡面那個 \(8\cos t\)，先看前兩個座標整體的外形像不像圓柱座標。
+\item 若你對「先辨認所在曲面」這個技巧還不熟，這題非常值得用。因為第三個座標只有 \(\cos t\)，常常代表高度和半徑之間有很乾淨的關係。
+\item 學生第二個常見盲點是把半徑當成永遠可以帶正負。你可以先只分析一段比較單純的參數區間，等半徑與角度的角色看清楚，再處理另一半。
+\item 這題比較像「高度控制角度」而不是「時間直接控制角度」。也就是說，你要想的是：當點往下走時，它繞著軸轉了多少，而不是單純列很多 \(t\) 值。
+\item 真正畫圖前，先標出最容易認的幾個位置：北極、赤道、南極，以及它們之間轉圈的趨勢。學生一旦把這些定位點抓穩，整條曲線就不會畫歪。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-1-45}{45}{作圖題：
+\[
+r(t)=\langle \cos 2t,\ \cos 3t,\ \cos 4t\rangle
+\]}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題常見的錯誤是只靠數值點亂畫，結果完全看不出真正形狀。先想想看：這種多重角函數題，有沒有可能先找出它落在哪個曲面上？
+\item 如果你對倍角、三倍角、四倍角公式不熟，這題就會卡很久。先回想哪兩個座標比較容易用同一個基本量來表示。
+\item 學生通常先從三個座標一起想，反而太亂。更好的策略是：先挑兩個最有希望建立代數關係的座標，把一個曲面先抓出來。
+\item 抓到曲面後，不代表題目做完。你還要回頭想第三個座標在這個曲面上扮演什麼角色，它是在上下分支之間切換，還是在同一條軌道上振盪？
+\item 最後才回來用少數幾個簡單參數值做定位。這樣做的理由是：代表點不是用來猜題型，而是用來確認你前面辨認出的題型沒有看錯。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-1-46}{46}{作圖題：
+\[
+x=\sin t,\qquad y=\sin 2t,\qquad z=\cos 4t
+\]
+請利用三個座標平面的投影來理解曲線形狀。}
+
+\begin{hintbox}
+\begin{hints}
+\item 題目已經明說要看投影，所以學生若還想直接畫三維圖，通常會越畫越亂。這題的主線就是：一次只看一個投影。
+\item 常見卡點是學生不知道先做哪個投影。通常先挑最容易用單一三角恆等式整理的那一組，這樣你會最快得到第一個熟悉的平面曲線。
+\item 如果你對倍角公式不熟，這題會卡在第二步。先回想 \(\sin 2t\) 和 \(\cos 4t\) 各自最容易改寫成誰的函數，這樣才能把參數消掉。
+\item 很多學生在 \(xy\) 投影會卡住，因為它不一定會直接變成 \(y=f(x)\) 的單值函數。要記得：投影只要能整理成隱式關係，也已經很有用。
+\item 三個投影拿到之後，不是各自分開放著就好。最後一步一定要問：它們共同告訴你這條曲線是在某個曲面上繞、折、還是穿來穿去？
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-1-57}{57}{碰撞題：
+\[
+r_1(t)=\langle t^2,\ 7t-12,\ t^2\rangle,\qquad
+r_2(t)=\langle 4t-3,\ t^2,\ 5t-6\rangle
+\]
+問兩個粒子是否相撞。}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題學生最容易混淆的是「同一條軌跡上的同一點」和「同一時間真的撞上」。先把這兩個概念分清楚，再開始列式。
+\item 這是典型的「同參數比較位置」題。卡住時請提醒自己：相撞代表三個座標要在同一個 \(t\) 下同時相等。
+\item 不需要一開始就三個方程一起硬解。學生常卡在代數太多，其實先挑最簡單的一個座標方程找候選時間，負擔會小很多。
+\item 找到候選時間後，別急著宣布答案。這題真正的檢查點是：另外兩個座標是不是也在同一時間跟著對上。
+\item 最後再把那個時間帶回去看位置。這一步不只是收尾，也是避免你把「時間對了但位置抄錯」這種粗心帶進最後答案。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-1-59}{59}{曲線題：
+\[
+x=\frac{27}{26}\sin 8t-\frac{8}{39}\sin 18t,\qquad
+y=-\frac{27}{26}\cos 8t+\frac{8}{39}\cos 18t,\qquad
+z=\frac{144}{65}\sin 5t
+\]
+並要求判斷它是否位在某個單葉雙曲面上。}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題很多學生一看到係數和多個角度就直接放棄。先別急著展開，先看目標式長什麼樣子。目標裡真正重要的是 \(x^2+y^2\) 和 \(z^2\)。
+\item 如果你對「平方後再整理交叉項」這種題型不熟，先提醒自己：這類題不是比展開速度，而是比你會不會把結構先分組。
+\item 學生最常卡在交叉項不知道怎麼處理。你可以先觀察交叉項裡會出現哪兩個角度，然後想想角差公式是不是正好在等你。
+\item 因為題目想把 \(x,y\) 和 \(z\) 放到同一個曲面方程裡，所以你最好讓 \(x^2+y^2\) 最後也用和 \(z\) 同一種角頻率來描述。這是整題的方向感來源。
+\item part (a) 的作圖也不要獨立看成另一題。當你知道它被某個旋轉曲面限制住之後，圖形的重點就會從「任意亂繞」變成「沿著曲面上下振動」。
+\item 真正好的手繪觀察不是去代一堆點，而是先抓：半徑何時最小、何時最大、高度何時最上、何時最下。學生一旦把這些節點抓到，圖就不會飄。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-1-60}{60}{Trefoil knot 題：
+\[
+x=(2+\cos 1.5t)\cos t,\qquad
+y=(2+\cos 1.5t)\sin t,\qquad
+z=\sin 1.5t
+\]
+要求先從上視圖理解，再判斷 over/under。}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題學生最常卡在一開始就想像三維 knot 的樣子，結果完全失控。題目已經幫你指定策略了：先只看上視圖。
+\item 如果你對極座標還不夠熟，這題就會卡在第一步。先把 \(x,y\) 和 \(r\cos\theta,\ r\sin\theta\) 對照，確認誰在管半徑、誰在管轉角。
+\item 題目刻意強調半徑的最大、最小，以及「中間位置」，這不是裝飾語。它在暗示你：平面投影的幾何節點和空間中的高度極值是連在一起看的。
+\item 學生第二個常見卡點是看不懂 crossing 為什麼會有上下之分。這時要提醒自己：同一個平面點可以對應兩個不同參數，真正分出 over/under 的是 \(z\) 的高低。
+\item 若你還是不確定該從哪裡下手，可以先找曲線什麼時候最外圈、最內圈、以及位於兩者正中間。這些位置通常就是 knot 圖最關鍵的節點。
+\item 最後別忘了完整週期與對稱性。學生常常畫出看似像 knot 的局部圖，但如果沒確認它何時回到起點、是否有循環對稱，就很容易少畫或重畫。
+\end{hints}
+\end{hintbox}
+
+\sectiontitle{sec:13-2}{13-2}
+
+\problem{prob:13-2-24}{24}{向量值函數題：
+\[
+r(t)=\langle e^{2t},\ e^{-3t},\ t\rangle
+\]
+要求 \(r'(0)\)、\(T(0)\)、\(r''(0)\)、以及 \(r'(0)\times r''(0)\)。}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題學生常卡在把四個要求混成一團。先把任務拆清楚：先要速度，再要單位切向量，再要二階導數，最後才是叉積。
+\item 如果你對向量值函數微分還不熟，先提醒自己：三個座標就是分開微分，沒有更神祕的技巧。
+\item 很多人會把 \(T(0)\) 誤以為是再微分一次。這題真正要檢查的是你有沒有記得單位切向量的定義來自「正規化速度向量」。
+\item 學生最容易出錯的地方通常不是前兩步，而是最後的叉積符號。比較安全的做法是：等前面的向量都整理好，再一次性處理叉積。
+\item 算完之後做一個老師最愛的檢查：你的叉積應該同時垂直於前面那兩個向量。這不是多做一步，而是避免你把符號錯直接帶進答案。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-2-28}{28}{切線題：
+\[
+x=\sqrt{t^2+3},\qquad y=\ln(t^2+3),\qquad z=t,
+\]
+在點 \((2,\ln 4,1)\) 求切線。}
+
+\begin{hintbox}
+\begin{hints}
+\item 這類題學生最常卡在一開始就微分，結果到最後才發現不知道該代哪個參數。請先找這個空間點對應的是哪個 \(t\)。
+\item 如果你不知道從哪個座標找參數，先挑最像「直接給出 \(t\)」的那個。這題其實有一個座標非常適合先看。
+\item 題型是標準的參數曲線切線，所以核心模板應該先浮現在腦中：通過該點，方向向量用速度向量。
+\item 學生有時會以為要先消參數才能做。這題反而相反，參數形式最方便，因為切線方向就是每個座標對參數的變化率。
+\item 最後如果方向向量不夠漂亮，不用硬湊。老師通常在乎的是方向是否正確，而不是你選的是原向量還是它的倍數。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-2-29}{29}{交線切線題：
+\[
+x^2+y^2=25,\qquad y^2+z^2=20
+\]
+在點 \((3,4,2)\) 的切線。}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題學生最常卡在「沒有參數式，怎麼找切線？」這正是交線題的重點：你不一定需要先把曲線真的參數化。
+\item 如果你對梯度的幾何意義還不熟，先回想：曲面的法向量來自哪裡，而交線的切線和這些法向量之間有什麼垂直關係。
+\item 這題是典型的兩條路都能做的題型：梯度叉積法，或對限制式微分法。若你某一條路不熟，不要硬撐，換另一條通常更順。
+\item 學生常在算出方向向量後就停住，但題目要的是「切線」，不是「方向」。所以最後一定還要把這個方向放回指定點上形成直線。
+\item 若你想自我檢查，就把你得到的方向向量分別和兩個法向量做內積，看看是不是都垂直。這是很實用的收尾習慣。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-2-35}{35}{夾角題：
+\[
+r_1(t)=\langle t,\ t^2,\ t^3\rangle,\qquad
+r_2(t)=\langle \sin t,\ \sin 2t,\ t\rangle
+\]
+在原點相交，求交角。}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題最常見的誤區是去比較兩個位置向量，而不是比較交點處的切線方向。交角題的主角永遠是切向量。
+\item 先確認原點對兩條曲線各自對應什麼參數值。這一步雖小，但如果參數值抓錯，後面的微分全都沒有意義。
+\item 如果你對「曲線交角」這個名詞還不夠熟，請先把它翻成「兩條切線的夾角」。這樣題型就會瞬間熟悉很多。
+\item 學生常在這一步過早換小數。比較穩的習慣是：先把內積和長度寫成精確形式，最後再近似到題目要的角度。
+\item 最後做直觀檢查：兩條切向量看起來是幾乎平行、接近垂直、還是介於兩者之間？這能幫你抓到符號或長度算錯的情況。
+\end{hints}
+\end{hintbox}
+
+\problem{prob:13-2-52}{52}{叉積微分題：
+\[
+r(t)=u(t)\times v(t),\qquad
+u(2)=\langle 1,2,-1\rangle,\qquad
+u'(2)=\langle 3,0,4\rangle,\qquad
+v(t)=\langle t,t^2,t^3\rangle
+\]
+求 \(r'(2)\)。}
+
+\begin{hintbox}
+\begin{hints}
+\item 這題學生最常卡在看到 \(u(t)\) 沒有完整公式，就以為題目資料不夠。其實這正是在考你有沒有抓到「只要用到某一點的資料」。
+\item 如果你對叉積微分法則不熟，先停一下，不要急著展開成行列式。這題的核心知識點其實就是那條法則本身。
+\item \(v(t)\) 是完整已知的，所以你要先把和 \(t=2\) 有關的那兩個資訊整理好。這一步先做好，後面會變得很機械化。
+\item 學生常在把兩個叉積混著算時把正負號弄丟。更穩的做法是：兩項分開，各自獨立算完，再最後相加。
+\item 這題的重點不是計算量大，而是結構清楚。只要你一路都知道自己在用哪個規則、目前缺哪個資料，通常就不容易迷路。
+\end{hints}
+\end{hintbox}
+
+\end{document}
