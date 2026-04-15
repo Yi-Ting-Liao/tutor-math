@@ -1,3 +1,7 @@
+幫我將 20260417 檔案夾內的題目轉換成 markdown 格式，儲存到 problem.md
+
+幫我仔細檢查在 caculus/20260417 中的 problem.md 是不是正確的紀錄了 20260417 檔案夾內圖片的題目，確保沒有遺漏或錯誤的部分。如果有任何問題，請及時修正並保存。
+
 Help me solve the problems in /Users/test/Desktop/project/tutor_math/caculus/20260409/problem_20260409.tex(if need, you can also refer to the pngs in /Users/test/Desktop/project/tutor_math/caculus/20260409)
 
 and write the answers into /Users/test/Desktop/project/tutor_math/caculus/20260409/answer_20260409.tex
@@ -7,7 +11,8 @@ Requirements:
 2. In each method, explain the rationale for every step — not just what to do, but why this step is appropriate.
 3. Write clearly and organize the solution by method and by step.
 4. At the end, give the final answer in a clean hand-in version.
-5. Do not make the answer too short.
+5. Use TikZ to draw any necessary diagrams, and make sure they are clear and well-labeled.
+6. Do not make the answer too short.
 
 
 幫我將  /Users/test/Desktop/project/tutor_math/caculus/20260409/problem.md 的題目寫進 /Users/test/Desktop/project/tutor_math/caculus/20260409/problem_20260409.tex

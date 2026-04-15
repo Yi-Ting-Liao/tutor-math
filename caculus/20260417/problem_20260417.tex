@@ -1,0 +1,168 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{xeCJK}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\mathindent}{1.5em}
+
+% Set fonts
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+
+\newcommand{\examdate}{2026/04/17}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{69.}\ }
+\newcommand{\problemtitle}[2]{%
+  \hypertarget{#1}{}%
+  \par\vspace{0.4em}%
+  \noindent{\large\bfseries #2}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+}
+\newcommand{\worksheettoc}{%
+  \noindent{\Large\bfseries Contents}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+  \begin{tabular}{@{}p{0.26\columnwidth}p{0.66\columnwidth}@{}}
+    \hyperlink{sec:13-1}{\textbf{13-1}} & \hyperlink{sec:13-1}{41, 42, 43, 44, 45, 46, 57, 59, 60} \\
+    \hyperlink{sec:13-2}{\textbf{13-2}} & \hyperlink{sec:13-2}{24, 28, 29, 35, 52} \\
+  \end{tabular}\par
+}
+\newcommand{\problem}[2]{%
+  \par\noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#1.}}#2\par
+  \vspace{1.4em}%
+}
+\newlist{subparts}{enumerate}{1}
+\setlist[subparts]{%
+  label = (\alph*),
+  labelindent=\problemnumberwidth,
+  leftmargin=*,
+  labelsep=0.5em,
+  align=left,
+  itemsep=0.2em,
+  topsep=0.3em,
+  parsep=0pt,
+  partopsep=0pt
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries Calculus Problems\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\worksheettoc
+\vfill\null
+\newpage
+
+\problemtitle{sec:13-1}{13-1}
+
+\problem{41}{Graph the curve with the given vector equation. Make sure you choose a parameter domain and viewpoints that reveal the true nature of the curve.
+\[
+r(t)=\langle \cos t\sin 2t,\ \sin t\sin 2t,\ \cos 2t\rangle
+\]}
+
+\problem{42}{Graph the curve with the given vector equation. Make sure you choose a parameter domain and viewpoints that reveal the true nature of the curve.
+\[
+r(t)=\langle te^t,\ e^{-t},\ t\rangle
+\]}
+
+\problem{43}{Graph the curve with the given vector equation. Make sure you choose a parameter domain and viewpoints that reveal the true nature of the curve.
+\[
+r(t)=\left\langle \sin 3t\cos t,\ \frac{1}{4}t,\ \sin 3t\sin t\right\rangle
+\]}
+
+\problem{44}{Graph the curve with the given vector equation. Make sure you choose a parameter domain and viewpoints that reveal the true nature of the curve.
+\[
+r(t)=\langle \cos(8\cos t)\sin t,\ \sin(8\cos t)\sin t,\ \cos t\rangle
+\]}
+
+\problem{45}{Graph the curve with the given vector equation. Make sure you choose a parameter domain and viewpoints that reveal the true nature of the curve.
+\[
+r(t)=\langle \cos 2t,\ \cos 3t,\ \cos 4t\rangle
+\]}
+
+\problem{46}{Graph the curve with parametric equations
+\[
+x=\sin t \qquad y=\sin 2t \qquad z=\cos 4t
+\]
+Explain its shape by graphing its projections onto the three coordinate planes.}
+
+\problem{57}{Intersection and Collision. The trajectories of two particles are given by the vector functions
+\[
+r_1(t)=\langle t^2,\ 7t-12,\ t^2\rangle \qquad r_2(t)=\langle 4t-3,\ t^2,\ 5t-6\rangle
+\]
+for \(t\ge 0\). Do the particles collide?}
+
+\problem{59}{%
+\begin{subparts}
+\item Graph the curve with parametric equations
+\[
+x=\frac{27}{26}\sin 8t-\frac{8}{39}\sin 18t
+\]
+\[
+y=-\frac{27}{26}\cos 8t+\frac{8}{39}\cos 18t
+\]
+\[
+z=\frac{144}{65}\sin 5t
+\]
+\item Show that the curve lies on the hyperboloid of one sheet \(144x^2+144y^2-25z^2=100\).
+\end{subparts}}
+
+\problem{60}{Trefoil Knot. The view of the trefoil knot shown in Figure 9 is accurate, but it doesn't reveal the whole story. Use the parametric equations
+\[
+x=(2+\cos 1.5t)\cos t
+\]
+\[
+y=(2+\cos 1.5t)\sin t
+\]
+\[
+z=\sin 1.5t
+\]
+to sketch the curve by hand as viewed from above, with gaps indicating where the curve passes over itself. Start by showing that the projection of the curve onto the \(xy\)-plane has polar coordinates \(r=2+\cos 1.5t\) and \(\theta=t\), so \(r\) varies between \(1\) and \(3\). Then show that \(z\) has maximum and minimum values when the projection is halfway between \(r=1\) and \(r=3\).
+{\medskip\par
+\hangindent=\problemnumberwidth
+\hangafter=1
+\noindent\hspace*{\problemnumberwidth}When you have finished your sketch, use a computer to draw the curve with viewpoint directly above and compare with your sketch. Then plot the curve from several other viewpoints. You can get a better impression of the curve if you plot a tube with radius \(0.2\) around the curve. (Use the \texttt{tubeplot} command in Maple or the \texttt{tubecurve} or \texttt{Tube} command in Mathematica.)}}
+
+\problemtitle{sec:13-2}{13-2}
+
+\problem{24}{If \(r(t)=\langle e^{2t},\ e^{-3t},\ t\rangle\), find \(r'(0)\), \(T(0)\), \(r''(0)\), and \(r'(0)\times r''(0)\).}
+
+\problem{28}{Find parametric equations for the tangent line to the curve with the given parametric equations at the specified point.
+\[
+x=\sqrt{t^2+3}, \qquad y=\ln(t^2+3), \qquad z=t; \qquad (2,\ln 4,1)
+\]}
+
+\problem{29}{Find a vector equation for the tangent line to the curve of intersection of the cylinders \(x^2+y^2=25\) and \(y^2+z^2=20\) at the point \((3,4,2)\).}
+
+\problem{35}{The curves \(r_1(t)=\langle t,\ t^2,\ t^3\rangle\) and \(r_2(t)=\langle \sin t,\ \sin 2t,\ t\rangle\) intersect at the origin. Find their angle of intersection correct to the nearest degree.}
+
+\problem{52}{If \(r(t)=u(t)\times v(t)\), where \(u(2)=\langle 1,\ 2,\ -1\rangle\), \(u'(2)=\langle 3,\ 0,\ 4\rangle\), and \(v(t)=\langle t,\ t^2,\ t^3\rangle\), find \(r'(2)\).}
+
+\end{document}
