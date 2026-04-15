@@ -1,0 +1,543 @@
+\documentclass[a4paper,12pt,twocolumn]{article}
+
+\usepackage[landscape,top=1cm,bottom=1.4cm,left=1cm,right=1cm,columnsep=1cm]{geometry}
+\usepackage[fleqn]{amsmath}
+\usepackage{amssymb}
+\setlength{\mathindent}{1.5em}
+\usepackage{fontspec}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{xeCJK}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+\usepackage{tikz}
+
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{JetBrains Mono}
+
+% Chinese font support
+\setCJKmainfont{Iansui}[
+  BoldFont=Iansui,
+  AutoFakeBold=3.17
+]
+
+\pagestyle{plain}
+\setlength{\columnseprule}{0.2pt}
+\newcommand{\examdate}{2026/04/17}
+\newlength{\problemnumberwidth}
+\settowidth{\problemnumberwidth}{\textbf{10.}\ }
+\newenvironment{teachbox}{\begin{framed}}{\end{framed}}
+
+\newcommand{\sectiontitle}[2]{%
+  \hypertarget{#1}{}%
+  \par\vspace{0.8em}%
+  \noindent{\Large\bfseries #2}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.8em}%
+}
+
+\newcommand{\tocentry}[2]{%
+  \hyperref[#1]{#2} & \hyperref[#1]{\pageref*{#1}} \\
+}
+
+\newcommand{\worksheettoc}{%
+  \noindent{\Large\bfseries Contents}\par
+  \vspace{0.3em}%
+  \hrule
+  \vspace{0.9em}%
+  \begin{tabular}{@{}p{0.72\columnwidth}r@{}}
+    \textbf{Topic} & \textbf{Page} \\
+    \tocentry{topic:map}{1. 本次作業在考什麼}
+    \tocentry{topic:graph}{2. 空間參數曲線怎麼看}
+    \tocentry{topic:coord}{3. 極座標、圓柱座標、球座標}
+    \tocentry{topic:trig}{4. 三角恆等式工具箱}
+    \tocentry{topic:elim}{5. 消參數與投影判讀}
+    \tocentry{topic:tangent}{6. 切向量、單位切向量、切線}
+    \tocentry{topic:angle}{7. 交角、碰撞與同時性}
+    \tocentry{topic:surface}{8. 交線切線與梯度}
+    \tocentry{topic:cross}{9. 叉積微分}
+    \tocentry{topic:plan}{10. 建議學習順序}
+  \end{tabular}\par
+}
+
+\newcommand{\topic}[3]{%
+  \Needspace{10\baselineskip}%
+  \phantomsection\label{#1}%
+  \par\vspace{0.8em}%
+  \noindent
+  \hangindent=\problemnumberwidth
+  \hangafter=1
+  \makebox[\problemnumberwidth][l]{\textbf{#2.}}#3\par
+}
+
+\newlist{points}{itemize}{1}
+\setlist[points]{%
+  label=\textbullet,
+  leftmargin=*,
+  itemsep=0.35em,
+  topsep=0.3em
+}
+
+\newlist{steps}{enumerate}{1}
+\setlist[steps]{%
+  label=\textbf{Step \arabic*.},
+  leftmargin=*,
+  itemsep=0.35em,
+  topsep=0.35em,
+  align=left
+}
+
+\begin{document}
+
+\twocolumn[
+{\centering
+\Large\bfseries 微積分作業前導教學\par
+\vspace{0.5em}
+\noindent\hfill\normalsize\normalfont \examdate\par
+\vspace{0.8em}
+}
+]
+
+\worksheettoc
+\vfill\null
+\newpage
+
+\sectiontitle{sec:overview}{作業全圖}
+
+\topic{topic:map}{1}{本次作業在考什麼}
+
+\begin{teachbox}
+這次作業雖然表面上有很多不同題型，但核心工具其實可以整理成幾條主線：
+
+\begin{points}
+\item \textbf{空間曲線作圖}：41, 42, 43, 44, 45, 46, 59, 60
+\item \textbf{用投影或曲面來理解曲線}：41, 43, 44, 46, 59, 60
+\item \textbf{三角恆等式與多倍角整理}：41, 44, 45, 46, 59, 60
+\item \textbf{向量值函數微分}：24, 28, 35, 52
+\item \textbf{切線與單位切向量}：24, 28, 29
+\item \textbf{交角與碰撞判斷}：35, 57
+\item \textbf{交線切線與梯度}：29
+\item \textbf{叉積微分法則}：52
+\end{points}
+
+如果你一題一題零散地做，很容易覺得每題都不一樣；但如果先把上面這些工具練熟，再回頭做題，很多題會變成同一種思路的變形。
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{讀題時先做的三件事}
+
+\begin{steps}
+\item 先分辨這題是「作圖題」還是「計算題」。
+\item 如果是作圖題，先問：它有沒有落在某個熟悉曲面上？它的投影長什麼樣？
+\item 如果是計算題，先問：我要的是速度、切線、角度、還是某種向量運算？
+\end{steps}
+
+這三步會決定你後面應該優先叫出哪一套工具。
+\end{teachbox}
+
+\sectiontitle{sec:graphing}{作圖核心}
+
+\topic{topic:graph}{2}{空間參數曲線怎麼看}
+
+\begin{teachbox}
+\textbf{空間曲線作圖的標準流程}
+
+\begin{steps}
+\item \textbf{先看型態}：三個座標是不是都帶三角函數？是不是某兩個座標很像平面極座標？
+\item \textbf{找限制曲面}：優先試 \(x^2+y^2\)、\(x^2+y^2+z^2\)、或把某一個座標改寫成另外兩個的函數。
+\item \textbf{看投影}：\(xy\)、\(xz\)、\(yz\) 哪一個最容易先整理？
+\item \textbf{找特殊點}：參數讓某個共同因子變 \(0\)、讓高度取極值、讓曲線回到起點。
+\item \textbf{看週期}：這條曲線是閉合還是開放？如果閉合，最小完整參數區間是什麼？
+\end{steps}
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{為什麼作圖題常常先看投影？}
+
+因為三維圖很難直接在腦中成形，但投影常常是熟悉的平面曲線：
+
+\begin{points}
+\item 玫瑰線
+\item 拋物線
+\item 四次曲線
+\item 指數曲線
+\item 圓或橢圓
+\end{points}
+
+一旦你知道投影長什麼樣，再把第三個座標解讀成「高度如何改變」，空間圖就容易多了。
+\end{teachbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->] (0,0) -- (3.2,0) node[right] {\(x\)};
+\draw[->] (0,0) -- (0,2.4) node[above] {\(z\)};
+\draw[->] (0,0) -- (-1.1,-1.1) node[below left] {\(y\)};
+\draw[thick,blue] (0.3,0.5) .. controls (1.1,2.0) and (1.6,1.8) .. (2.3,1.0) .. controls (2.7,0.6) and (2.4,0.1) .. (1.7,0.3);
+\draw[dashed] (2.05,1.2) -- (2.05,0);
+\draw[dashed] (2.05,1.2) -- (0.8,0.15);
+\node[blue] at (1.9,2.05) {\scriptsize 空間曲線};
+\node at (2.25,-0.25) {\scriptsize \(xz\) 投影};
+\node at (0.45,-1.15) {\scriptsize \(xy\) 投影方向};
+\end{tikzpicture}
+\end{center}
+
+\topic{topic:coord}{3}{極座標、圓柱座標、球座標}
+
+\begin{teachbox}
+\textbf{這三種座標為什麼這次特別重要？}
+
+因為 41、43、44、60 這幾題的前兩個座標都長得像
+\[
+x=r\cos\theta,\qquad y=r\sin\theta
+\]
+或
+\[
+x=\rho\cos\theta,\qquad y=\rho\sin\theta,\qquad z=z.
+\]
+學生如果看不出這個型態，就會把本來可以很快辨認的曲線，硬做成一題冗長代數題。
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{三種常用寫法}
+
+\begin{points}
+\item \textbf{極座標}：
+\[
+x=r\cos\theta,\qquad y=r\sin\theta
+\]
+適合平面投影。
+
+\item \textbf{圓柱座標}：
+\[
+x=\rho\cos\theta,\qquad y=\rho\sin\theta,\qquad z=z
+\]
+適合「先看繞軸旋轉，再看高度」的空間曲線。
+
+\item \textbf{球座標型態}：
+\[
+x=\sin\phi\cos\theta,\qquad y=\sin\phi\sin\theta,\qquad z=\cos\phi
+\]
+一旦看到這種長相，通常代表曲線落在單位球面上。
+\end{points}
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{學生最容易忽略的細節：半徑是否一定非負？}
+
+在標準極座標或圓柱座標裡，半徑通常取非負。若你算出來的前兩座標比較像
+\[
+x=A(t)\cos t,\qquad y=A(t)\sin t
+\]
+但 \(A(t)\) 可能為負，代表真正的幾何點可以改寫成：
+\[
+\rho=|A(t)|,\qquad \theta=t+\pi
+\]
+在 \(A(t)<0\) 的那一段。
+
+這個細節在玫瑰線、球面螺旋、以及 trefoil 上視圖特別重要。
+\end{teachbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.9]
+\draw[->] (-1.6,0) -- (1.6,0) node[right] {\(x\)};
+\draw[->] (0,-1.6) -- (0,1.6) node[above] {\(y\)};
+\draw[thick,blue,domain=0:360,samples=240,smooth,variable=\t]
+  plot ({sin(2*\t)*cos(\t)},{sin(2*\t)*sin(\t)});
+\draw[dashed,gray] (0,0) circle (1.0);
+\node at (0,-1.95) {\scriptsize 典型的極座標觀察：先看半徑，再看角度};
+\end{tikzpicture}
+\end{center}
+
+\sectiontitle{sec:algebra}{代數與三角工具}
+
+\topic{topic:trig}{4}{三角恆等式工具箱}
+
+\begin{teachbox}
+\textbf{這次作業最常用到的恆等式}
+
+\begin{points}
+\item
+\[
+\sin^2 t+\cos^2 t=1
+\]
+\item
+\[
+\sin 2t=2\sin t\cos t
+\]
+\item
+\[
+\cos 2t=1-2\sin^2 t=2\cos^2 t-1
+\]
+\item
+\[
+\cos 4t=1-8\sin^2 t+8\sin^4 t
+\]
+\item
+\[
+\sin\alpha\sin\beta+\cos\alpha\cos\beta=\cos(\alpha-\beta)
+\]
+\item
+\[
+\cos 10t=1-2\sin^2 5t
+\]
+\end{points}
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{為什麼要先背這些，而不是邊做邊查？}
+
+因為這次很多題不是「算很多」，而是「看出應該整理成什麼樣子」：
+
+\begin{points}
+\item 41、44：靠平方和看出球面
+\item 45、46：靠多倍角把投影改寫成熟悉的平面曲線
+\item 59：靠角差公式把 \(x^2+y^2\) 整理成和 \(z^2\) 能對上的形式
+\item 60：靠三角函數看出半徑與高度的節奏
+\end{points}
+
+如果恆等式不熟，學生就會一直卡在「我好像知道要整理，但不知道往哪裡整理」。
+\end{teachbox}
+
+\topic{topic:elim}{5}{消參數與投影判讀}
+
+\begin{teachbox}
+\textbf{什麼時候該消參數？}
+
+當題目問的是：
+
+\begin{points}
+\item 投影是什麼曲線？
+\item 這條曲線落在哪個曲面上？
+\item 這條曲線是不是某兩個曲面的交線？
+\end{points}
+
+這時候消參數通常比一直代數值更有結構。
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{消參數常見策略}
+
+\begin{steps}
+\item 如果某個座標就是 \(t\) 或很容易反解 \(t\)，先用它。
+\item 如果前兩個座標像極座標，先把它們改讀成半徑與角度。
+\item 如果你看到 \(\sin t,\cos t\) 同時出現，先試 \(x^2+y^2\) 之類的平方和。
+\item 如果目標式含 \(x^2+y^2\) 或 \(z^2\)，就優先往平方形式整理。
+\end{steps}
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{這次最重要的投影觀念}
+
+\begin{points}
+\item 平面投影可以不是單值函數，它也可以是隱式曲線。
+\item 同一個平面投影點，不一定代表空間中真的是同一個點。
+\item 特別是在 knot 題裡，平面投影的 crossing 要靠第三個座標決定誰在上面。
+\end{points}
+\end{teachbox}
+
+\sectiontitle{sec:diff}{微分工具}
+
+\topic{topic:tangent}{6}{切向量、單位切向量、切線}
+
+\begin{teachbox}
+\textbf{三個最基本的定義}
+
+若
+\[
+r(t)=\langle x(t),y(t),z(t)\rangle,
+\]
+則
+
+\begin{points}
+\item \textbf{切向量 / 速度向量}：
+\[
+r'(t)
+\]
+\item \textbf{速率}：
+\[
+|r'(t)|
+\]
+\item \textbf{單位切向量}：
+\[
+T(t)=\frac{r'(t)}{|r'(t)|}
+\]
+\end{points}
+
+這三個量在 24、28、35 都會用到。
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{參數曲線的切線怎麼寫？}
+
+若曲線在 \(t=t_0\) 時經過點 \(r(t_0)\)，則切線可寫成
+\[
+\ell(s)=r(t_0)+s\,r'(t_0).
+\]
+
+學生最常犯的錯誤有兩個：
+
+\begin{points}
+\item 還沒先找到對應的 \(t_0\) 就開始微分
+\item 算出方向向量後忘了把指定點帶回直線方程
+\end{points}
+\end{teachbox}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.95]
+\draw[->] (-0.2,0) -- (4.0,0) node[right] {\(x\)};
+\draw[->] (0,-0.2) -- (0,2.6) node[above] {\(y\)};
+\draw[thick,blue] (0.3,0.4) .. controls (1.0,2.0) and (2.0,2.2) .. (3.5,0.7);
+\fill (1.75,2.0) circle (1.3pt);
+\draw[thick,red,->] (1.75,2.0) -- (3.1,1.75);
+\draw[dashed,red] (0.6,2.22) -- (3.5,1.67);
+\node[blue] at (2.7,2.45) {\scriptsize 曲線};
+\node[red] at (3.3,1.95) {\scriptsize 切向量};
+\end{tikzpicture}
+\end{center}
+
+\topic{topic:angle}{7}{交角、碰撞與同時性}
+
+\begin{teachbox}
+\textbf{曲線交角不是比位置，而是比方向}
+
+若兩條曲線在同一點相交，交角要看的是那一點的切向量：
+\[
+\cos\theta=\frac{u\cdot v}{|u|\,|v|}.
+\]
+
+這是 35 題的核心。
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{碰撞題和交角題的差別}
+
+\begin{points}
+\item \textbf{碰撞題}：要求同一時間、同一位置。
+\item \textbf{交角題}：要求同一位置處的切線方向。
+\end{points}
+
+所以：
+
+\begin{points}
+\item 57 題要先解 \(r_1(t)=r_2(t)\) 且使用同一個時間參數。
+\item 35 題要先找交點，再比較切向量。
+\end{points}
+
+很多學生會把這兩類題混掉，這是本次作業一個很重要的分辨點。
+\end{teachbox}
+
+\sectiontitle{sec:surfaces}{曲面交線}
+
+\topic{topic:surface}{8}{交線切線與梯度}
+
+\begin{teachbox}
+\textbf{當曲線是兩個曲面的交線時，怎麼找切線？}
+
+如果
+\[
+F(x,y,z)=0,\qquad G(x,y,z)=0
+\]
+表示兩個曲面，它們的交線切向量會同時垂直於兩個法向量
+\[
+\nabla F,\qquad \nabla G.
+\]
+因此一個自然的切向量是
+\[
+\nabla F\times \nabla G.
+\]
+
+這就是 29 題的主方法。
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{另一條等價的方法：微分限制式}
+
+若曲線在兩個限制式上：
+\[
+F(x,y,z)=0,\qquad G(x,y,z)=0,
+\]
+沿著曲線微分就會得到兩條線性方程，約束切線方向的三個分量。
+
+這個方法的好處是：
+
+\begin{points}
+\item 如果你對梯度幾何還不熟，它比較直接
+\item 你能清楚看到「為什麼最後只剩一個自由方向」
+\end{points}
+
+本質上它和梯度法在做同一件事。
+\end{teachbox}
+
+\topic{topic:cross}{9}{叉積微分}
+
+\begin{teachbox}
+\textbf{這次一定要會的微分法則}
+
+若
+\[
+r(t)=u(t)\times v(t),
+\]
+則
+\[
+r'(t)=u'(t)\times v(t)+u(t)\times v'(t).
+\]
+
+這就是 52 題最核心的知識點。
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{學生為什麼會在這類題目卡住？}
+
+\begin{points}
+\item 以為一定要知道 \(u(t)\) 的完整公式，其實題目常只給某一點的資訊就夠了
+\item 把兩個叉積混在一起算，正負號很容易掉
+\item 忘記先把 \(v(2)\) 與 \(v'(2)\) 各自準備好
+\end{points}
+
+比較穩的做法是：
+
+\begin{steps}
+\item 先寫微分法則
+\item 先把所有「在 \(t=2\) 的資料」整理成向量
+\item 兩個叉積分開算
+\item 最後才相加
+\end{steps}
+\end{teachbox}
+
+\sectiontitle{sec:study}{學習順序}
+
+\topic{topic:plan}{10}{建議學習順序}
+
+\begin{teachbox}
+\textbf{如果你要在做題前先準備，建議順序如下}
+
+\begin{steps}
+\item 先熟三角恆等式：\(\sin 2t\)、\(\cos 2t\)、\(\cos 4t\)、角差公式
+\item 再熟極座標 / 圓柱座標 / 球座標的辨認方式
+\item 練習「先看曲面、再看投影」的作圖流程
+\item 練習切向量、單位切向量、切線公式
+\item 練習交角公式與「碰撞必須同時」的判斷
+\item 最後補交線切線與叉積微分
+\end{steps}
+\end{teachbox}
+
+\begin{teachbox}
+\textbf{把本講義對回作業題號}
+
+\begin{points}
+\item \textbf{先做}：24, 28, 35, 52
+這四題工具最標準，最適合暖身。
+
+\item \textbf{再做}：57, 29
+這兩題在訓練你分辨「同時性」和「交線切線」。
+
+\item \textbf{最後做}：41, 43, 44, 45, 46, 59, 60
+這些作圖題最吃觀察力與結構整理，放在後面做會順很多。
+\end{points}
+
+如果你能把這份講義中的每一個工具都對應到至少一題，那你在做整份作業時就不會只是在猜。
+\end{teachbox}
+
+\end{document}
