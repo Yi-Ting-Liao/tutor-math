@@ -1,14 +1,14 @@
-幫我將 20260422 檔案夾內的題目轉換成 markdown 格式，儲存到 problem.md
+幫我將 20260502 檔案夾內的題目轉換成 markdown 格式，儲存到 problem.md。如果有圖片的話，請敘述圖片內容、函數圖形，資訊需足以重新繪製出與原圖意思一樣的圖。
 
 -----------------
 
-幫我仔細檢查在 caculus/20260422 中的 problem.md 是不是正確的紀錄了 20260422 檔案夾內圖片的題目，確保沒有遺漏或錯誤的部分。如果有任何問題，請及時修正並保存。
+幫我仔細檢查在 caculus/20260502 中的 problem.md 是不是正確的紀錄了 20260502 檔案夾內圖片的題目，確保沒有遺漏或錯誤的部分。如果有任何問題，請及時修正並保存。
 
 -----------------
 
-Help me solve the problems in /Users/test/Desktop/project/tutor_math/caculus/20260422/problem_20260422.tex(if need, you can also refer to the pngs in /Users/test/Desktop/project/tutor_math/caculus/20260422)
+Help me solve the problems in /Users/test/Desktop/project/tutor_math/caculus/20260502/problem_20260502.tex(if need, you can also refer to the pngs in /Users/test/Desktop/project/tutor_math/caculus/20260502)
 
-and write the answers into /Users/test/Desktop/project/tutor_math/caculus/20260422/answer_20260422.tex. If the problem ask you to draw a diagram, you must use TikZ to create a clear and well-labeled diagram.
+and write the answers into /Users/test/Desktop/project/tutor_math/caculus/20260502/answer_20260502.tex. If the problem ask you to draw a diagram, you must use TikZ to create a clear and well-labeled diagram.
 
 Requirements:
 1. Give me two different methods.
@@ -17,11 +17,12 @@ Requirements:
 4. At the end, give the final answer in a clean hand-in version.
 5. Use TikZ to draw any necessary diagrams, and make sure they are clear and well-labeled.
 6. Do not make the answer too short.
+7. Haven't to compile the LaTeX, just do a static check to ensure there are no syntax errors.
 
 -----------------
 
-幫我將  /Users/test/Desktop/project/tutor_math/caculus/20260422/problem.md 的題目寫進 /Users/test/Desktop/project/tutor_math/caculus/20260422/problem_20260422.tex
+幫我將  /Users/test/Desktop/project/tutor_math/caculus/20260502/problem.md 的題目寫進 /Users/test/Desktop/project/tutor_math/caculus/20260502/problem_20260502.tex，按照 latex 原本設定好的格式。
 
 如果有圖片，必須使用 TikZ 來繪製，確保圖形清晰且標註完整。不可以略過任何圖片，必須將所有圖片都轉換成 TikZ 圖形。
 
-按照 latex 原本設定好的格式，你完成後不需要編譯，請做靜態檢查就好
+按照 latex 原本設定好的格式，你完成後不需要編譯，請做靜態檢查就好。

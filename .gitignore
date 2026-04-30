@@ -17,3 +17,5 @@
 *.lot
 *.fls
 *.fdb_latexmk
+*.synctex.gz
+*.xdv
