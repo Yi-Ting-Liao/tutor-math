@@ -179,7 +179,19 @@ This rewrite is appropriate because the only changing part of the numerator is t
 \]
 This is the harmonic series, and it diverges. Therefore the original series cannot be absolutely convergent.
 
-\item Now check ordinary convergence. The terms \(1/n\) are positive, decrease to \(0\), and the signs alternate. Those are exactly the hypotheses of the alternating-series test, so
+\item Now check ordinary convergence using the Alternating Series Test. Let
+\[
+b_n=\frac1n.
+\]
+Then \(b_n>0\), and
+\[
+b_{n+1}=\frac{1}{n+1}<\frac1n=b_n,
+\]
+so the positive terms decrease. Also,
+\[
+\lim_{n\to\infty}b_n=\lim_{n\to\infty}\frac1n=0.
+\]
+These two facts are exactly the hypotheses of the Alternating Series Test: if \(b_n\) decreases to \(0\), then \(\sum (-1)^n b_n\) converges. Therefore
 \[
 \sum_{n=1}^{\infty}\frac{(-1)^n}{n}
 \]
@@ -218,7 +230,8 @@ Thus the given series equals \(-\ln 2\), so it is convergent.
 \sum_{n=1}^{\infty}\frac{\cos(n\pi)}{n}
 =\sum_{n=1}^{\infty}\frac{(-1)^n}{n}
 \]
-converges by the alternating-series test, but
+Here \(b_n=1/n\) is positive, decreasing, and satisfies \(b_n\to0\). Therefore the Alternating Series Test shows that
+\(\sum (-1)^n/n\) converges. However,
 \[
 \sum_{n=1}^{\infty}\left|\frac{(-1)^n}{n}\right|
 =\sum_{n=1}^{\infty}\frac1n
@@ -954,6 +967,80 @@ A
 =\frac12\int_{5\pi/6}^{13\pi/6}(1-2\sin\theta)^2\,d\theta
 -\frac12\int_{\pi/6}^{5\pi/6}(1-2\sin\theta)^2\,d\theta.
 \]
+
+\item To evaluate it, first expand the integrand:
+\[
+(1-2\sin\theta)^2
+=1-4\sin\theta+4\sin^2\theta.
+\]
+Using
+\[
+\sin^2\theta=\frac{1-\cos 2\theta}{2},
+\]
+we get
+\[
+(1-2\sin\theta)^2
+=3-4\sin\theta-2\cos 2\theta.
+\]
+This expansion is useful because each term now has an elementary antiderivative.
+
+\item An antiderivative is
+\[
+F(\theta)=3\theta+4\cos\theta-\sin 2\theta,
+\]
+because
+\[
+\frac{d}{d\theta}\left(3\theta+4\cos\theta-\sin 2\theta\right)
+=3-4\sin\theta-2\cos 2\theta.
+\]
+
+\item The outer-loop area is
+\[
+A_{\text{outer}}
+=\frac12\left[F(\theta)\right]_{5\pi/6}^{13\pi/6}.
+\]
+Now
+\[
+F\!\left(\frac{13\pi}{6}\right)
+=\frac{13\pi}{2}+\frac{3\sqrt3}{2},
+\qquad
+F\!\left(\frac{5\pi}{6}\right)
+=\frac{5\pi}{2}-\frac{3\sqrt3}{2}.
+\]
+Therefore
+\[
+A_{\text{outer}}
+=\frac12\left(4\pi+3\sqrt3\right)
+=2\pi+\frac{3\sqrt3}{2}.
+\]
+
+\item The inner-loop area is
+\[
+A_{\text{inner}}
+=\frac12\left[F(\theta)\right]_{\pi/6}^{5\pi/6}.
+\]
+Since
+\[
+F\!\left(\frac{5\pi}{6}\right)
+=\frac{5\pi}{2}-\frac{3\sqrt3}{2},
+\qquad
+F\!\left(\frac{\pi}{6}\right)
+=\frac{\pi}{2}+\frac{3\sqrt3}{2},
+\]
+we get
+\[
+A_{\text{inner}}
+=\frac12\left(2\pi-3\sqrt3\right)
+=\pi-\frac{3\sqrt3}{2}.
+\]
+
+\item Finally subtract the inner loop from the outer loop:
+\[
+A=A_{\text{outer}}-A_{\text{inner}}
+=\left(2\pi+\frac{3\sqrt3}{2}\right)
+-\left(\pi-\frac{3\sqrt3}{2}\right)
+=\pi+3\sqrt3.
+\]
 \end{steps}
 \end{solutionbox}
 
@@ -1051,9 +1138,45 @@ A
 -\frac12\int_{\pi/6}^{5\pi/6}(1-2\sin\theta)^2\,d\theta.
 }
 \]
-If evaluated, this area is
+To evaluate the area,
 \[
-A=\pi+3\sqrt3.
+(1-2\sin\theta)^2
+=1-4\sin\theta+4\sin^2\theta
+=3-4\sin\theta-2\cos 2\theta.
+\]
+So use
+\[
+F(\theta)=\int(1-2\sin\theta)^2\,d\theta
+=3\theta+4\cos\theta-\sin 2\theta.
+\]
+Then
+\[
+\begin{aligned}
+A_{\text{outer}}
+&=\frac12\left[F(\theta)\right]_{5\pi/6}^{13\pi/6}  \\
+&=\frac12\left[
+\left(\frac{13\pi}{2}+\frac{3\sqrt3}{2}\right)
+-\left(\frac{5\pi}{2}-\frac{3\sqrt3}{2}\right)
+\right] \\
+&=2\pi+\frac{3\sqrt3}{2},
+\end{aligned}
+\]
+and
+\[
+\begin{aligned}
+A_{\text{inner}}
+&=\frac12\left[F(\theta)\right]_{\pi/6}^{5\pi/6} \\
+&=\frac12\left[
+\left(\frac{5\pi}{2}-\frac{3\sqrt3}{2}\right)
+-\left(\frac{\pi}{2}+\frac{3\sqrt3}{2}\right)
+\right] \\
+&=\pi-\frac{3\sqrt3}{2}.
+\end{aligned}
+\]
+Therefore
+\[
+A=A_{\text{outer}}-A_{\text{inner}}
+=\boxed{\pi+3\sqrt3}.
 \]
 \end{solutionbox}
 
@@ -1122,9 +1245,22 @@ A
 -\frac12\int_{\pi/6}^{5\pi/6}(1-2\sin\theta)^2\,d\theta
 }
 \]
-and, if evaluated,
+with
 \[
-\boxed{A=\pi+3\sqrt3.}
+(1-2\sin\theta)^2=3-4\sin\theta-2\cos2\theta,
+\qquad
+F(\theta)=3\theta+4\cos\theta-\sin2\theta.
+\]
+Thus
+\[
+\begin{aligned}
+A
+&=\frac12\left[F(\theta)\right]_{5\pi/6}^{13\pi/6}
+-\frac12\left[F(\theta)\right]_{\pi/6}^{5\pi/6} \\
+&=\left(2\pi+\frac{3\sqrt3}{2}\right)
+-\left(\pi-\frac{3\sqrt3}{2}\right)
+=\boxed{\pi+3\sqrt3.}
+\end{aligned}
 \]
 \end{finalitems}
 \end{solutionbox}
